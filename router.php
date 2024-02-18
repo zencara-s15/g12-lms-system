@@ -8,10 +8,12 @@ $routes = [
     '/leaves' => 'controllers/leaves/leave.controller.php', //for employeee
 
     '/leave_types' => 'controllers/leave_types/leave_types.controller.php', //for admin
-    '/reviews' => 'controllers/reviews/review.controller.php',
     '/reports' => 'controllers/reports/report.controller.php',
     '/manages' => 'controllers/manages/manage.controller.php',
     '/profiles' => 'controllers/profiles/profile.controller.php',
+    
+    '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php',
+    
 ];
 
 if (array_key_exists($uri, $routes)) {
