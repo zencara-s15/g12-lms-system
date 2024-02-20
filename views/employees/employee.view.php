@@ -1,98 +1,89 @@
-<div class="col-xl-9 col-lg-8 col-md-12">
-    <div class="row">
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="card shadow-sm flex-fill grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">Permission</h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
-                </div>
-            </div>
+<div class="col-xl-9 col-lg-8 col-md-12 position-relative">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3  flex-row align-items-center justify-content-between">
+            <h3 class="m-0 font-weight-bold text-primary">Employee Management</h3>
+            <p class="mt-1">Employees : <strong class="text-danger ">100</strong></p>
         </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <div class="card shadow-sm flex-fill grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">Leave Today</h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 d-flex">
-            <div class="card shadow-sm flex-fill grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">Today</h4>
-                    <a href="javascript:void(0)" class="d-inline-block float-right text-primary"><i class="lnr lnr-sync"></i></a>
-                </div>
-                <div class="card-body recent-activ">
-                    <div class="recent-comment">
-                        <a href="javascript:void(0)" class="dash-card text-dark">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon text-warning">
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">
-                                        Ralph Baker is off sick today
-                                    </h6>
-                                </div>
-                                <div class="dash-card-avatars">
-                                    <div class="e-avatar">
-                                        <!-- <img class="img-fluid" src="assets/img/profiles/img-9.jpg" alt="Avatar" /> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+        <div class="card-body">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-2">
+                        <input type="text" name="search_employee" id="search_employee" placeholder="Search employee..." class="form-control" />
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <select id="department_id" name="department_id" class="custom-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="HR">HR</option>
+                            <option value="DevOps">DevOps</option>
+                            <option value="QA">QA</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <a href="#" class="btn btn-primary ">Add</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-12 d-flex">
-            <!-- Team Leads List -->
-            <div class="card flex-fill team-lead shadow-sm grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">Team Leads</h4>
-                    <a href="employees-team.html" class="dash-card d-inline-block float-right mb-0 text-primary">Manage Team
-                    </a>
-                </div>
-                <div class="card-body">
-                    <div class="media mb-3">
-                        <div class="e-avatar avatar-online mr-3">
-                            <!-- <img src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" class="img-fluid" /> -->
-                        </div>
-                        <div class="media-body">
-                            <h6 class="m-0">Maria Cotton</h6>
-                            <p class="mb-0 ctm-text-sm">PHP</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col col-md-12 d-flex">
-            <!-- Today -->
-            <div class="card flex-fill today-list shadow-sm grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0 d-inline-block">
-                        Your Upcoming Leave
-                    </h4>
-                    <a href="leave.html" class="d-inline-block float-right text-primary"><i class="fa fa-suitcase"></i></a>
-                </div>
-                <div class="card-body recent-activ">
-                    <div class="recent-comment">
-                        <a href="javascript:void(0)" class="dash-card text-danger">
-                            <div class="dash-card-container">
-                                <div class="dash-card-icon">
-                                    <i class="fa fa-suitcase"></i>
-                                </div>
-                                <div class="dash-card-content">
-                                    <h6 class="mb-0">Mon, 16 Dec 2019</h6>
-                                </div>
-                            </div>
-                        </a>
-                     
-                    </div>
-                </div>
-            </div>
+            <!-- Table to Show All Employees -->
+            <table class="table">
+                <thead class="table-dark ">
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-bottom" style="font-size:14px">
+                        <td class="d-flex" style="text-align: center; vertical-align: middle;">
+                            <img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://www.allkpop.com/upload/2024/01/content/102324/1704947068-20240110-iu.jpg" />
+                            <span class="mt-3 m-lg-3">Tanner Hickman</span>
+                        </td>
+                        <td style="vertical-align: middle;">sifilycoza@mailinator.com</td>
+                        <td style="vertical-align: middle;">Developer</td>
+                        <td style="vertical-align: middle;">
+                            <a href="#" class="btn  btn-success" style="font-size:13px">Update</a>
+                            <a href="#" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom" style="font-size:14px">
+                        <td class="d-flex" style="text-align: center; vertical-align: middle;">
+                            <img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://t.ly/E7wHA" />
+                            <span class="mt-3 m-lg-3">Marshall Roberson</span>
+                        </td>
+                        <td style="vertical-align: middle;">toligir@mailinator.com</td>
+                        <td style="vertical-align: middle;">Marketing</td>
+                        <td style="vertical-align: middle;">
+                            <a href="#" class="btn  btn-success" style="font-size:13px">Update</a>
+                            <a href="#" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom" style="font-size:14px">
+                        <td class="d-flex" style="text-align: center; vertical-align: middle;">
+                            <img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://media.asiaone.com/sites/default/files/styles/article_main_image/public/original_images/May2023/230525_ma%20dong%20seok.png?itok=4MFBNauv" />
+                            <span class="mt-3 m-lg-3">Justina Mendoza</span>
+                        </td>
+                        <td style="vertical-align: middle;">zizazuxaxo@mailinator.com</td>
+                        <td style="vertical-align: middle;">QA</td>
+                        <td style="vertical-align: middle;">
+                            <a href="#" class="btn  btn-success" style="font-size:13px">Update</a>
+                            <a href="#" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom" style="font-size:14px">
+                        <td class="d-flex" style="text-align: center; vertical-align: middle;">
+                            <img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://0.soompi.io/wp-content/uploads/2023/03/22100129/Ahn-Jae-Hyun-4-1.jpg" />
+                            <span class="mt-3 m-lg-3">Justina Mendoza</span>
+                        </td>
+                        <td style="vertical-align: middle;">zizazuxaxo@mailinator.com</td>
+                        <td style="vertical-align: middle;">QA</td>
+                        <td style="vertical-align: middle;">
+                            <a href="#" class="btn  btn-success" style="font-size:13px">Update</a>
+                            <a href="#" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
