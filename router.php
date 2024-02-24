@@ -9,9 +9,12 @@ $routes = [
     '/admin' => 'controllers/admin/admin.controller.php',
     '/employees' => 'controllers/employees/employee.controller.php',
     '/departments' => 'controllers/departments/department.controller.php',
-    '/leaves' => 'controllers/leaves/leave.controller.php', //for employeee
+    // '/leaves' => 'controllers/leaves/leave.controller.php', 
+    //for employeee
+    '/leave_types' => 'controllers/leave_types/leave_type.controller.php',
+    '/edit_leave_type' => 'controllers/leave_types/from_edits.controller.php',
 
-    '/leave_types' => 'controllers/leave_types/leave_types.controller.php', //for admin
+     //for admin
     '/reviews' => 'controllers/reviews/review.controller.php',
     '/reports' => 'controllers/reports/report.controller.php',
     '/manages' => 'controllers/manages/manage.controller.php',
