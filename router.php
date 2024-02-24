@@ -16,6 +16,8 @@ $routes = [
     '/reports' => 'controllers/reports/report.controller.php',
     '/manages' => 'controllers/manages/manage.controller.php',
     '/profiles' => 'controllers/profiles/profile.controller.php',
+    '/departments' =>'controllers/departments/department.controller.php',
+    '/edit_department' =>'controllers/departments/edit.department.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {

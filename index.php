@@ -1,5 +1,6 @@
 <?php
 require 'utils/url.php';
+$mainDir =dirname(__FILE__);
 require 'database/database.php';
 
 if (urlIs('/employees_dasboad') || urlIs('/leave_history') || urlIs('/reports_employee') || urlIs('/profiles_employee')) {
