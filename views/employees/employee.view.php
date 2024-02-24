@@ -2,30 +2,35 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
             <h3 class="m-0 font-weight-bold text-primary">Employee Management</h3>
-            <p class="mt-1">Employees : <strong class="text-danger ">100</strong></p>
+            <p class="mt-1">Total Employees : <strong class="text-danger "><?php echo count_users(); ?></strong></p>
         </div>
         <div class="card-body">
             <div class="container">
                 <div class="row align-items-center">
+                    <!-- search box -->
                     <div class="col-md-6 mb-2">
                         <input type="text" name="search_employee" id="search_employee" placeholder="Search employee..." class="form-control" />
                     </div>
+                    <!-- filter -->
                     <div class="col-md-4 mb-2">
-                        <select id="department_id" name="department_id" class="custom-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="HR">HR</option>
-                            <option value="DevOps">DevOps</option>
-                            <option value="QA">QA</option>
+                        <select id="position" name="position" class="custom-select  border-dark" tile="Please select the position of the employee." required>
+                            <option value="" selected disabled>Choose Position</option>
+                            <?php $get_positions = get_positions(); ?>
+                            <?php foreach ($get_positions as $position) :  ?>
+                                <option value="<?= $position['id']; ?>"><?= $position['position']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
+                    <!-- add employee button -->
                     <div class="col-md-2 mb-2">
-                        <a href="#" class="btn btn-primary ">Add</a>
+                        <a href="/create_employee" class="btn btn-primary ">Add</a>
                     </div>
                 </div>
             </div>
+            <br>
 
             <!-- Table to Show All Employees -->
-            <table class="table">
+            <table class="table table-hover">
                 <thead class="table-dark ">
                     <th scope="col">Full Name</th>
                     <th scope="col">Email</th>
@@ -70,7 +75,7 @@
                             <a href="#" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
                         </td>
                     </tr>
-                    <tr class="border-bottom" style="font-size:14px">
+                    <tr class="" style="font-size:14px">
                         <td class="d-flex" style="text-align: center; vertical-align: middle;">
                             <img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://0.soompi.io/wp-content/uploads/2023/03/22100129/Ahn-Jae-Hyun-4-1.jpg" />
                             <span class="mt-3 m-lg-3">Justina Mendoza</span>
