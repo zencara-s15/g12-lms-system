@@ -5,6 +5,7 @@
 			<h3 class="m-0 font-weight-bold text-primary">Leave Management</h3>
 			<p class="mt-1">Total Leaves : <strong class="text-danger "><?= count_leave_requests() ?></strong></p>
 		</div>
+		
 		<div class="card-body">
 			<div class="container">
 				<div class="card shadow-sm ctm-border-radius grow">

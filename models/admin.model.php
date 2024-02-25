@@ -202,3 +202,18 @@ function get_leave_request_detail(int $id): array
     ]);
     return $statement->fetch();
 }
+
+// all approve leave display in report page
+
+function get_aprroved_leave(): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT leave_requests.id, users.first_name, users.last_name, departments.department, leave_requests.start_date, leave_requests.end_date, leave_requests.status
+    FROM leave_requests
+    INNER JOIN users ON users.id = leave_requests.user_id
+    INNER JOIN departments ON departments.id = users.department_id
+    WHERE leave_requests.status = 'Approved'");
+    
+    $statement->execute();
+    return $statement->fetchAll();
+}
