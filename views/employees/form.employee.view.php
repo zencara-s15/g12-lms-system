@@ -85,8 +85,8 @@
                 </div>
                 <div class="form-group">
                     <label for="amount_leave">Amount of leave</label>
-                    <input type="number" class="form-control border-dark" name="amount_leave" id="amount_leave" title="Please enter the amount of leave for the employee (0-5)." min="3" max="3" value="3" required>
-                    <small>The amount of leave for the employee (0-5)</small><br /> 
+                    <input type="number" class="form-control border-dark" name="amount_leave" id="amount_leave" title="Please enter the amount of leave for the employee (0-5)." min="1" max="5" required>
+                    <small>The amount of leave for the employee (0-5)</small><br />
                     <div class="invalid-feedback">Please enter the correct amount of leave.</div>
                 </div>
                 <!-- button cancel and create -->

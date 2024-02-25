@@ -1,5 +1,6 @@
 <?php
 // -----------------function attesting to employee----------------------------------------
+
 // create employee
 function create_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data): bool
 {
@@ -153,11 +154,36 @@ function get_roles(): array
 }
 
 // --------------------------------------------------------------------------------------
-// function deletePost(int $id) : bool
-// {
-//     global $connection;
-//     $statement = $connection->prepare("delete from posts where id = :id");
-//     $statement->execute([':id' => $id]);
-//     return $statement->rowCount() > 0;
-// }
 
+
+// get all leave request to display
+function get_leave_requests(): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT  leave_requests.id , users.first_name, users.last_name, departments.department, leave_types.leave_type, leave_requests.start_date, leave_requests.end_date, leave_requests.description, leave_requests.status 
+    FROM departments 
+    INNER JOIN leave_requests on departments.id = leave_requests.department_id 
+    INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id 
+    INNER JOIN users on users.id = leave_requests.user_id");
+    $statement->execute();
+    return $statement->fetchAll();
+}
+function count_leave_requests(): int
+{
+    global $connection;
+    $statement = $connection->prepare("select count(*) as total from leave_requests");
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'];
+}
+// update leave status
+function update_leave_status(string $status, int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE leave_requests SET status = :status WHERE id = :id");
+    $statement->execute([
+        ':status' => $status,
+        ':id' => $id
+    ]);
+    return $statement->rowCount() > 0;
+}
