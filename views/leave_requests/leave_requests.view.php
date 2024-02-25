@@ -12,7 +12,7 @@
 						<div class="row filter-row">
 							<div class="col-4">
 								<div class="form-group mb-lg-0 mb-md-2 mb-sm-2">
-									<input type="text" class="form-control datetimepicker" placeholder="From" >
+									<input type="text" class="form-control datetimepicker" placeholder="From">
 								</div>
 							</div>
 							<div class="col-4">
@@ -25,7 +25,7 @@
 								<a href="#" class="btn btn-theme button-1 text-white btn-block p-2 mb-md-0 mb-sm-0 mb-lg-0 mb-0"> Apply Filter </a>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -72,19 +72,15 @@
 								</div>
 							</td>
 							<td style="vertical-align: middle;">
-								<div class="table-action">
-									<a href="../../controllers/leave_requests/leave_requests_accept.controller.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-success" onclick="return confirm('Are you sure you want to confirm <?= $data['first_name'] . ' ' . $data['last_name'] . '`' . 's' ?> leave request?')">
-										<span class=""></span> Accept
-									</a>
-									<a href="../../controllers/leave_requests/leave_requests_refuse.controller.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to refuse <?= $data['first_name'] . ' ' . $data['last_name'] . '`' . 's' ?> leave request?')">
-										<span class=""></span> Refuse
-									</a>
+								<div class="btn-group dropleft">
+									<button type="button" class="btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+									<div class="dropdown-menu border-0" style="width: 20px;">
+										<a class="dropdown-item btn btn-outline-primary" href="../../controllers/leave_requests/leave_requests_accept.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid green; text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to accept <?=$data['first_name'] .' '. $data['last_name'] .'`'. 's' ?> leave request?')">Accept</a>
+										<a class="dropdown-item btn my-2" href="../../controllers/leave_requests/leave_requests_refuse.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid red ;text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to refuse <?=$data['first_name'] .' '. $data['last_name'] .'`'. 's' ?> leave request?')">Refuse</a>
+										<a class="dropdown-item btn " href="/leave_requests_detial?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-dark" style="outline: 2px solid orange ;text-align: center; width: 97%;">Details</a>
+									</div>
 								</div>
 							</td>
-							<!-- <td style="vertical-align: middle;">
-								<a href="#" class="btn  btn-success" style="font-size:13px">Update</a>
-								<a href="#" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
-							</td> -->
 						</tr>
 					<?php endforeach; ?>
 				</tbody>

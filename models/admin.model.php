@@ -187,3 +187,20 @@ function update_leave_status(string $status, int $id): bool
     ]);
     return $statement->rowCount() > 0;
 }
+
+// leave detail
+
+function get_leave_request_detail(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT users.first_name, users.last_name, departments.department, leave_types.leave_type ,leave_requests.description , leave_requests.start_date, leave_requests.end_date 
+    FROM leave_requests 
+    INNER JOIN departments on departments.id = leave_requests.department_id
+    INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
+    INNER JOIN users on users.id = leave_requests.user_id
+    WHERE leave_requests.id = :id");
+    $statement->execute([
+        ':id' => $id
+    ]);
+    return $statement->fetch();
+}

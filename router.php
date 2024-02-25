@@ -23,7 +23,10 @@ $routes = [
     '/leave_types' => 'controllers/leave_types/leave_type.controller.php',
     '/edit_leave_type' => 'controllers/leave_types/from_edits.controller.php',
     
-    '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php' // for leave_request
+    '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', // for leave_request
+
+    '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php'
+
 
 ];
 
