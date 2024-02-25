@@ -72,7 +72,7 @@ function get_employees(): array
 function get_employee(int $id): array
 {
     global $connection;
-    $statement = $connection->prepare("select * from staffs where id = :id");
+    $statement = $connection->prepare("select * from users where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetch();
 }

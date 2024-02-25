@@ -52,7 +52,7 @@
                             <td style="vertical-align: middle;"><?= $employee['email'] ?></td>
                             <td style="vertical-align: middle;"><?= $employee['position'] ?></td>
                             <td style="vertical-align: middle;">
-                                <a href="#" class="btn  btn-success" style="font-size:13px">Update</a>
+                                <a href="/update_employee?id=<?= $employee['id']; ?>" class="btn  btn-success" style="font-size:13px">Update</a>
                                 <a href="#" onclick="openDeleteModal(<?php echo $employee['id']; ?>)" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
                             </td>
                         </tr>

@@ -20,6 +20,7 @@ $routes = [
     '/manages' => 'controllers/manages/manage.controller.php',
     '/profiles' => 'controllers/profiles/profile.controller.php',
     '/create_employee' => 'controllers/employees/form.employee.controller.php',
+    '/update_employee' => 'controllers/employees/form.update.employee.controller.php',
 
     '/departments' =>'controllers/departments/department.controller.php',
     '/edit_department' =>'controllers/departments/edit.department.controller.php',
