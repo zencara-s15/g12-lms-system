@@ -1,4 +1,5 @@
 <?php
+$mainDir = dirname(__FILE__);
 require 'utils/url.php';
 require 'database/database.php';
 
