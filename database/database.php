@@ -1,7 +1,7 @@
 <?php
 
 $hostname = "localhost";
-$database = "test_leave_request";
+$database = "g12_lms_db";
 $username = "root";
 $password = "";
 

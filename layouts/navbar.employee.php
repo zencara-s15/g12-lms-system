@@ -21,7 +21,7 @@
      </div>
      <hr />
      <div class="user-menu-items px-3 m-0 ">
-         <a class="px-0 pb-2 pt-0" href="/admin">
+         <a class="px-0 pb-2 pt-0" href="/employees_dasboad">
              <span class="media align-items-center">
                  <span class="lnr lnr-home mr-3"></span>
                  <span class="media-body text-truncate text-left">
@@ -29,40 +29,17 @@
                  </span>
              </span>
          </a>
-         <a class="p-2" href="/employees">
+
+         <a class="p-2" href="/leave_history">
              <span class="media align-items-center">
-                 <span class="lnr lnr-users mr-3"></span>
+                 <span class="lnr lnr-briefcase mr-3"></span>
                  <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Employees</span>
+                     <span class="text-truncate text-left">Leave History</span>
                  </span>
              </span>
          </a>
 
-         <a class="p-2" href="/calendars">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-calendar-full mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Calendar</span>
-                 </span>
-             </span>
-         </a>
-         <a class="p-2" href="/leaves">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-briefcase mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Leave</span>
-                 </span>
-             </span>
-         </a>
-         <a class="p-2" href="/reviews">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-star mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Reviews</span>
-                 </span>
-             </span>
-         </a>
-         <a class="p-2" href="/reports">
+         <a class="p-2" href="/reports_employee">
              <span class="media align-items-center">
                  <span class="lnr lnr-rocket mr-3"></span>
                  <span class="media-body text-truncate text-left">
@@ -79,14 +56,6 @@
              </span>
          </a>
 
-         <a class="p-2" href="#">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-cog mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Settings</span>
-                 </span>
-             </span>
-         </a>
          <a class="p-2" href="employment.html">
              <span class="media align-items-center">
                  <span class="lnr lnr-user mr-3"></span>
@@ -122,8 +91,8 @@
                                  <img src="assets/images/profiles/img-2.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="100">
                              </div>
                              <div class="user-details">
-                                 <h4><b>Welcome Admin</b></h4>
-                                 <p>Sun, 29 Nov 2019</p>
+                                 <h4><b>Welcome Employees</b></h4>
+                                 <p>Mon, 10-03-2024</p>
                              </div>
                          </div>
                      </div>
@@ -142,36 +111,24 @@
                                         }
                                         ?>
                                      <div class="col-6 align-items-center text-center">
-                                         <a href="/admin" class=" <?= checkActive("/admin") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
+                                         <a href="/employees_dasboad" class=" <?= checkActive("/employees_dasboad") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
                                      </div>
+                                   
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/employees" class=" <?= checkActive("/employees") ?> text-dark  p-4 second-slider-btn ctm-border-right ctm-border-top"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
+                                         <a href="/leave_history" class=" <?= checkActive("/leave_history") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-briefcase pr-0 pb-lg-2 font-23"></span><span class="">Leave History</span></a>
                                      </div>
+                                  
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/departments" class=" <?= checkActive("/departments") ?> text-dark p-4 ctm-border-right"><span class="lnr lnr-calendar-full pr-0 pb-lg-2 font-23"></span><span class="">Departments</span></a>
+                                         <a href="/reports_employee" class="<?= checkActive("/reports_employee") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-rocket pr-0 pb-lg-2 font-23"></span><span class="">Reports</span></a>
                                      </div>
+                                 
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/leave_types" class=" <?= checkActive("/leave_types") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-briefcase pr-0 pb-lg-2 font-23"></span><span class="">Leave Type</span></a>
-                                     </div>
-                                     <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/leave_requests" class=" <?= checkActive("/leave_requests") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-star pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
-                                     </div>
-                                     <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/reports" class="<?= checkActive("/reports") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-rocket pr-0 pb-lg-2 font-23"></span><span class="">Reports</span></a>
-                                     </div>
-                                     <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/manages" class="<?= checkActive("/manages") ?> text-dark p-4 ctm-border-right"><span class="lnr lnr-sync pr-0 pb-lg-2 font-23"></span><span class="">Manage</span></a>
-                                     </div>
-                                     <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/profiles" class="<?= checkActive("/profiles") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
-                                     </div>
+                                         <a href="/profiles_employee" class="<?= checkActive("/profiles_employee") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
+                                     </div> 
 
                                  </div>
                              </div>
                          </div>
                      </div>
-
-
-
                  </aside>
              </div>
