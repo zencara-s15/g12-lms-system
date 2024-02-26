@@ -9,12 +9,20 @@
                 <form class="card-body" action="controllers/departments/create.department.controller.php" method="post">
                     <div class="form-group mb-3">
                         <h5>department</h5>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add" name='department_name'>
+                        <input type="text" class="form-control" id="input" placeholder="Add" name='department_name'>
                     </div>
                     <button type="submit" class="btn btn-theme button-1 ctm-border-radius text-white float-center">Add</button>
-                    <button class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="button" data-toggle="modal" data-target="#addNewTeam">Cencle</button>
+                    <button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick="clearAllInputs()" type="button" data-toggle="modal" id="btn_cancel" data-target="#addNewTeam">Cencel</button>
                 </form>
             </div>
+            <script>
+    let output = document.getElementById('btn_cancle');
+
+    function clearAllInputs(event) {
+     let allInputs = document.querySelectorAll('input');
+     allInputs.forEach(singleInput => singleInput.value = '');
+    }
+   </script>
           
         
     </div>
