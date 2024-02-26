@@ -85,9 +85,9 @@
 
 <script>
     // JavaScript function to open the delete confirmation modal
-    function openDeleteModal(employeeId) {
-        // Store the employeeId in the delete button's data attribute
-        document.getElementById('confirmDeleteBtn').dataset.employeeId = employeeId;
+    function openDeleteModal(leave_typeID) {
+        // Store the leavetypeID in the delete button's data attribute
+        document.getElementById('confirmDeleteBtn').dataset.leave_typeID = leave_typeID;
 
         // Open the modal
         $('#confirmDeleteModal').modal('show');
@@ -96,9 +96,9 @@
     // Event listener for the delete button in the modal
     document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
         // Get the employeeId from the data attribute
-        var employeeId = this.dataset.employeeId;
+        var leave_typeID = this.dataset.employeeId;
 
         // Redirect to the delete URL
-        window.location.href = "/controllers/employees/delete.employee.controller.php?id=" + employeeId;
+        window.location.href = "/controllers/employees/delete.employee.controller.php?id=" + leave_typeID;
     });
 </script>
