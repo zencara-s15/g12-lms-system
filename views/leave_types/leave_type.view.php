@@ -77,7 +77,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						Are you sure you want to delete this leave_type?
+						Are you sure you want to delete this Leave Type ?
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-theme ctm-border-radius text-white" data-dismiss="modal">Cancel</button>
@@ -111,14 +111,14 @@
 	</div>
 
 	<script>
-		function openDeleteModal(employeeId) {
-			document.getElementById('confirmDeleteBtn').dataset.employeeId = employeeId;
+		function openDeleteModal(leave_type_id) {
+			document.getElementById('confirmDeleteBtn').dataset.leave_type_id = leave_type_id;
 			// Open the modal
 			$('#confirmDeleteModal').modal('show');
 		}
 		document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
-			let employeeId = this.dataset.employeeId;
+			let leave_type_id = this.dataset.leave_type_id;
 			// Redirect to the delete URL
-			window.location.href = "/controllers/leave_types/form_delete.controller.php?id=" + employeeId;
+			window.location.href = "/controllers/leave_types/form_delete.controller.php?id=" + leave_type_id;
 		});
 	</script>
