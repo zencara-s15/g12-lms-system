@@ -9,7 +9,7 @@
 					
 
 					<form action="controllers/departments/update.deparment.controller.php" method="post">
-						<input type="text" value="<?= $data['id'] ?>" name="id">
+						<input type="hidden" value="<?= $data['id'] ?>" name="id">
 						<div class="form-group">
 							<label for="exampleInputPassword1">department Type</label>
 							<input type="text" class="form-control" id="exampleInputLeave Type Name" placeholder="Enter department" value="<?= $data['department'] ?>" name="department_name" require>
