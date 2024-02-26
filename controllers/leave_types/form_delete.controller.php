@@ -1,6 +1,8 @@
 <?php
-require_once '../../database/database.php';
-require_once '../../models/leave_type.model.php';
+require "../../database/database.php";
+require "../../models/admin.model.php";
+
+
 
 $id = $_GET['id'] ? $_GET['id'] : null;
 if (isset($id)) {

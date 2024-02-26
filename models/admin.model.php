@@ -219,3 +219,119 @@ function get_aprroved_leave(): array
     $statement->execute();
     return $statement->fetchAll();
 }
+
+
+//----------------------leave-type-----------------------------------------------------------
+
+
+function createleave_type(string $leave_type): bool
+{
+    global $connection;
+    $statement = $connection->prepare("INSERT INTO leave_types (leave_type) VALUES (:leave_type)");
+    $statement->execute([
+        ':leave_type' => $leave_type,
+
+    ]);
+
+    return  $statement->rowCount() > 0;
+}
+
+
+function getleave_types(): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM leave_types");
+    $statement->execute();
+    return $statement->fetchAll();
+}
+
+function get_leave_type(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM leave_types WHERE id = :id");
+    $statement->execute(
+        [
+            ':id' => $id,
+        ]
+    );
+    return $statement->fetch();
+}
+
+
+function updateleave_type(string $leave_type, int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare(" UPDATE leave_types SET leave_type = :leave_type, id =:id  where id = :id");
+    $statement->execute([
+        ':leave_type' => $leave_type,
+        ':id' => $id,
+
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+
+function deleteleave_type(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("DELETE FROM leave_types WHERE id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+
+//------------------------------Department-------------------------------------------------------
+
+function add_department(string $name) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("insert into departments (department) values (:department)");
+    $statement->execute([
+        "department" => $name
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+function get_departments() : array 
+{
+    global $connection;
+    $statement = $connection->prepare("select * from departments");
+    $statement->execute();
+    return $statement->fetchAll();
+}
+
+//------------------delete department
+function delete_department(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("DELETE FROM departments where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+
+
+function update_department_name(string $department_name, int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE departments set department = :department 
+    where id = :id");
+    $statement->execute([
+        ':department' => $department_name,
+        ':id' => $id,
+    ]);
+    return $statement-> fetch();
+}
+
+// edit department
+function edit_departments(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM departments WHERE id= :id");
+    $statement->execute(
+        [
+            ':id' => $id,
+        ]
+    );
+    return $statement->fetch();
+}

@@ -3,24 +3,19 @@
         <div class="col-md-5 row-4 col-sm-12 ">
             <div id="add_dp" class="card add-team flex-fill ctm-border-radius " style="height: 300px;">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Add department Name</h4>
+                    <h4 class="card-title mb-0">Add Department</h4>
                 </div>
 
                 <form class="card-body" action="controllers/departments/create.department.controller.php" method="post">
                     <div class="form-group mb-3">
-                        <h5>department</h5>
+                        <h5>Department</h5>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add" name='department_name'>
                     </div>
                     <button type="submit" class="btn btn-theme button-1 ctm-border-radius text-white float-center">Add</button>
-                    <button class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="button" data-toggle="modal" data-target="#addNewTeam">Cencle</button>
+                    <button class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="button" data-toggle="modal" data-target="#addNewTeam">Cancel</button>
                 </form>
             </div>
-          
-        
     </div>
-
-
-    <!----department type list!--->
 
     <div class="col-md-7 col-sm-50 d-flex">
         <div class="card office-card flex-fill ctm-border-radius grow">
@@ -55,7 +50,6 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
-
                 </tbody>
             </table>
         </div>
@@ -64,13 +58,5 @@
 </div>
 
 <script>
-    // function to show form to update and hid the form add department
-    // let btn_edit = document.getElementById('btn_edit');
 
-    // function edit() {
-    //     let updata_dp = document.getElementById('updata_dp');
-    //     let add_dp = document.getElementById('add_dp');
-    //     add_dp.style.display = 'none';
-    //     updata_dp.style.display = 'block';
-    // }
 </script>

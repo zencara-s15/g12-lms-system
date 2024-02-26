@@ -1,6 +1,6 @@
 <?php
 require '../../database/database.php';
-require "../../models/department.model.php";
+require "../../models/admin.model.php";
 
 $id = $_GET['id'] ? $_GET['id'] : null;
 if (isset($id)){
