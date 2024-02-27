@@ -8,7 +8,7 @@
 
                 <form class="card-body" action="controllers/departments/create.department.controller.php" method="post">
                     <div class="form-group mb-3">
-                        <h5>department</h5>
+                        <h5>Department</h5>
                         <input type="text" class="form-control" id="input" placeholder="Add" name='department_name'>
                     </div>
                     <button type="submit" class="btn btn-theme button-1 ctm-border-radius text-white float-center">Add</button>
@@ -35,7 +35,7 @@
                 <table class="table table-hover ">
                     <thead>
                         <tr class="aline">
-                            <th>department type Name</th>
+                            <th>Departments</th>
                             <th class="float-right">Action</th>
                         </tr>
                     </thead>
