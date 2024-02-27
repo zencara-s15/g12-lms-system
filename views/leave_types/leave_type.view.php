@@ -14,13 +14,13 @@
 						</div>
 						<div class="form-group">
 							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="submit" data-target="#addNewTeam">Add</button>
-							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick=" clearAllInputs()" id="btn_cencle" type="button" data-target="#addNewTeam">Cancel</button>
+							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick=" clearAllInputs()" id="btn_cancel" type="button" data-target="#addNewTeam">Cancel</button>
 						</div>
 					</form>
 				</div>
 			</div>
 			<script>
-				let output = document.getElementById('btn_cancle');
+				let output = document.getElementById('btn_cancel');
 
 				function clearAllInputs(event) {
 					let allInputs = document.querySelectorAll('input');

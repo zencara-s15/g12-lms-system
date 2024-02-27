@@ -304,12 +304,18 @@ function get_departments() : array
 function delete_department(int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare("DELETE FROM departments where id = :id");
+    $statement = $connection->prepare("DELETE FROM departments WHERE id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
 
-
+// function delete_department(int $id): bool
+// {
+//     global $connection;
+//     $statement = $connection->prepare("DELETE FROM departments WHERE id = :id");
+//     $statement->execute([':id' => $id]);
+//     return $statement->rowCount() > 0;
+// }
 
 function update_department_name(string $department_name, int $id): bool
 {
