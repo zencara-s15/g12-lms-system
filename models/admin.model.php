@@ -135,6 +135,8 @@ function get_employees_with_positions(): array
     return $statement->fetchAll();
 }
 
+//------------------------------Fuction related to Position --------------------------------------------------------------
+
 // get all positions
 function get_positions(): array
 {
@@ -153,8 +155,7 @@ function get_roles(): array
     return $statement->fetchAll();
 }
 
-// --------------------------------------------------------------------------------------
-
+// -------------------------Leave Request-------------------------------------------------------------
 
 // get all leave request to display
 function get_leave_requests(): array
@@ -168,6 +169,8 @@ function get_leave_requests(): array
     $statement->execute();
     return $statement->fetchAll();
 }
+
+//count request leave
 function count_leave_requests(): int
 {
     global $connection;
@@ -176,6 +179,7 @@ function count_leave_requests(): int
     $result = $statement->fetch();
     return $result['total'];
 }
+
 // update leave status
 function update_leave_status(string $status, int $id): bool
 {
@@ -189,7 +193,6 @@ function update_leave_status(string $status, int $id): bool
 }
 
 // leave detail
-
 function get_leave_request_detail(int $id): array
 {
     global $connection;
@@ -206,7 +209,6 @@ function get_leave_request_detail(int $id): array
 }
 
 // all approve leave display in report page
-
 function get_aprroved_leave(): array
 {
     global $connection;
@@ -220,11 +222,10 @@ function get_aprroved_leave(): array
     return $statement->fetchAll();
 }
 
-
 //----------------------leave-type-----------------------------------------------------------
 
-
-function createleave_type(string $leave_type): bool
+//create leave type 
+function create_leave_type(string $leave_type): bool
 {
     global $connection;
     $statement = $connection->prepare("INSERT INTO leave_types (leave_type) VALUES (:leave_type)");
@@ -232,12 +233,11 @@ function createleave_type(string $leave_type): bool
         ':leave_type' => $leave_type,
 
     ]);
-
     return  $statement->rowCount() > 0;
 }
 
-
-function getleave_types(): array
+//display leave type
+function get_leave_types(): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT * FROM leave_types");
@@ -245,6 +245,8 @@ function getleave_types(): array
     return $statement->fetchAll();
 }
 
+
+//display leave type by ID
 function get_leave_type(int $id): array
 {
     global $connection;
@@ -257,21 +259,20 @@ function get_leave_type(int $id): array
     return $statement->fetch();
 }
 
-
-function updateleave_type(string $leave_type, int $id): bool
+//update leave type
+function update_leave_type(string $leave_type, int $id): bool
 {
     global $connection;
     $statement = $connection->prepare(" UPDATE leave_types SET leave_type = :leave_type, id =:id  where id = :id");
     $statement->execute([
         ':leave_type' => $leave_type,
         ':id' => $id,
-
     ]);
-
     return $statement->rowCount() > 0;
 }
 
-function deleteleave_type(int $id): bool
+// delete leave type 
+function delete_leave_type(int $id): bool
 {
     global $connection;
     $statement = $connection->prepare("DELETE FROM leave_types WHERE id = :id");
@@ -282,7 +283,8 @@ function deleteleave_type(int $id): bool
 
 //------------------------------Department-------------------------------------------------------
 
-function add_department(string $name) : bool
+// create department 
+function create_department(string $name) : bool
 {
     global $connection;
     $statement = $connection->prepare("insert into departments (department) values (:department)");
@@ -292,6 +294,7 @@ function add_department(string $name) : bool
     return $statement->rowCount() > 0;
 }
 
+// get all department to display 
 function get_departments() : array 
 {
     global $connection;
@@ -300,7 +303,7 @@ function get_departments() : array
     return $statement->fetchAll();
 }
 
-//------------------delete department
+//delete department
 function delete_department(int $id): bool
 {
     global $connection;
@@ -309,14 +312,7 @@ function delete_department(int $id): bool
     return $statement->rowCount() > 0;
 }
 
-// function delete_department(int $id): bool
-// {
-//     global $connection;
-//     $statement = $connection->prepare("DELETE FROM departments WHERE id = :id");
-//     $statement->execute([':id' => $id]);
-//     return $statement->rowCount() > 0;
-// }
-
+//update department
 function update_department_name(string $department_name, int $id): bool
 {
     global $connection;

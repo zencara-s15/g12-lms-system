@@ -44,7 +44,7 @@
 					</thead>
 					<tbody>
 						<?php
-						$leave_types = getleave_types();
+						$leave_types = get_leave_types();
 						foreach ($leave_types as $key => $leave_type) : ?>
 							<tr>
 								<td><?= $leave_type['leave_type'] ?></td>
