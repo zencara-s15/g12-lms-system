@@ -1,4 +1,4 @@
-<div class="col-xl-9 col-lg-8 col-md-12 position-relative">
+<div class="col-xl-9 col-lg-8 col-md-12 position-relative grow">
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
             <h3 class="m-0 font-weight-bold text-primary">Employee Management</h3>

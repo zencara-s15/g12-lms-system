@@ -1,7 +1,7 @@
 <?php
 // -----------------function attesting to employee----------------------------------------
 // create employee
-function create_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data): bool
+function create_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data,$amount_leave): bool
 {
     global $connection;
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -12,35 +12,12 @@ function create_employee(string $first_name, string $last_name, string $password
     $existing_email_result = $existing_email_statement->fetch();
 
     if ($existing_email_result) {
-        // Email exists, check if the password matches
-        if (password_verify($password, $existing_email_result['password'])) {
-            // Password matches, so the employee already exists
-            echo '<div class="container d-flex justify-content-center align-items-center vh-100">
-            <div class="alert alert-danger" role="alert">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h3><i class="fa fa-exclamation-triangle" style="font-size:66px"></i></h3>
-                    <p>Email and password combination already exists.</p>
-                </div>
-            </div>
-        </div>';
-            return false;
-        } else {
-            // Password doesn't match
-            echo '
-            <div class="container d-flex justify-content-center align-items-center vh-100">
-            <div class="alert alert-danger" role="alert" style="max-width: 500px;">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h3><i class="fa fa-exclamation-triangle" style="font-size:66px"></i></h3>
-                </div>
-                <p class="lead text-center">Email already exists but with a different password.</p>
-            </div>
-        </div>';
-            return false;
-        }
+        // Email already exists
+        return false;
     }
 
     // Prepare the SQL statement to insert the new employee record
-    $statement = $connection->prepare("INSERT INTO users (first_name, last_name, password, gender, email, dob, role_id, position_id, image_name, image_data) VALUES (:first_name, :last_name, :password, :gender, :email, :date_of_birth, :role_id, :position_id, :image_name, :image_data)");
+    $statement = $connection->prepare("INSERT INTO users (first_name, last_name, password, gender, email, dob, role_id, position_id, image_name, image_data,amount_leave) VALUES (:first_name, :last_name, :password, :gender, :email, :date_of_birth, :role_id, :position_id, :image_name, :image_data,:amount_leave)");
     $success = $statement->execute([
         ':first_name' => $first_name,
         ':last_name' => $last_name,
@@ -51,7 +28,8 @@ function create_employee(string $first_name, string $last_name, string $password
         ':role_id' => $role_id,
         ':position_id' => $position_id,
         ':image_name' => $image_name,
-        ':image_data' => $image_data
+        ':image_data' => $image_data,
+        ':amount_leave' => $amount_leave
     ]);
 
     // Return true if at least one row was affected (i.e., the insertion was successful)
@@ -87,15 +65,27 @@ function count_users(): int
     return $result['total'];
 }
 //update employee
-function update_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data, int $amount_leave, int $user_id): bool
+function update_employees(string $first_name, string $last_name, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data, int $amount_leave, int $user_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, password = :password, gender = :gender, email = :email, dob = :date_of_birth, role_id = :role_id, position_id = :position_id, image_name = :image_name, image_data = :image_data,amount_leave = :amount_leave WHERE id = :user_id");
+    // Check if email already exists for another user
+    $existingEmailStatement = $connection->prepare("SELECT id FROM users WHERE email = :email AND id != :user_id");
+    $existingEmailStatement->execute([
+        ':email' => $email,
+        ':user_id' => $user_id
+    ]);
+    $existingEmail = $existingEmailStatement->fetch(PDO::FETCH_ASSOC);
+    if ($existingEmail) {
+        // Notify the admin or handle the duplicate email situation as needed
+        return false; // Return false if email already exists
+    }
+
+    // Proceed with the update operation
+    $statement = $connection->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, gender = :gender, email = :email, dob = :date_of_birth, role_id = :role_id, position_id = :position_id, image_name = :image_name, image_data = :image_data, amount_leave = :amount_leave WHERE id = :user_id");
     $success = $statement->execute([
         ':user_id' => $user_id,
         ':first_name' => $first_name,
         ':last_name' => $last_name,
-        ':password' => $password,
         ':gender' => $gender,
         ':email' => $email,
         ':date_of_birth' => $date_of_birth,
@@ -104,9 +94,39 @@ function update_employee(string $first_name, string $last_name, string $password
         ':image_name' => $image_name,
         ':image_data' => $image_data,
         ':amount_leave' => $amount_leave
-
     ]);
+    // Return true if the update was successful
+    return $success;
+}
 
+function update_employee(string $first_name, string $last_name, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, int $amount_leave, int $user_id): bool
+{
+    global $connection;
+    // Check if email already exists for another user
+    $existingEmailStatement = $connection->prepare("SELECT id FROM users WHERE email = :email AND id != :user_id");
+    $existingEmailStatement->execute([
+        ':email' => $email,
+        ':user_id' => $user_id
+    ]);
+    $existingEmail = $existingEmailStatement->fetch(PDO::FETCH_ASSOC);
+    if ($existingEmail) {
+        // Notify the admin or handle the duplicate email situation as needed
+        return false; // Return false if email already exists
+    }
+
+    // Proceed with the update operation
+    $statement = $connection->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, gender = :gender, email = :email, dob = :date_of_birth, role_id = :role_id, position_id = :position_id, amount_leave = :amount_leave WHERE id = :user_id");
+    $success = $statement->execute([
+        ':user_id' => $user_id,
+        ':first_name' => $first_name,
+        ':last_name' => $last_name,
+        ':gender' => $gender,
+        ':email' => $email,
+        ':date_of_birth' => $date_of_birth,
+        ':role_id' => $role_id,
+        ':position_id' => $position_id,
+        ':amount_leave' => $amount_leave
+    ]);
     // Return true if the update was successful
     return $success;
 }
