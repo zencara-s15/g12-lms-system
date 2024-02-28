@@ -154,7 +154,7 @@
                                          <a href="/leave_types" class=" <?= checkActive("/leave_types") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-briefcase pr-0 pb-lg-2 font-23"></span><span class="">LeaveType</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/reviews" class=" <?= checkActive("/reviews") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-star pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
+                                         <a href="/leave_requests" class=" <?= checkActive("/leave_requests") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-star pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/reports" class="<?= checkActive("/reports") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-rocket pr-0 pb-lg-2 font-23"></span><span class="">Reports</span></a>

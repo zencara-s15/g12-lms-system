@@ -7,23 +7,27 @@ $routes = [
     '/' =>  'controllers/signin/signin.controller.php',
     '/signout' => 'controllers/sigout/signout.controller.php',
     '/admin' => 'controllers/admin/admin.controller.php',
-    '/employees' => 'controllers/employees/employee.controller.php',
-    '/departments' => 'controllers/departments/department.controller.php',
-    // '/leaves' => 'controllers/leaves/leave.controller.php', 
-    //for employeee
-    '/leave_types' => 'controllers/leave_types/leave_type.controller.php',
-    '/edit_leave_type' => 'controllers/leave_types/from_edits.controller.php',
-
-     //for admin
+    
     '/reviews' => 'controllers/reviews/review.controller.php',
     '/reports' => 'controllers/reports/report.controller.php',
     '/manages' => 'controllers/manages/manage.controller.php',
     '/profiles' => 'controllers/profiles/profile.controller.php',
+    
+    '/employees' => 'controllers/employees/employee.controller.php',
     '/create_employee' => 'controllers/employees/form.employee.controller.php',
     '/update_employee' => 'controllers/employees/form.update.employee.controller.php',
-
+    
     '/departments' =>'controllers/departments/department.controller.php',
     '/edit_department' =>'controllers/departments/edit.department.controller.php',
+    
+    '/leave_types' => 'controllers/leave_types/leave_type.controller.php',
+    '/edit_leave_type' => 'controllers/leave_types/from_edits.controller.php',
+    
+    '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', // for leave_request
+
+    '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php'
+
+
 ];
 
 if (array_key_exists($uri, $routes)) {
@@ -32,7 +36,6 @@ if (array_key_exists($uri, $routes)) {
     http_response_code(404);
     $page = 'views/errors/404.php';
 }
-
 
 if ($page === 'controllers/signin/signin.controller.php') {
     require $page;

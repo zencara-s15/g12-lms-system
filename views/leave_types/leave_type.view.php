@@ -14,13 +14,13 @@
 						</div>
 						<div class="form-group">
 							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="submit" data-target="#addNewTeam">Add</button>
-							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick=" clearAllInputs()" id="btn_cencle" type="button" data-target="#addNewTeam">Cancel</button>
+							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick=" clearAllInputs()" id="btn_cancel" type="button" data-target="#addNewTeam">Cancel</button>
 						</div>
 					</form>
 				</div>
 			</div>
 			<script>
-				let output = document.getElementById('btn_cancle');
+				let output = document.getElementById('btn_cancel');
 
 				function clearAllInputs(event) {
 					let allInputs = document.querySelectorAll('input');
@@ -44,7 +44,7 @@
 					</thead>
 					<tbody>
 						<?php
-						$leave_types = getleave_types();
+						$leave_types = get_leave_types();
 						foreach ($leave_types as $key => $leave_type) : ?>
 							<tr>
 								<td><?= $leave_type['leave_type'] ?></td>
@@ -54,7 +54,7 @@
 											<a href="/edit_leave_type?id=<?= $leave_type['id'] ?>" class="btn btn-theme ctm-border-radius text-white " data-placement="bottom" style="height:40px" title="Edit"><i class="fa fa-pencil"></i></a>
 										</span>
 										<span data-toggle="modal" data-target="#delete">
-											<a href="../../controllers/leave_types/form_delete.controller.php?id=<?= $leave_type['id'] ?>" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" style=" height:40px" title="Delete"><i class="fa fa-trash"></i></a>
+											<a href="#" onclick="openDeleteModal(<?php echo $leave_type['id']; ?>)" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" style="height:40px" title="Delete"><i class="fa fa-trash"></i></a>
 										</span>
 									</div>
 								</td>
@@ -66,3 +66,59 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to delete this Leave Type ?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-theme ctm-border-radius text-white" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-theme ctm-border-radius text-white" id="confirmDeleteBtn">Delete</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div>
+				Are you sure you want to delete this employee?
+			</div>
+			<div>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-danger border border-0 " id="confirmDeleteBtn">Delete</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function openDeleteModal(leave_type_id) {
+		document.getElementById('confirmDeleteBtn').dataset.leave_type_id = leave_type_id;
+		// Open the modal
+		$('#confirmDeleteModal').modal('show');
+	}
+	document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+		let leave_type_id = this.dataset.leave_type_id;
+		// Redirect to the delete URL
+		window.location.href = "/controllers/leave_types/form_delete.controller.php?id=" + leave_type_id;
+	});
+</script>

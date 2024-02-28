@@ -1,6 +1,6 @@
 <?php
 require "../../database/database.php";
-require "../../models/leave_requests.model.php";
+require "../../models/admin.model.php";
 
 $id = $_GET['id'] ? $_GET['id'] : null;
 $is_accepted = "btn-success";

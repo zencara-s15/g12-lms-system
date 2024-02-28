@@ -1,74 +1,93 @@
-<div class="col-xl-9 col-lg-8  col-md-12 ">
-	<div class="card shadow-sm ctm-border-radius grow ">
-		<div class="card-header d-flex align-items-center justify-content-between">
-			<h4 class="card-title mb-0 d-inline-block">Leave_requests</h4>
-			<!-- <a href="create-review.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right"><span></span> Create Review</a> -->
-		</div>
-	</div>
+<div class="col-xl-9 col-lg-8 col-md-12 position-relative">
 
-	<div class=" ctm-border-radius shadow-sm col-lg bg-white">
-		<div class="card-body align-center">
-			<div class="tab-content" id="v-pills-tabContent">
-				<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-					<div class="employee-office-table">
-						<div class="table-responsive">
-							<table class="table custom-table table-hover ">
-								<thead class="">
-									<tr>
-										<th>Name</th>
-										<th>Begin On</th>
-										<th>Due By</th>
-										<th>Status</th>
-										<th>Actions</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php
-									$get_leave_requests = get_leave_requests();
-									foreach ($get_leave_requests as $data) : ?>
-										<tr>
-											<td>
-												<a href="employment.html" class="avatar"><img class="img-fluid" alt="avatar image" src="assets/img/profiles/img-10.jpg"></a>
-												<h2><a href="employment.html"><?= $data["name"] ?></a></h2>
-											</td>
-											<td><?= $data["being_on"] ?></td>
-											<td><?= $data["due_by"] ?></td>
-											<td>
-												<div class="status">
-													<span class="btn
-													 <?php
-														$btn_color = "btn-primary";
-														if ($data["status"] == "Approved") {
-															$btn_color = "btn-success";
-														} else {
-															$btn_color = "btn-danger";
-														}
-														echo $btn_color;
-														?> btn-sm">
-														<?= $data["status"] ?></span>
-												</div>
-											</td>
-											<td>
-												<div class="table-action">
-													<a href="../../controllers/leave_requests/leave_requests_accept.controller.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-success">
-														<span class=""></span> Accept
-													</a>
-													<a href="../../controllers/leave_requests/leave_requests_refuse.controller.php?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-danger">
-														<span class=""></span> Refuse
-													</a>
-												</div>
-											</td>
-										</tr>
-									<?php endforeach; ?>
-								</tbody>
-							</table>
+	<div class="card shadow mb-4">
+		<div class="card-header py-3  flex-row align-items-center justify-content-between">
+			<h3 class="m-0 font-weight-bold text-primary">Leave Management</h3>
+			<p class="mt-1">Total Leaves : <strong class="text-danger "><?= count_leave_requests() ?></strong></p>
+		</div>
+		
+		<div class="card-body">
+			<div class="container">
+				<div class="card shadow-sm ctm-border-radius grow">
+					<div class="card-body align-center">
+						<div class="row filter-row">
+							<div class="col-4">
+								<div class="form-group mb-lg-0 mb-md-2 mb-sm-2">
+									<input type="text" class="form-control datetimepicker" placeholder="From">
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group mb-lg-0 mb-md-0 mb-sm-0">
+									<input type="text" class="form-control datetimepicker" placeholder="To">
+								</div>
+							</div>
+
+							<div class="col-4">
+								<a href="#" class="btn btn-theme button-1 text-white btn-block p-2 mb-md-0 mb-sm-0 mb-lg-0 mb-0"> Apply Filter </a>
+							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
+			<br>
+
+			<!-- Table to Show All Employees -->
+			<table class="table table-hover">
+				<thead class="table-dark ">
+					<th scope="col">Full Name</th>
+					<th scope="col">Department</th>
+					<th scope="col">Start Date</th>
+					<th scope="col">End Date</th>
+					<th scope="col">Status</th>
+					<th scope="col">Action</th>
+				</thead>
+				<tbody>
+					<?php
+					$get_leave_requests = get_leave_requests();
+					foreach ($get_leave_requests as $data) : ?>
+
+						<tr class="border-bottom" style="font-size:14px">
+							<td class="d-flex" style="text-align: center; vertical-align: middle;">
+								<img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://www.allkpop.com/upload/2024/01/content/102324/1704947068-20240110-iu.jpg" />
+								<span class="mt-3 m-lg-3"><?= $data['first_name'] . ' ' . $data['last_name'] ?></span>
+							</td>
+							<td style="vertical-align: middle;"><?= $data['department'] ?></td>
+							<td style="vertical-align: middle;"><?= $data["start_date"] ?></td>
+							<td style="vertical-align: middle;"><?= $data["end_date"] ?></td>
+							<td style="vertical-align: middle;">
+								<div class="status">
+									<span style="width: 90%;" class="btn
+													 <?php
+														$btn_color = "btn-primary";
+														if ($data["status"] == "Approved") {
+															$btn_color = "btn-success border border-0";
+														} elseif ($data["status"] == "Rejected") {
+															$btn_color = "btn-danger border border-0";
+														} else {
+															$btn_color = "btn-primary";
+														}
+														echo $btn_color;
+														?> btn-sm">
+										<?= $data["status"] ?></span>
+								</div>
+							</td>
+							<td style="vertical-align: middle;">
+								<div class="btn-group dropleft">
+									<button type="button" class="btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+									<div class="dropdown-menu border-0" style="width: 20px;">
+										<a class="dropdown-item btn btn-outline-primary" href="../../controllers/leave_requests/leave_requests_accept.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid green; text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to accept <?=$data['first_name'] .' '. $data['last_name'] .'`'. 's' ?> leave request?')">Accept</a>
+										<a class="dropdown-item btn my-2" href="../../controllers/leave_requests/leave_requests_refuse.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid red ;text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to refuse <?=$data['first_name'] .' '. $data['last_name'] .'`'. 's' ?> leave request?')">Refuse</a>
+										<a class="dropdown-item btn " href="/leave_requests_detial?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-dark" style="outline: 2px solid orange ;text-align: center; width: 97%;">Details</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
-
 
 <div class="sidebar-overlay" id="sidebar_overlay"></div>

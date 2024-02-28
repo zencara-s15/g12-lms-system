@@ -12,20 +12,20 @@
                     <label for="employee-image" class="d-block">
                         <input type="file" class="custom-file-input " id="employee-image" accept="image/*" onchange="previewImage(event)" name="profile" title="Please select an image for the employee profile." required>
                         <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Employee Image" id="preview-image" class="img-fluid rounded-circle mb-3 border border-secondary" style="width: 200px; height: 200px; box-shadow: none; cursor: pointer;" onmouseover="this.style.boxShadow='none';" onmouseout="this.style.boxShadow='none';">
-                        <div class="invalid-feedback" id="image-error">Please select an image.</div>
+                        <div class="invalid-feedback" id="image-error">Choose select an image.</div>
                     </label>
                 </div>
 
                 <!-- name -->
                 <div class="form-group">
                     <label for="first_name">First name</label>
-                    <input type="text" class="form-control border-dark" name="first_name" placeholder="First name" pattern="[A-Za-z]{1,}" title="Please enter the first name of the employee (minimum 3 letters, no spaces)." required>
-                    <div class="invalid-feedback">Please enter the correct first name.</div>
+                    <input type="text" class="form-control border-dark" name="first_name" placeholder="First name" pattern="[A-Z][A-Za-z]*(\s[A-Za-z]*){0,3}" title="Please enter the first name of the employee. For example, 'John' or 'Mary Smith'." required>
+                    <div class="invalid-feedback">Please enter the correct first name. For example, 'John' or 'Mary Smith'.</div>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last name</label>
-                    <input type="text" class="form-control border-dark " name="last_name" id="last_name" placeholder="Last name" pattern="[A-Za-z]{1,}" title="Please enter the last name of the employee (minimum 3 letters, no spaces)." required>
-                    <div class="invalid-feedback">Please enter correct the last name.</div>
+                    <input type="text" class="form-control border-dark " name="last_name" id="last_name" placeholder="Last name" pattern="[A-Z][A-Za-z]*(\s[A-Za-z]*){0,3}" title="Please enter the last name of the employee. For example, 'John' or 'Mary Smith'." required>
+                    <div class="invalid-feedback">Please enter correct the last name. For example, 'John' or 'Mary Smith'.</div>
                 </div>
                 <!-- genders -->
                 <div class="form-group">
@@ -41,13 +41,13 @@
                 <div class="form-group">
                     <label for="dob">Date of Birth</label>
                     <input type="date" class="form-control border-dark " id="dob" name="date_of_birth" title="Please select the date of birth of the employee." min="1970-01-01" max="2006-12-31" required>
-                    <div class="invalid-feedback">Please select a your birth da.</div>
+                    <div class="invalid-feedback">Please select a your date of birth.</div>
                 </div>
                 <!-- email -->
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control border-dark " name="email" placeholder="example@gmail.com" pattern="[a-zA-Z]{2}[a-zA-Z0-9.@]*@gmail\.(com|org)" title="Please enter the email address of the employee." required>
-                    <div class="invalid-feedback">Please enter correct the email.</div>
+                    <input type="email" class="form-control border-dark " name="email" placeholder="example@gmail.com" pattern="[a-z]{2}[a-z0-9.@]*@gmail\.(com|org)" title="Please enter the email address of the employee." required>
+                    <div class="invalid-feedback">Please enter correct the email. For example, 'example@gmail.com'.</div>
                 </div>
                 <!-- password -->
                 <div class="form-group">
@@ -60,7 +60,7 @@
                             </button>
                         </div>
                     </div>
-                    <small id="passwordHelpBlock" class="form-text text-muted">The password must be (8-20 characters long, contain letters, numbers,and characters, and must not contain spaces, emoji.)</small>
+                    <small id="passwordHelpBlock" class="form-text text-muted">Enter a password (8-20 characters) with at least one letter, one number, and one special character (!@#$%*), and without spaces or emojis</small>
                     <div class="invalid-feedback">Please enter a valid password.</div>
                 </div>
                 <!-- role -->
@@ -85,8 +85,8 @@
                 </div>
                 <div class="form-group">
                     <label for="amount_leave">Amount of leave</label>
-                    <input type="number" class="form-control border-dark" name="amount_leave" id="amount_leave" title="Please enter the amount of leave for the employee (0-5)." min="3" max="3" value="3" required>
-                    <small>The amount of leave for the employee (0-5)</small><br /> 
+                    <input type="number" class="form-control border-dark" name="amount_leave" id="amount_leave" title="The first leave for the employee (3/month)." min="3" max="3" value="3" required>
+                    <small>The amount of leave for the employee (3/month)</small><br />
                     <div class="invalid-feedback">Please enter the correct amount of leave.</div>
                 </div>
                 <!-- button cancel and create -->
