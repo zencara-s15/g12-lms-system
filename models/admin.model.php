@@ -12,31 +12,8 @@ function create_employee(string $first_name, string $last_name, string $password
     $existing_email_result = $existing_email_statement->fetch();
 
     if ($existing_email_result) {
-        // Email exists, check if the password matches
-        if (password_verify($password, $existing_email_result['password'])) {
-            // Password matches, so the employee already exists
-            echo '<div class="container d-flex justify-content-center align-items-center vh-100">
-            <div class="alert alert-danger" role="alert">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h3><i class="fa fa-exclamation-triangle" style="font-size:66px"></i></h3>
-                    <p>Email and password combination already exists.</p>
-                </div>
-            </div>
-        </div>';
-            return false;
-        } else {
-            // Password doesn't match
-            echo '
-            <div class="container d-flex justify-content-center align-items-center vh-100">
-            <div class="alert alert-danger" role="alert" style="max-width: 500px;">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h3><i class="fa fa-exclamation-triangle" style="font-size:66px"></i></h3>
-                </div>
-                <p class="lead text-center">Email already exists but with a different password.</p>
-            </div>
-        </div>';
-            return false;
-        }
+        // Email already exists
+        return false;
     }
 
     // Prepare the SQL statement to insert the new employee record
@@ -57,7 +34,6 @@ function create_employee(string $first_name, string $last_name, string $password
     // Return true if at least one row was affected (i.e., the insertion was successful)
     return $success;
 }
-
 
 //get all employees
 function get_employees(): array
