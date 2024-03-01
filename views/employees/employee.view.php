@@ -9,15 +9,15 @@
                 <div class="row align-items-center">
                     <!-- search box -->
                     <div class="col-md-6 mb-2">
-                        <input type="text" name="search_employee" id="search_employee" placeholder="Search employee..." class="form-control" />
+                        <input type="text" name="search_employee" id="search_employee" placeholder="Search employee by name.." class="form-control border border-dark  " />
                     </div>
                     <!-- filter -->
                     <div class="col-md-4 mb-2">
                         <select id="position" name="position" class="custom-select  border-dark" tile="Please select the position of the employee." required>
-                            <option value="" selected disabled>Choose Position</option>
+                            <option value="All">All Positions</option>
                             <?php $get_positions = get_positions(); ?>
                             <?php foreach ($get_positions as $position) :  ?>
-                                <option value="<?= $position['id']; ?>"><?= $position['position']; ?></option>
+                                <option value="<?= $position['position']; ?>"><?= $position['position']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -100,4 +100,23 @@
         // Redirect to the delete URL
         window.location.href = "/controllers/employees/delete.employee.controller.php?id=" + employeeId;
     });
+
+    //search employee by name---------------------------------------------------------------------------------------------------
+    let searchEmployee = document.getElementById('search_employee');
+    let positionSelect = document.getElementById('position');
+    let tbody = document.querySelector('tbody');
+    let tr = tbody.querySelectorAll('tr');
+
+    searchEmployee.addEventListener('input', function() {
+        const searchText = searchEmployee.value.toLowerCase();
+        tr.forEach(row => {
+            const tdContent = row.querySelector('td').textContent.toLowerCase(); // Get the text content of the first td in the row
+            if (tdContent.includes(searchText)) {
+                row.style.display = ''; // Show the row
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
+    });
+    //filter the employee by position---------------------------------------------------------------------------------
 </script>
