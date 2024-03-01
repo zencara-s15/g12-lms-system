@@ -119,4 +119,16 @@
         });
     });
     //filter the employee by position---------------------------------------------------------------------------------
+    positionSelect.addEventListener('change', function() {
+        const selectedPosition = positionSelect.value;
+
+        tr.forEach(row => {
+            const positionCell = row.querySelectorAll('td')[2]; // Assuming the position data is in the third column
+            if (selectedPosition === "All" || positionCell.textContent.trim() === selectedPosition) {
+                row.style.display = ''; // Show the row
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
+    });
 </script>
