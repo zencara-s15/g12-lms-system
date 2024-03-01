@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $isCreate = create_employee($first_name, $last_name, $password, $gender, $email, $date_of_birth, $role_id, $position_id, $image_name, $image_data);
+    $isCreate = create_employee($first_name, $last_name, $password, $gender, $email, $date_of_birth, $role_id, $position_id, $image_name, $image_data,$amount_leave);
 
     if (!$isCreate) {
         // Notify the admin if the employee creation failed due to duplicate email

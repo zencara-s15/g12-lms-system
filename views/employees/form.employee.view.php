@@ -1,5 +1,5 @@
 <!-- Employee Management -->
-<div class="col-xl-9 col-lg-8 col-md-12 position-relative">
+<div class="col-xl-9 col-lg-8 col-md-12  position-relative grow">
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
             <h3 class="m-0 font-weight-bold text-primary">Add Employee</h3>
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="dob">Date of Birth</label>
                     <input type="date" class="form-control border-dark " id="dob" name="date_of_birth" title="Please select the date of birth of the employee." min="1970-01-01" max="2006-12-31" required>
-                    <div class="invalid-feedback">Please select a your date of birth.</div>
+                    <div class="invalid-feedback">Please select a employee date of birth.</div>
                 </div>
                 <!-- email -->
                 <div class="form-group">
