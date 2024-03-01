@@ -137,11 +137,20 @@ function get_roles(): array
 function get_leave_requests(): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT  leave_requests.id , users.first_name, users.last_name, departments.department, leave_types.leave_type, leave_requests.start_date, leave_requests.end_date, leave_requests.description, leave_requests.status 
-    FROM departments 
-    INNER JOIN leave_requests on departments.id = leave_requests.department_id 
-    INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id 
-    INNER JOIN users on users.id = leave_requests.user_id");
+    $statement = $connection->prepare("SELECT
+	leave_requests.id,
+    users.first_name,
+    users.last_name,
+    positions.position,
+    leave_types.leave_type,
+    leave_requests.status,
+    leave_requests.description,
+    leave_requests.start_date,
+    leave_requests.end_date
+    FROM leave_requests
+    INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
+    INNER JOIN users ON users.id = leave_requests.user_id
+    INNER JOIN positions ON positions.id = users.position_id;");
     $statement->execute();
     return $statement->fetchAll();
 }
@@ -172,11 +181,22 @@ function update_leave_status(string $status, int $id): bool
 function get_leave_request_detail(int $id): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT users.first_name, users.last_name, departments.department, leave_types.leave_type ,leave_requests.description , leave_requests.start_date, leave_requests.end_date 
-    FROM leave_requests 
-    INNER JOIN departments on departments.id = leave_requests.department_id
+    $statement = $connection->prepare("SELECT
+	leave_requests.id,
+    users.first_name,
+    users.last_name,
+    users.email,
+    users.gender,
+    positions.position,
+    leave_types.leave_type,
+    leave_requests.status,
+    leave_requests.description,
+    leave_requests.start_date,
+    leave_requests.end_date
+    FROM leave_requests
     INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
-    INNER JOIN users on users.id = leave_requests.user_id
+    INNER JOIN users ON users.id = leave_requests.user_id
+    INNER JOIN positions ON positions.id = users.position_id
     WHERE leave_requests.id = :id");
     $statement->execute([
         ':id' => $id
@@ -188,16 +208,22 @@ function get_leave_request_detail(int $id): array
 function get_aprroved_leave(): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT leave_requests.id, users.first_name, users.last_name, departments.department, leave_requests.start_date, leave_requests.end_date, leave_requests.status
+    $statement = $connection->prepare("SELECT leave_requests.id, users.first_name, users.last_name, positions.position, leave_requests.start_date, leave_requests.end_date, leave_requests.status
     FROM leave_requests
     INNER JOIN users ON users.id = leave_requests.user_id
-    INNER JOIN departments ON departments.id = users.department_id
+    INNER JOIN positions ON positions.id = users.position_id
     WHERE leave_requests.status = 'Approved'");
-    
     $statement->execute();
     return $statement->fetchAll();
 }
-
+function count_approved_leave(): int
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE status ='Approved' ");
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'];
+}
 //----------------------leave-type-----------------------------------------------------------
 
 //create leave type 
@@ -260,7 +286,7 @@ function delete_leave_type(int $id): bool
 //------------------------------Department-------------------------------------------------------
 
 // create department 
-function create_department(string $name) : bool
+function create_department(string $name): bool
 {
     global $connection;
     $statement = $connection->prepare("insert into departments (department) values (:department)");
@@ -271,7 +297,7 @@ function create_department(string $name) : bool
 }
 
 // get all department to display 
-function get_departments() : array 
+function get_departments(): array
 {
     global $connection;
     $statement = $connection->prepare("select * from departments");
@@ -298,7 +324,7 @@ function update_department_name(string $department_name, int $id): bool
         ':department' => $department_name,
         ':id' => $id,
     ]);
-    return $statement-> fetch();
+    return $statement->fetch();
 }
 
 // edit department

@@ -5,7 +5,7 @@
 			<h3 class="m-0 font-weight-bold text-primary">Leave Management</h3>
 			<p class="mt-1">Total Leaves : <strong class="text-danger "><?= count_leave_requests() ?></strong></p>
 		</div>
-		
+
 		<div class="card-body">
 			<div class="container">
 				<div class="card shadow-sm ctm-border-radius grow">
@@ -35,8 +35,9 @@
 			<!-- Table to Show All Employees -->
 			<table class="table table-hover">
 				<thead class="table-dark ">
+					<th scope="col">#</th>
 					<th scope="col">Full Name</th>
-					<th scope="col">Department</th>
+					<th scope="col">Position</th>
 					<th scope="col">Start Date</th>
 					<th scope="col">End Date</th>
 					<th scope="col">Status</th>
@@ -45,14 +46,17 @@
 				<tbody>
 					<?php
 					$get_leave_requests = get_leave_requests();
-					foreach ($get_leave_requests as $data) : ?>
+					foreach ($get_leave_requests as $num => $data) : ?>
 
 						<tr class="border-bottom" style="font-size:14px">
+							<td style="vertical-align: middle;"><?= $num + 1 ?></td>
+
 							<td class="d-flex" style="text-align: center; vertical-align: middle;">
 								<img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://www.allkpop.com/upload/2024/01/content/102324/1704947068-20240110-iu.jpg" />
 								<span class="mt-3 m-lg-3"><?= $data['first_name'] . ' ' . $data['last_name'] ?></span>
 							</td>
-							<td style="vertical-align: middle;"><?= $data['department'] ?></td>
+							
+							<td style="vertical-align: middle;"><?= $data['position'] ?></td>
 							<td style="vertical-align: middle;"><?= $data["start_date"] ?></td>
 							<td style="vertical-align: middle;"><?= $data["end_date"] ?></td>
 							<td style="vertical-align: middle;">
@@ -76,8 +80,8 @@
 								<div class="btn-group dropleft">
 									<button type="button" class="btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
 									<div class="dropdown-menu border-0" style="width: 20px;">
-										<a class="dropdown-item btn btn-outline-primary" href="../../controllers/leave_requests/leave_requests_accept.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid green; text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to accept <?=$data['first_name'] .' '. $data['last_name'] .'`'. 's' ?> leave request?')">Accept</a>
-										<a class="dropdown-item btn my-2" href="../../controllers/leave_requests/leave_requests_refuse.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid red ;text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to refuse <?=$data['first_name'] .' '. $data['last_name'] .'`'. 's' ?> leave request?')">Refuse</a>
+										<a class="dropdown-item btn btn-outline-primary" href="../../controllers/leave_requests/leave_requests_accept.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid green; text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to accept <?= $data['first_name'] . ' ' . $data['last_name'] . '`' . 's' ?> leave request?')">Accept</a>
+										<a class="dropdown-item btn my-2" href="../../controllers/leave_requests/leave_requests_refuse.controller.php?id=<?= $data['id'] ?>" style="outline: 2px solid red ;text-align: center; width: 97%;" onclick="return confirm('Are you sure you want to refuse <?= $data['first_name'] . ' ' . $data['last_name'] . '`' . 's' ?> leave request?')">Refuse</a>
 										<a class="dropdown-item btn " href="/leave_requests_detial?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-dark" style="outline: 2px solid orange ;text-align: center; width: 97%;">Details</a>
 									</div>
 								</div>
