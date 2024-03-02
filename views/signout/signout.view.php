@@ -1,6 +1,4 @@
 <?php
-// for alert when there is an error
-session_start();
 
 if (isset($_SESSION['error'])) {
     echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';

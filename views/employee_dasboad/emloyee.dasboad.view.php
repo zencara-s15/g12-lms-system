@@ -1,6 +1,5 @@
 <?php
-// session_start(); 
-// var_dump($_SESSION['user'])
+// var_dump($_SESSION['user']) // testing 
 ?>
 <div class="col-xl-9 col-lg-8 col-md-12">
     <div class="row">

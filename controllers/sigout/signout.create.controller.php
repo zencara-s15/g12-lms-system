@@ -1,6 +1,6 @@
 <?php
 // start session
-session_start();
+// session_start();
 
 require '../../database/database.php';
 require '../../models/admin/admin.model.php';

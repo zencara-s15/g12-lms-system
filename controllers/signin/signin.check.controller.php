@@ -1,7 +1,7 @@
 <?php
 
 //  start session
-session_start();
+// session_start();
 ob_start();
 
 require '../../database/database.php';
