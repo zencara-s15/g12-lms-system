@@ -25,7 +25,9 @@ $routes = [
     
     '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', // for leave_request
 
-    '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php'
+    '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
+
+    '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
 
 
 ];

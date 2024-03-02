@@ -21,6 +21,7 @@ function getPost(int $id) : array
     return $statement->fetch();
 }
 
+
 function getPosts() : array
 {
     global $connection;
@@ -49,4 +50,16 @@ function deletePost(int $id) : bool
     $statement = $connection->prepare("delete from posts where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
+}
+
+function getHistory(int $user_id) : array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * from leave_requests 
+    INNER JOIN leave_types ON leave_requests.leave_type_id = leave_types.id
+    WHERE user_id = :id AND status  = 'Approved'");
+    $statement->execute([
+        ':id' => $user_id
+    ]);
+    return $statement->fetchAll();
 }
