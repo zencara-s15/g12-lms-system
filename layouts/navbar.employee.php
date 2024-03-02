@@ -20,6 +20,7 @@
          </div>
      </div>
      <hr />
+     <!--      
      <div class="user-menu-items px-3 m-0 ">
          <a class="px-0 pb-2 pt-0" href="/employees_dasboad">
              <span class="media align-items-center">
@@ -29,50 +30,34 @@
                  </span>
              </span>
          </a>
+-->
+     <a class="p-2" href="/em_leave_request">
+         <span class="media align-items-center">
+             <span class="lnr lnr-briefcase mr-3"></span>
+             <span class="media-body text-truncate text-left">
+                 <span class="text-truncate text-left">Leave Request</span>
+             </span>
+         </span>
+     </a>
 
-         <a class="p-2" href="/leave_history">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-briefcase mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Leave History</span>
-                 </span>
+     <a class="p-2" href="/leave_history">
+         <span class="media align-items-center">
+             <span class="lnr lnr-briefcase mr-3"></span>
+             <span class="media-body text-truncate text-left">
+                 <span class="text-truncate text-left">Leave History</span>
              </span>
-         </a>
+         </span>
+     </a>
 
-         <a class="p-2" href="/reports_employee">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-rocket mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Reports</span>
-                 </span>
+     <a class="p-2" href="login.html">
+         <span class="media align-items-center">
+             <span class="lnr lnr-power-switch mr-3"></span>
+             <span class="media-body text-truncate text-left">
+                 <span class="text-truncate text-left">Logout</span>
              </span>
-         </a>
-         <a class="p-2" href="/manages">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-sync mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Manage</span>
-                 </span>
-             </span>
-         </a>
-
-         <a class="p-2" href="employment.html">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-user mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Profile</span>
-                 </span>
-             </span>
-         </a>
-         <a class="p-2" href="login.html">
-             <span class="media align-items-center">
-                 <span class="lnr lnr-power-switch mr-3"></span>
-                 <span class="media-body text-truncate text-left">
-                     <span class="text-truncate text-left">Logout</span>
-                 </span>
-             </span>
-         </a>
-     </div>
+         </span>
+     </a>
+ </div>
  </div>
  <!-- /Offcanvas menu -->
 
@@ -113,18 +98,25 @@
                                      <div class="col-6 align-items-center text-center">
                                          <a href="/employees_dasboad" class=" <?= checkActive("/employees_dasboad") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
                                      </div>
-                                   
+
+                                     <div class="col-6 align-items-center text-center">
+                                         <a href="/em_leave_request" class="<?= checkActive("/em_leave_request") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top">
+                                             <span class="lnr lnr-calendar-full pr-0 pb-lg-2 font-23"></span>
+                                             <span class="" style="font-size: small;">Leave Request</span>
+                                         </a>
+                                     </div>
+
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/leave_history" class=" <?= checkActive("/leave_history") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-briefcase pr-0 pb-lg-2 font-23"></span><span class="">Leave History</span></a>
                                      </div>
-                                  
+
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/reports_employee" class="<?= checkActive("/reports_employee") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-rocket pr-0 pb-lg-2 font-23"></span><span class="">Reports</span></a>
                                      </div>
-                                 
+
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/profiles_employee" class="<?= checkActive("/profiles_employee") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
-                                     </div> 
+                                     </div>
 
                                  </div>
                              </div>

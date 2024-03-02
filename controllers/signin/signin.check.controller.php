@@ -2,6 +2,7 @@
 
 //  start session
 session_start();
+ob_start();
 
 require '../../database/database.php';
 require '../../models/admin/admin.model.php';
@@ -17,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = account_exist($email);
 
     if (count($user) > 0) {
-
+        // $_SESSION["user"] = $user;
         //  comparing passwrod in database and password input
         if (password_verify($password, $user['password'])) {
 

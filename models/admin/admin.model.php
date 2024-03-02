@@ -17,7 +17,6 @@ function create_account(string $fristname, string $lastname, string $password, s
     return $statement->rowCount() > 0;
 }
 
-
 function account_exist(string $email): array
 {
     global $connection;

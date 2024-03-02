@@ -8,9 +8,11 @@ $routes_employees = [
     '/signout' => 'controllers/sigout/signout.controller.php',
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
 
-    '/leave_history' => 'controllers/leave_history/leave.history.controller.php', //for admin
+    '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
     '/reports_employee' => 'controllers/reports/report.controller.php',
     '/profiles_employee' => 'controllers/profiles/profile.controller.php',
+    '/em_leave_request' => 'controllers/employee_leave_request/emp_leave_request.controller.php',
+    '/em_leave_request_form' => 'controllers/employee_leave_request/emp_leave_request_form.controller.php',
 ];
 
 if (array_key_exists($uri_employees, $routes_employees)) {
