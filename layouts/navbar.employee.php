@@ -100,7 +100,7 @@
                                      </div>
 
                                      <div class="col-6 align-items-center text-center">
-                                         <a href="/em_leave_request" class="<?= checkActive("/em_leave_request") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top">
+                                         <a href="/em_leave_request_view" class="<?= checkActive("/em_leave_request_view") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top">
                                              <span class="lnr lnr-calendar-full pr-0 pb-lg-2 font-23"></span>
                                              <span class="" style="font-size: small;">Leave Request</span>
                                          </a>

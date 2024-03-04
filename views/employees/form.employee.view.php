@@ -83,6 +83,7 @@
                     </select>
                     <div class="invalid-feedback">Please select a position.</div>
                 </div>
+                
                 <div class="form-group">
                     <label for="amount_leave">Amount of leave</label>
                     <input type="number" class="form-control border-dark" name="amount_leave" id="amount_leave" title="The first leave for the employee (3/month)." min="3" max="3" value="3" required>

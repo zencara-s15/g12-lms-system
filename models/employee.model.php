@@ -6,7 +6,7 @@
 function create_leave_request(int $user_id, int $leave_type_id, string $start_date, string $end_date, string $status, string $description): bool
 {
     global $connection;
-    $statement = $connection->prepare("INSERT INTO users (user_id, leave_type_id, start_date,end_date, status, description) VALUES (:user_id,:leave_type_id, :start_date,:end_date, :status, :description)");
+    $statement = $connection->prepare("INSERT INTO leave_requests (user_id, leave_type_id, start_date,end_date, status, description) VALUES (:user_id,:leave_type_id, :start_date,:end_date, :status, :description)");
     $statement->execute([
         ':user_id' => $user_id,
         ':leave_type_id' => $leave_type_id,
@@ -18,3 +18,28 @@ function create_leave_request(int $user_id, int $leave_type_id, string $start_da
 
     return $statement->rowCount() > 0;
 }
+
+
+function get_user_info(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE id = :id");
+    $statement->execute(
+        [
+            ':id' => $id
+        ]
+    );
+    return $statement->fetch();
+}
+
+// function get_current_user(int $id): array
+// {
+//     global $connection;
+//     $statement = $connection->prepare("SELECT * FROM leave_types WHERE id = :id");
+//     $statement->execute(
+//         [
+//             ':id' => $id,
+//         ]
+//     );
+//     return $statement->fetch();
+// }

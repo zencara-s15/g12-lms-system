@@ -1,8 +1,8 @@
 <?php
 
 //  start session
-// session_start();
-ob_start();
+session_start();
+// ob_start();
 
 require '../../database/database.php';
 require '../../models/admin/admin.model.php';

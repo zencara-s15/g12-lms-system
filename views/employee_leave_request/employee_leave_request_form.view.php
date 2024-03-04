@@ -9,21 +9,21 @@
                     <h4 class="card-title mb-0">Apply Leaves</h4>
                 </div>
                 <div class="card-body">
-                    <form action="../../controllers/employee_leave_request/em_apply_leave.controller.php" id="leaveForm" method="post">
+                    <form action="../../controllers/employee_leave_request/em_apply_leave.controller.php" method="post" id="leaveForm" enctype="multipart/form-data">
 
-                        <div class="row">`
+                        <div class="row">
                             <!-- get id user -->
                             <div class="col-sm-6">
-                                <div class="form-group" > 
+                                <div class="form-group" hidden>
                                     <label>user_id</label>
-                                    <input type="" class="form-control" name="user_id" value="<?= $users['id'] ?>">
+                                    <input type="" class="form-control" name="user_id" value="<?= $user_info['id'] ?>">
                                 </div>
                             </div>
                             <!-- leave amount -->
                             <div class="col-sm-6">
                                 <div class="form-group" hidden>
                                     <label>leave amount</label>
-                                    <input type="" class="form-control" name="leave_amount" value="<?= $users['leave_amount'] ?>">
+                                    <input type="" class="form-control" name="leave_amount" value="<?= $user_info['leave_amount'] ?>">
                                 </div>
                             </div>
                             <!-- status -->
@@ -41,21 +41,21 @@
                                 <div class="form-group">
                                     <label>Leave Type<span class="text-danger">*</span></label>
                                     <select class="form-control select" name="leave_type_id" required>
-                                        <option value="" selected disabled >Select Leave Type</option>
+                                        <option value="" selected disabled>Select Leave Type</option>
                                         <?php
                                         $leave_types = get_leave_types();
-
                                         foreach ($leave_types as $key => $leave_type) : ?>
                                             <option value="<?= $leave_type['id'] ?>"><?= $leave_type['leave_type'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
+                                    <div class="invalid-feedback">Please select a leave type.</div>
                                 </div>
                             </div>
                             <!-- leave amount left  -->
                             <div class="col-sm-6 leave-col">
                                 <div class="form-group">
                                     <label>Remaining Leaves</label>
-                                    <input type="text" class="form-control" disabled value="<?= $users['leave_amount'] ?>">
+                                    <input type="text" class="form-control" disabled value="<?= $user_info['leave_amount'] ?>">
                                 </div>
                             </div>
                         </div>
@@ -65,14 +65,30 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>From</label>
-                                    <input type="text" class="form-control datetimepicker" name="start_date" required>
+                                    <input id="date" type="date" class="form-control" name="start_date" min="<?php date_default_timezone_set('Asia/Bangkok'); // start leave can't select to the past
+                                                                                                                $month = date('m');
+                                                                                                                $day = date('d');
+                                                                                                                $year = date('Y');
+
+                                                                                                                $today = $year . '-' . $month . '-' . $day;
+                                                                                                                echo $today
+                                                                                                                ?>" required>
+                                    <div class="invalid-feedback">Please enter a start date.</div>
                                 </div>
                             </div>
                             <!-- end date  -->
                             <div class="col-sm-6 leave-col">
                                 <div class="form-group">
-                                    <label>To</label>
-                                    <input type="text" class="form-control datetimepicker" name="end_date" required>
+                                    <label>Until</label>
+                                    <input type="date" class="form-control" name="end_date" min="<?php date_default_timezone_set('Asia/Bangkok'); // start leave can't select to the past
+                                                                                                                $month = date('m');
+                                                                                                                $day = date('d');
+                                                                                                                $year = date('Y');
+
+                                                                                                                $today = $year . '-' . $month . '-' . $day;
+                                                                                                                echo $today
+                                                                                                                ?>" required>
+                                    <div class="invalid-feedback">Please enter an end date.</div>
                                 </div>
                             </div>
                         </div>
@@ -82,19 +98,18 @@
                             <div class="col-sm-12">
                                 <div class="form-group mb-0">
                                     <label>Reason</label>
-                                    <textarea class="form-control" rows=4 name="description" required></textarea>
-                                    
+                                    <textarea class="form-control" rows="4" name="description" required></textarea>
+                                    <div class="invalid-feedback">Please enter a reason for leave.</div>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center">
                             <!-- btn for submit  and cancel -->
-                            <button type="submit" class="btn btn-theme button-1 text-white ctm-border-radius mt-4" <?php // condition for employee apply if their leave are more than 0
-                                                                                                                    $leave_amount = 2;
-                                                                                                                    if ($leave_amount <= 0) {
-                                                                                                                        echo "disabled";
-                                                                                                                    };
-                                                                                                                    ?>>Apply</button>
+                            <button type="submit" class="btn btn-theme button-1 text-white ctm-border-radius mt-4" onclick="validateForm()" <?php // condition for employee apply if their leave are more than 0
+                                                                                                                                            if ($user_info['leave_amount'] <= 0) {
+                                                                                                                                                echo "disabled";
+                                                                                                                                            };
+                                                                                                                                            ?>>Apply</button>
                             <a href="" class="btn btn-danger text-white ctm-border-radius mt-4 ">Cancel</a>
                         </div>
                     </form>
@@ -103,3 +118,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    function validateForm() {
+        let form = document.querySelector('#leaveForm');
+        form.classList.add('was-validated');
+    }
+</script>
