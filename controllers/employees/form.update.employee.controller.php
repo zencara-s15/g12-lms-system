@@ -7,4 +7,3 @@ if (isset($_GET['id'])) {
 }
 require "views/employees/form.update.employee.view.php";
 ?>
-<!-- <h1>Hell</h1> -->

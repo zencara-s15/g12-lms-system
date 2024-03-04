@@ -1,7 +1,17 @@
 <?php
 
 //--------------------------------------------------------
-
+function get_user_info(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE id = :id");
+    $statement->execute(
+        [
+            ':id' => $id
+        ]
+    );
+    return $statement->fetch();
+}
 
 function create_leave_request(int $user_id, int $leave_type_id, string $start_date, string $end_date, string $status, string $description): bool
 {
@@ -19,17 +29,15 @@ function create_leave_request(int $user_id, int $leave_type_id, string $start_da
     return $statement->rowCount() > 0;
 }
 
-
-function get_user_info(int $id): array
+function calculate_leave_amount(string $amount, int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare("SELECT * FROM users WHERE id = :id");
-    $statement->execute(
-        [
-            ':id' => $id
-        ]
-    );
-    return $statement->fetch();
+    $statement = $connection->prepare(" UPDATE users SET leave_amount = :amount WHERE id = :id");
+    $statement->execute([
+        ':amount' => $amount,
+        ':id' => $id,
+    ]);
+    return $statement->rowCount() > 0;
 }
 
 // function get_current_user(int $id): array

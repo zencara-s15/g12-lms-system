@@ -12,8 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end_date = $_POST['end_date'];
     $status = $_POST['status'];
     $description = htmlspecialchars($_POST['description']);
+    $leave_amount = $_POST['leave_amount'];
 
     $created = create_leave_request($user_id,$leave_type_id,$start_date,$end_date,$status,$description);
+    calculate_leave_amount($leave_amount - 1 , $user_id);
     $created = true;
     if ($created) {
         $notification = 'Applied Successfully!';
