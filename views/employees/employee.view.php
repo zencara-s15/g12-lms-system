@@ -1,4 +1,4 @@
-<div class="col-xl-9 col-lg-8 col-md-12 position-relative">
+<div class="col-xl-9 col-lg-8 col-md-12 position-relative grow">
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
             <h3 class="m-0 font-weight-bold text-primary">Employee Management</h3>
@@ -9,15 +9,15 @@
                 <div class="row align-items-center">
                     <!-- search box -->
                     <div class="col-md-6 mb-2">
-                        <input type="text" name="search_employee" id="search_employee" placeholder="Search employee..." class="form-control" />
+                        <input type="text" name="search_employee" id="search_employee" placeholder="Search employee by name.." class="form-control border border-dark  " />
                     </div>
                     <!-- filter -->
                     <div class="col-md-4 mb-2">
                         <select id="position" name="position" class="custom-select  border-dark" tile="Please select the position of the employee." required>
-                            <option value="" selected disabled>Choose Position</option>
+                            <option value="All">All Positions</option>
                             <?php $get_positions = get_positions(); ?>
                             <?php foreach ($get_positions as $position) :  ?>
-                                <option value="<?= $position['id']; ?>"><?= $position['position']; ?></option>
+                                <option value="<?= $position['position']; ?>"><?= $position['position']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -99,5 +99,36 @@
 
         // Redirect to the delete URL
         window.location.href = "/controllers/employees/delete.employee.controller.php?id=" + employeeId;
+    });
+
+    //search employee by name---------------------------------------------------------------------------------------------------
+    let searchEmployee = document.getElementById('search_employee');
+    let positionSelect = document.getElementById('position');
+    let tbody = document.querySelector('tbody');
+    let tr = tbody.querySelectorAll('tr');
+
+    searchEmployee.addEventListener('input', function() {
+        const searchText = searchEmployee.value.toLowerCase();
+        tr.forEach(row => {
+            const tdContent = row.querySelector('td').textContent.toLowerCase(); // Get the text content of the first td in the row
+            if (tdContent.includes(searchText)) {
+                row.style.display = ''; // Show the row
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
+    });
+    //filter the employee by position---------------------------------------------------------------------------------
+    positionSelect.addEventListener('change', function() {
+        const selectedPosition = positionSelect.value;
+
+        tr.forEach(row => {
+            const positionCell = row.querySelectorAll('td')[2]; // Assuming the position data is in the third column
+            if (selectedPosition === "All" || positionCell.textContent.trim() === selectedPosition) {
+                row.style.display = ''; // Show the row
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
     });
 </script>
