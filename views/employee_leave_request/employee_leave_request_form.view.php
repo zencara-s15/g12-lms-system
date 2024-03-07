@@ -19,6 +19,20 @@
                                     <input type="" class="form-control" name="user_id" value="<?= $user_info['id'] ?>">
                                 </div>
                             </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group" hidden>
+                                    <label>Email</label>
+                                    <input type="" class="form-control" name="email" value="<?= $user_info['email'] ?>">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group" hidden>
+                                    <label>Full Name</label>
+                                    <input type="text" class="form-control" name="full_name" value="<?= $user_info['last_name'] . ' ' . $user_info['first_name'] ?>">
+                                </div>
+                            </div>
                             <!-- leave amount -->
                             <div class="col-sm-6">
                                 <div class="form-group" hidden>
@@ -45,7 +59,7 @@
                                         <?php
                                         $leave_types = get_leave_types();
                                         foreach ($leave_types as $key => $leave_type) : ?>
-                                            <option value="<?= $leave_type['id'] ?>"><?= $leave_type['leave_type'] ?></option>
+                                            <option value="<?=$leave_type['id']?>"><?=$leave_type['leave_type']?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">Please select a leave type.</div>
