@@ -193,7 +193,8 @@ function get_leave_requests(): array
     FROM leave_requests
     INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
     INNER JOIN users ON users.id = leave_requests.user_id
-    INNER JOIN positions ON positions.id = users.position_id;");
+    INNER JOIN positions ON positions.id = users.position_id
+    WHERE leave_requests.status ='Pending'");
     $statement->execute();
     return $statement->fetchAll();
 }
