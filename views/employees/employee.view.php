@@ -46,7 +46,7 @@
                     <?php foreach ($get_employees_with_positions as $employee) : ?>
                         <tr class="border-bottom" style="font-size:14px">
                             <td class="d-flex" style="text-align: center; vertical-align: middle;">
-                                <img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="<?= 'data:image/jpeg;base64,' . base64_encode($employee['image_data']) ?>" />
+                                <img style="width: 60px;height: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="<?= 'data:image/jpeg;base64,' . base64_encode($employee['image_data']) ?>" />
                                 <span class="mt-3 m-lg-3"><?= $employee['first_name'] . " " . $employee['last_name'] ?></span>
                             </td>
                             <td style="vertical-align: middle;"><?= $employee['email'] ?></td>

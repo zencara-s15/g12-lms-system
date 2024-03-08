@@ -36,7 +36,7 @@
 			<table class="table table-hover">
 				<thead class="table-dark ">
 					<th scope="col">#</th>
-					<th scope="col">Full Name</th>
+					<th scope="col">Employee Name</th>
 					<th scope="col">Position</th>
 					<th scope="col">Start Date</th>
 					<th scope="col">End Date</th>
@@ -52,7 +52,7 @@
 							<td style="vertical-align: middle;"><?= $num + 1 ?></td>
 
 							<td class="d-flex" style="text-align: center; vertical-align: middle;">
-								<img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="https://www.allkpop.com/upload/2024/01/content/102324/1704947068-20240110-iu.jpg" />
+								<img style="width: 60px; height: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="data:image/jpeg;base64, <?php echo base64_encode($data['image_data']);?>"/>
 								<span class="mt-3 m-lg-3"><?= $data['first_name'] . ' ' . $data['last_name'] ?></span>
 							</td>
 							

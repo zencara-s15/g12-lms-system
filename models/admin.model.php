@@ -59,7 +59,7 @@ function get_employee(int $id): array
 function count_users(): int
 {
     global $connection;
-    $statement = $connection->prepare("select count(*) as total from users");
+    $statement = $connection->prepare("select count(*) as total from users where role_id = 2");
     $statement->execute();
     $result = $statement->fetch();
     return $result['total'];
@@ -184,6 +184,7 @@ function get_leave_requests(): array
 	leave_requests.id,
     users.first_name,
     users.last_name,
+    users.image_data,
     positions.position,
     leave_types.leave_type,
     leave_requests.status,
@@ -194,7 +195,8 @@ function get_leave_requests(): array
     INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
     INNER JOIN users ON users.id = leave_requests.user_id
     INNER JOIN positions ON positions.id = users.position_id
-    WHERE leave_requests.status ='Pending'");
+    WHERE leave_requests.status ='Pending'
+    ORDER BY leave_requests.id DESC");
     $statement->execute();
     return $statement->fetchAll();
 }
@@ -252,11 +254,12 @@ function get_leave_request_detail(int $id): array
 function get_aprroved_leave(): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT leave_requests.id, users.first_name, users.last_name, positions.position, leave_requests.start_date, leave_requests.end_date, leave_requests.status
+    $statement = $connection->prepare("SELECT leave_requests.id, users.first_name, users.last_name,users.image_data, positions.position, leave_requests.start_date, leave_requests.end_date, leave_requests.status
     FROM leave_requests
     INNER JOIN users ON users.id = leave_requests.user_id
     INNER JOIN positions ON positions.id = users.position_id
-    WHERE leave_requests.status = 'Approved'");
+    WHERE leave_requests.status = 'Approved'
+    ORDER BY leave_requests.id Desc ");
     $statement->execute();
     return $statement->fetchAll();
 }
