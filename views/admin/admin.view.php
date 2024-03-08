@@ -9,7 +9,7 @@
  						</div>
  						<div class="card-right">
  							<h4 class="card-title">Employees</h4>
- 							<p class="card-text">700</p>
+ 							<p class="card-text"><?=count_users() ?></p>
  						</div>
  					</div>
  				</div>
@@ -25,7 +25,7 @@
  						</div>
  						<div class="card-right">
  							<h4 class="card-title">Leaves</h4>
- 							<p class="card-text">3</p>
+ 							<p class="card-text"><?=count_leave_requests()?></p>
  						</div>
  					</div>
  				</div>
