@@ -24,6 +24,7 @@ $routes = [
     '/edit_leave_type' => 'controllers/leave_types/from_edits.controller.php',
     
     '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', // for leave_request
+    '/rejected_leaves' => 'controllers/leave_requests/rejected_leaves.controller.php', // for leave_request that have rejected leaves
 
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php'
 

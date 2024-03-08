@@ -25,7 +25,7 @@
  						</div>
  						<div class="card-right">
  							<h4 class="card-title">Leaves</h4>
- 							<p class="card-text"><?=count_leave_requests()?></p>
+ 							<p class="card-text"><?=count_pending_requests()?></p>
  						</div>
  					</div>
  				</div>

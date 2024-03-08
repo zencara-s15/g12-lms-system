@@ -195,17 +195,25 @@ function get_leave_requests(): array
     INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
     INNER JOIN users ON users.id = leave_requests.user_id
     INNER JOIN positions ON positions.id = users.position_id
-    WHERE leave_requests.status ='Pending'
+    -- WHERE leave_requests.status ='Pending'
     ORDER BY leave_requests.id DESC");
     $statement->execute();
     return $statement->fetchAll();
 }
 
 //count request leave
-function count_leave_requests(): int
+function count_pending_requests(): int
 {
     global $connection;
     $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE leave_requests.status='Pending'");
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'];
+}
+function count_rejected_requests(): int
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE leave_requests.status='Rejected'");
     $statement->execute();
     $result = $statement->fetch();
     return $result['total'];
