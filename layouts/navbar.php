@@ -165,7 +165,7 @@
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/profiles" class="<?= checkActive("/profiles") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
                                      </div>
-
+                                    
                                  </div>
                              </div>
                          </div>

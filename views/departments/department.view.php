@@ -50,11 +50,14 @@
                                 <td>
                                     <div class="team-action-icon float-right">
                                         <span data-toggle="modal" data-target="#edit_position">
-                                            <a href="/edit_department?id=<?= $data['id'] ?>" class="btn btn-theme ctm-border-radius text-white"><i class="fa fa-pencil"></i></a>
+                                            <a href="/edit_department?id=<?= $data['id'] ?>" class="btn btn-theme ctm-border-radius text-white" style="height:40px"><i class="fa fa-pencil"></i></a>
                                         </span>
                                         <span data-toggle="modal" data-target="#delete">
-                                            <a href="../../controllers/departments/delete.department.controller.php?id=<?= $data['id'] ?>" onclick="return confirm('Are you sure you want to delete Department <?= $data['department'] ?> ?')" class="btn btn-theme ctm-border-radius text-white" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
+                                            <a href="../../controllers/departments/delete.department.controller.php?id=<?= $data['id'] ?>" onclick="return confirm('Are you sure you want to delete Department <?= $data['department'] ?> ?')" class="btn btn-theme ctm-border-radius text-white" style="height:40px" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
                                         </span>
+                                        <span data-toggle="modal" data-target="#delete">
+											<a href="/positions?id=<?=$data['id']?>" data-placement="bottom" class="btn btn-theme ctm-border-radius text-white" style="height:40px" title="Delete"><i class="fa fa-eye"></i></a>
+										</span>
                                     </div>
                                 </td>
                             </tr>
