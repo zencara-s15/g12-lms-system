@@ -11,7 +11,7 @@ require '../../vendor/autoload.php';
 $id = $_GET['id'] ? $_GET['id'] : null;
 $user_info = get_leave_request_detail($id);
 $full_name = $user_info['first_name'] . ' ' . $user_info['last_name'];
-$email = 'czencara@gmail.com' ; //$user_info['email'];
+$email = $user_info['email'];
 $start_date = $user_info['start_date'];
 $end_date = $user_info['end_date'];
 $duration = date_diff(new DateTime($start_date),new DateTime($end_date))->format('%a');
@@ -37,7 +37,7 @@ if (isset($id)) {
 
         // Recipients
         $mail->setFrom('leave.management.vc1@gmail.com', 'Leave Management System');
-        $mail->addAddress($email);
+        $mail->addAddress($email, $full_name);
 
         // Content
         $mail->isHTML(true);

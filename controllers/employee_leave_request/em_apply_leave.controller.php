@@ -14,9 +14,8 @@ $notificationClass = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_POST['user_id'];
-    // $email = $_POST['email'];
     $full_name = $_POST['full_name'];
-    $email = "czencara@gmail.com"; // change to admin email
+    $email = "czencara@gmail.com"; // change to admin email 
     $leave_type_id = $_POST['leave_type_id']; // insert into database
     $leave_type = get_leave_type($leave_type_id)['leave_type']; //display in email
     $start_date = $_POST['start_date'];
@@ -50,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             //Recipients
             $mail->setFrom(' leave.management.vc1@gmail.com', 'Leave Management System');
-            $mail->addAddress($email);     //Add a recipient
+            $mail->addAddress($email , $full_name);     //Add a recipient
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
@@ -144,5 +143,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script>
     setTimeout(() => {
         window.location.href = '/em_leave_request_view';
-    }, 111000);
+    }, 2000);
 </script>

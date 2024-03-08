@@ -203,7 +203,7 @@ function get_leave_requests(): array
 function count_leave_requests(): int
 {
     global $connection;
-    $statement = $connection->prepare("select count(*) as total from leave_requests");
+    $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE leave_requests.status='Pending'");
     $statement->execute();
     $result = $statement->fetch();
     return $result['total'];

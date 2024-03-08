@@ -30,7 +30,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group" hidden>
                                     <label>Full Name</label>
-                                    <input type="text" class="form-control" name="full_name" value="<?= $user_info['last_name'] . ' ' . $user_info['first_name'] ?>">
+                                    <input type="text" class="form-control" name="full_name" value="<?= $user_info['first_name'] . ' ' . $user_info['last_name'] ?>">
                                 </div>
                             </div>
                             <!-- leave amount -->
