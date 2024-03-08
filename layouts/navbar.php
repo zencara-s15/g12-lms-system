@@ -118,13 +118,13 @@
                  <aside class="sidebar sidebar-user">
                      <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow">
                          <div class="user-info card-body">
-                             <div class="user-avatar mb-4">
-                                 <img src="assets/images/profiles/img-2.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="100">
-                             </div>
-                             <div class="user-details">
-                                 <h4><b>Welcome Admin</b></h4>
-                                 <p>Sun, 29 Nov 2019</p>
-                             </div>
+                         <div class="user-avatar mb-4">
+                                <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" width="100">
+                            </div>
+                            <div class="user-details">
+                                <h4><b>Welcome <?= $first_name ?></b></h4>
+                                <p>Sun, 29 Nov 2019</p>
+                            </div>
                          </div>
                      </div>
                      <!-- Sidebar -->

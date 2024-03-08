@@ -82,6 +82,7 @@
         </div>
     </div>
 </div>
+
 <script>
     // JavaScript function to open the delete confirmation modal
     function openDeleteModal(employeeId) {

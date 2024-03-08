@@ -1,6 +1,6 @@
 <?php
 require "database/database.php";
-require "models/admin.model.php";
+require_once "models/admin.model.php";
 
 
 $data = get_leave_type($_GET['id']);

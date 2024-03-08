@@ -88,11 +88,11 @@
                      <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow">
                          <div class="user-info card-body">
                              <div class="user-avatar mb-4">
-                                 <img src="assets/images/profiles/img-2.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="100">
+                                 <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" width="100">
                              </div>
                              <div class="user-details">
-                                 <h4><b>Welcome Employees</b></h4>
-                                 <p>Mon, 10-03-2024</p>
+                                 <h4><b>Welcome <?= $first_name ?></b></h4>
+                                 <p>Sun, 29 Nov 2019</p>
                              </div>
                          </div>
                      </div>
@@ -113,18 +113,18 @@
                                      <div class="col-6 align-items-center text-center">
                                          <a href="/employees_dasboad" class=" <?= checkActive("/employees_dasboad") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
                                      </div>
-                                   
+
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/leave_history" class=" <?= checkActive("/leave_history") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-briefcase pr-0 pb-lg-2 font-23"></span><span class="">Leave History</span></a>
                                      </div>
-                                  
+
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/reports_employee" class="<?= checkActive("/reports_employee") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-rocket pr-0 pb-lg-2 font-23"></span><span class="">Reports</span></a>
                                      </div>
-                                 
+
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/profiles_employee" class="<?= checkActive("/profiles_employee") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
-                                     </div> 
+                                     </div>
 
                                  </div>
                              </div>
