@@ -1,6 +1,45 @@
 <?php
 
-function createPost(string $title, string $description) : bool
+//  ______________________________for login and reset password_________________________________________________________
+
+// to check accound by email
+function account_exist(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT users.email, users.password, users.role_id FROM users INNER JOIN roles ON users.role_id = roles.id WHERE users.email = :email");
+    $statement->execute([
+        ':email' => $email
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+
+
+//  reset password
+function reset_password(string $email, string $password): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET password = :password WHERE email = :email;");
+    $statement->execute([
+        ':password' => $password,
+        ':email' => $email
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+
+// ______________________end login and reset______________________________________________
+
+
+
+
+
+
+function createPost(string $title, string $description): bool
 {
     global $connection;
     $statement = $connection->prepare("insert into posts (title, description) values (:title, :description)");
@@ -13,7 +52,7 @@ function createPost(string $title, string $description) : bool
     return $statement->rowCount() > 0;
 }
 
-function getPost(int $id) : array
+function getPost(int $id): array
 {
     global $connection;
     $statement = $connection->prepare("select * from posts where id = :id");
