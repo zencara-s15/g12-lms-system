@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end_date = $_POST['end_date'];
     $status = $_POST['status'];
     $description = htmlspecialchars($_POST['description']);
-    $leave_amount = $_POST['leave_amount'];
+    $leave_amount = $_POST['amount_leave'];
 
     $start = new DateTime($start_date);
     $end = new DateTime($end_date);

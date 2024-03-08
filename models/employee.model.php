@@ -32,7 +32,7 @@ function create_leave_request(int $user_id, int $leave_type_id, string $start_da
 function calculate_leave_amount(string $amount, int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare(" UPDATE users SET leave_amount = :amount WHERE id = :id");
+    $statement = $connection->prepare(" UPDATE users SET amount_leave = :amount WHERE id = :id");
     $statement->execute([
         ':amount' => $amount,
         ':id' => $id,

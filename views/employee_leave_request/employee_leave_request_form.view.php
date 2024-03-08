@@ -37,7 +37,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group" hidden>
                                     <label>leave amount</label>
-                                    <input type="" class="form-control" name="leave_amount" value="<?= $user_info['leave_amount']  ?>">
+                                    <input type="" class="form-control" name="amount_leave" value="<?= $user_info['amount_leave']  ?>">
                                 </div>
                             </div>
                             <!-- status -->
@@ -69,9 +69,9 @@
                             <div class="col-sm-6 leave-col">
                                 <div class="form-group">
                                     <label>Remaining Leaves</label>
-                                    <input type="text" class="form-control <?php echo ($user_info['leave_amount'] <= 0) ? 'border-danger' . ' ' .'bg-light' . ' ' . 'text-danger' : ''; ?>" disabled value="<?php echo $user_info['leave_amount']; ?>">
-                                    <div class="text-danger"><?php echo ($user_info['leave_amount'] < 0) ? 'You are out of amount' : ''; ?></div>
-                                    <div class="text-danger"><?php echo ($user_info['leave_amount'] == 0) ? 'No Amount Left' : ''; ?></div>
+                                    <input type="text" class="form-control <?php echo ($user_info['amount_leave'] <= 0) ? 'border-danger' . ' ' .'bg-light' . ' ' . 'text-danger' : ''; ?>" disabled value="<?php echo $user_info['amount_leave']; ?>">
+                                    <div class="text-danger"><?php echo ($user_info['amount_leave'] < 0) ? 'You are out of amount' : ''; ?></div>
+                                    <div class="text-danger"><?php echo ($user_info['amount_leave'] == 0) ? 'No Amount Left' : ''; ?></div>
                                 </div>
                             </div>
                         </div>
