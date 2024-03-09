@@ -22,19 +22,15 @@
             foreach ($history as $num => $histories):
             ?>
             <tr>
-
                 <td><?php echo $num + 1 ?></td>
                 <td><?php echo $histories['leave_type'] ?></td>
                 <td><?php echo $histories['start_date'] ?></td>
                 <td><?php echo $histories['end_date'] ?></td>
                 <td><?php echo $histories['description'] ?></td>
                 <td><?php echo $histories['status'] ?></td>
+                <td><a class="btn-primary text-white" style="padding: 5px 10px; cursor: pointer; " href="controllers/leave_history/leave_history_detail.controller.php?id=<?=$histories['id']?>">Detail</a></td>
             </tr>
-            <!-- <?php
-            endforeach; ?>
-            ?> -->
+            <?php endforeach; ?>
         </tbody>
-
-
     </table>
 </div>

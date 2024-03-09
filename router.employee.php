@@ -8,7 +8,8 @@ $routes_employees = [
     '/signout' => 'controllers/sigout/signout.controller.php',
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
 
-    '/leave_history' => 'controllers/leave_history/leave.history.controller.php', //for admin
+    '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
+    '/leave_history_detail' => 'controllers/leave_history/leave_history_detail.controller.php',
     '/reports_employee' => 'controllers/reports/report.controller.php',
     '/profiles_employee' => 'controllers/profiles/profile.controller.php',
 ];
