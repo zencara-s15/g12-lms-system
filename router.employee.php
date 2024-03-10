@@ -9,7 +9,6 @@ $page_employees = "";
 $routes_employees = [
     '/' =>  'controllers/signin/signin.controller.php',
     '/reset' => 'controllers/reset/reset_password.php',
-    '/reset' => 'controllers/reset/reset_password.php',
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
 
     '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
