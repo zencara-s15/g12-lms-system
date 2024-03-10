@@ -36,10 +36,9 @@ function account_infor(string $email): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.image_name, users.gender, 
-    users.user_name, users.last_name, users.email, roles.role AS role_id, departments.department AS department_id,
+    users.user_name, users.last_name, users.email, roles.role AS role_id,
     positions.position AS position_id  FROM users 
     INNER JOIN roles ON users.role_id = roles.id 
-    INNER JOIN departments ON users.department_id = departments.id 
     INNER JOIN positions ON users.position_id = positions.id
     WHERE users.email = :email;");
     $statement->execute([

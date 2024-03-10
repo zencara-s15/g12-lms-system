@@ -119,7 +119,7 @@
                                         <div class="user-info align-right dropdown d-inline-block header-dropdown">
                                             <a href="javascript:void(0)" data-toggle="dropdown" class="menu-style dropdown-toggle">
                                                 <div class="user-avatar d-inline-block">
-                                                    <img src="<?= $imageSrc ?>" alt="user avatar" class="rounded-circle img-fluid" width="55" />
+                                                    <img src="<?= $imageSrc ?>" alt="user avatar" class="rounded-circle img-fluid" style="width: 50px; height: 50px;"/>
                                                 </div>
                                             </a>
 

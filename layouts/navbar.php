@@ -5,7 +5,7 @@
      <div class="user-info align-center bg-theme text-center">
          <a href="javascript:void(0)" class="d-block menu-style text-white">
              <div class="user-avatar d-inline-block mr-3">
-                 <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" width="55" />
+                 <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" style="width: 100px; height: 100px;" />
              </div>
          </a>
      </div>
@@ -119,7 +119,7 @@
                      <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow">
                          <div class="user-info card-body">
                          <div class="user-avatar mb-4">
-                                <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" width="100">
+                         <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
                             </div>
                             <div class="user-details">
                                 <h4><b>Welcome <?= $first_name ?></b></h4>

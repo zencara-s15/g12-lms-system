@@ -37,7 +37,6 @@ endif;
                     href='/reset'>Change<span id="loader"></span>
                 </button>
             </div>
-
         </form>
     </div>
 </div>

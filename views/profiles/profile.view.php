@@ -41,10 +41,10 @@
 									<label for="role">Role</label>
 									<input type="text" class="form-control" id="role" value="<?= $role_id ?>" readonly>
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="department">Department</label>
 									<input type="text" class="form-control" id="department" value="<?= $department ?>" readonly>
-								</div>
+								</div> -->
 								<div class="form-group">
 									<label for="schedule">Schedule Working</label>
 									<input type="text" class="form-control" id="schedule" value="Mon-Fri" readonly>

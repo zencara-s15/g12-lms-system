@@ -18,7 +18,6 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
         $last_name = $profile['last_name'];
         $gender = $profile['gender'];
         $role_id = $profile['role_id'];
-        $department = $profile['department_id'];
         $position = $profile['position_id'];
         $image_name = $profile['image_name'];
         $image_data = $profile['image_data'];
