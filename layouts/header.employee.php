@@ -109,7 +109,7 @@
                                             $profile = account_infor($email);
                                             if ($profile) {
                                                 $first_name = $profile['first_name'];
-                                                $image_name = $profile['image_name'];
+                                                // $image_name = $profile['image_name'];
                                                 $image_data = $profile['image_data'];
                                                 $imageSrc = 'data:image/jpeg;base64,' . base64_encode($image_data);
                                             }
