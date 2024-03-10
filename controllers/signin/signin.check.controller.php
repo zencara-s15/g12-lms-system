@@ -1,7 +1,7 @@
 <?php
 
 // Start session
-// session_start();
+session_start();
 
 require '../../database/database.php';
 require '../../models/admin.model.php';

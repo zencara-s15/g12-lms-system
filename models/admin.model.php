@@ -3,22 +3,26 @@
 //  -------------------form login and reset password---------------------------------------------
 
 
-//  to check and compare with email
-function account_exists(string $email): array
+//  ______________________________for login and reset password_________________________________________________________
+
+// to check accound by email
+function account_exist(string $email): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT * FROM users WHERE email = :email;");
+    $statement = $connection->prepare("SELECT users.email, users.password, users.role_id FROM users INNER JOIN roles ON users.role_id = roles.id WHERE users.email = :email");
     $statement->execute([
         ':email' => $email
     ]);
     if ($statement->rowCount() > 0) {
-        return $statement->fetch();
+        return $statement->fetch(PDO::FETCH_ASSOC);
     } else {
         return [];
     }
 }
 
-//  for reset password
+
+
+//  reset password
 function reset_password(string $email, string $password): bool
 {
     global $connection;
@@ -30,6 +34,8 @@ function reset_password(string $email, string $password): bool
     return $statement->rowCount() > 0;
 }
 
+
+// ______________________end login and reset______________________________________________
 
 //  for profile information
 function account_infor(string $email): array

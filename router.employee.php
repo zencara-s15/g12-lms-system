@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_start();
+// session_start();
 $uri_employees = parse_url($_SERVER['REQUEST_URI'])['path'];
 $page_employees = "";
 

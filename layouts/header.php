@@ -103,7 +103,7 @@
 
                     <!--  for image of profile -->
                     <?php
-                    require('models/admin.model.php');
+                    require_once('models/admin.model.php');
 
                     if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
                       $email = $_SESSION['user']['email'];

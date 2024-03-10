@@ -8,7 +8,7 @@
  							<i class="fa fa-users" aria-hidden="true"></i>
  						</div>
  						<div class="card-right">
- 							<h4 class="card-title">Employees</h4>
+ 							<h4 class="card-title"><?=$first_name?></h4>
  							<p class="card-text"><?=count_users() ?></p>
  						</div>
  					</div>
