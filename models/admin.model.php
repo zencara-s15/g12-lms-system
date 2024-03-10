@@ -4,7 +4,7 @@
 
 
 //  to check and compare with email
-function account_exists(string $email): array
+function account_exist(string $email): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT * FROM users WHERE email = :email;");

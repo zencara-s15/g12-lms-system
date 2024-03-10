@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 session_start();
 $uri_employees = parse_url($_SERVER['REQUEST_URI'])['path'];
 $page_employees = "";
@@ -9,7 +9,7 @@ $page_employees = "";
 $routes_employees = [
     '/' =>  'controllers/signin/signin.controller.php',
     '/reset' => 'controllers/reset/reset_password.php',
-    '/reset' => 'controllers/reset/reset_password.php',
+    // '/reset' => 'controllers/reset/reset_password.php',
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
 
     '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
