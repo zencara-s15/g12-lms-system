@@ -39,15 +39,3 @@ function calculate_leave_amount(string $amount, int $id): bool
     ]);
     return $statement->rowCount() > 0;
 }
-
-// function get_current_user(int $id): array
-// {
-//     global $connection;
-//     $statement = $connection->prepare("SELECT * FROM leave_types WHERE id = :id");
-//     $statement->execute(
-//         [
-//             ':id' => $id,
-//         ]
-//     );
-//     return $statement->fetch();
-// }

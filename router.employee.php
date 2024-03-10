@@ -5,7 +5,7 @@ $page_employees = "";
 
 $routes_employees = [
     '/' =>  'controllers/signin/signin.controller.php',
-    '/signout' => 'controllers/sigout/signout.controller.php',
+    '/reset' => 'controllers/reset/reset_password.php',
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
 
     '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
@@ -24,7 +24,13 @@ if (array_key_exists($uri_employees, $routes_employees)) {
     $page_employees = 'views/errors/404.php';
 }
 
-require "layouts/header.employee.php";
-require "layouts/navbar.employee.php";
-require $page_employees;
-require "layouts/footer.php";
+if ($page_employees === 'controllers/profiles/profile.controller.php') {
+    require $page_employees;
+} else if ($page_employees === 'controllers/profiles/update.profile.controller.php') {
+    require $page_employees;
+} else {
+    require "layouts/header.employee.php";
+    require "layouts/navbar.employee.php";
+    require $page_employees;
+    require "layouts/footer.php";
+}

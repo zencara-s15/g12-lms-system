@@ -1,4 +1,6 @@
 <?php
+// alter when it error on form signin
+// session_start();
 if (isset($_SESSION['error'])) :
 ?>
     <div class="alert alert-danger alert-dismissible fade show">
@@ -12,16 +14,16 @@ endif;
 
 
 <!-- ------------------form sign In------------------------------------------------------ -->
-<section class="vh-100 d-flex align-items-center justify-content-center">
-    <div class="card w-75">
+<section class="vh-100 d-flex align-items-center justify-content-center ">
+    <div class="card w-75 shadow p-1 mt-2 bg-white rounded">
         <div class="row g-0">
-            <div class="col-md-6 col-lg-5 col-xl-5 bg-light">
+            <div class="col-md-6 col-lg-5 col-xl-5 bg-light ">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid h-100" alt="Phone image">
             </div>
             <div class="col-md-6 col-lg-7 col-xl-7">
                 <div class="card-body p-5">
                     <h3 class="card-title mb-4">Sign In</h3>
-                    <form action="../../controllers/signin/signin.check.controller.php" method="post" >
+                    <form action="../../controllers/signin/signin.check.controller.php" method="post">
                         <!-- email input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="email">Email</label>
@@ -43,7 +45,7 @@ endif;
                         </div>
 
                         <div class="d-flex justify-content-end align-items-center mb-4">
-                            <a href="/signout">Create Account?</a>
+                            <a href="/reset">Forget Password?</a>
                         </div>
                         <!-- Submit button -->
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>

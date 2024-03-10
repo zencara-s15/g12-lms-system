@@ -1,8 +1,99 @@
 <?php
+
+//  -------------------form login and reset password---------------------------------------------
+
+
+//  to check and compare with email
+function account_exists(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE email = :email;");
+    $statement->execute([
+        ':email' => $email
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}
+
+//  for reset password
+function reset_password(string $email, string $password): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET password = :password WHERE email = :email;");
+    $statement->execute([
+        ':password' => $password,
+        ':email' => $email
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+
+//  for profile information
+function account_infor(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.image_name, users.gender, 
+    users.user_name, users.last_name, users.email, roles.role AS role_id,
+    positions.position AS position_id  FROM users 
+    INNER JOIN roles ON users.role_id = roles.id 
+    INNER JOIN positions ON users.position_id = positions.id
+    WHERE users.email = :email;");
+    $statement->execute([
+        ':email' => $email
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}
+
+
+//  for profile 
+function profile_personals(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.image_name, users.gender, users.user_name,
+    users.last_name, users.email, roles.role AS role_id, positions.position AS position_id
+    FROM users INNER JOIN roles ON users.role_id = roles.id INNER JOIN positions ON users.position_id = positions.id WHERE users.email = :email");
+    $statement->execute([
+        ":email" => $email
+    ]);
+
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+function update_profile(string $email, string $firstName, string $lastName, string $gender): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users 
+        INNER JOIN departments ON users.department_id = departments.id
+        SET users.first_name = :firstName, users.last_name = :lastName, users.gender = :gender
+        WHERE users.email = :email");
+
+    $statement->execute([
+        ':email' => $email,
+        ':firstName' => $firstName,
+        ':lastName' => $lastName,
+        ':gender' => $gender
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+
+
+
 // -----------------function attesting to employee----------------------------------------
 
 // create employee
-function create_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data,$amount_leave): bool
+function create_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data, $amount_leave): bool
 {
     global $connection;
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);

@@ -1,60 +1,54 @@
 <?php
-
-//  start session
+// Start session
 session_start();
 // ob_start();
 
 require '../../database/database.php';
-require '../../models/admin/admin.model.php';
+require '../../models/admin.model.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    //  to get data from input
+    // Get data from input
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
     $role = htmlspecialchars($_POST['role']);
 
-    //  function from model to comparing with data input
-    $user = account_exist($email);
+    // Check if the user exists in the database
+    $user = account_exists($email);
 
     if (count($user) > 0) {
-        // $_SESSION["user"] = $user;
-        //  comparing passwrod in database and password input
+        // Compare the password in the database and the input password
         if (password_verify($password, $user['password'])) {
 
             // Check if role is valid before setting session variables
-            if ($user['role_id'] == $role) { // Use == for loose comparison
-
-                // session on data input
+            if ($user['role_id'] == $role) {
+                // Get additional user information
+                $profile = profile_personals($email);
+                $_SESSION['logged_in'] = true;
+                // Store user information in session
                 $_SESSION['user'] = [
                     'id' => $user['id'],
                     'email' => $user['email'],
-                    'role_id' => $user['role_id']
+                    'role_id' => $user['role_id'],
                 ];
-
-                // condition of role
+                // Redirect based on role
                 if ($role === '1') {
-
                     header('Location: /admin');
                 } else if ($role === '2') {
-
                     header('Location: /employees_dasboad');
                 } else {
-                    //  alert  when it got error
                     $_SESSION['error'] = "Invalid role for this user";
+                    header('Location: /');
                 }
             } else {
-                //  when role is not match
+                $_SESSION['error'] = "Invalid role for this user";
                 header('Location: /');
             }
         } else {
-            // case password wrong
             $_SESSION['error'] = "Wrong password";
             header('Location: /');
         }
     } else {
-        //  exits infromation in form 
-        $_SESSION['error'] = "Please enter Information";
+        $_SESSION['error'] = "Please enter information";
         header('Location: /');
     }
 }
