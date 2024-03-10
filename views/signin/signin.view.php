@@ -35,15 +35,7 @@ endif;
                             <label class="form-label" for="password">Password</label>
                             <input type="password" id="password" class="form-control form-control-lg" name='password' />
                         </div>
-                        <!-- role -->
-                        <div class="form-outline mt-3">
-                            <select class="form-select form-select-lg mb-3" name='role'>
-                                <option selected disabled>Select Role</option>
-                                <option value="1">admin</option>
-                                <option value="2">user</option>
-                            </select>
-                        </div>
-
+                        <!-- for reset password -->
                         <div class="d-flex justify-content-end align-items-center mb-4">
                             <a href="/reset">Forget Password?</a>
                         </div>

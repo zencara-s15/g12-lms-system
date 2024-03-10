@@ -9,6 +9,7 @@ $page = "";
 $routes = [
     '/' =>  'controllers/signin/signin.controller.php',
     '/reset' => 'controllers/reset/reset_password.php',
+    '/reset' => 'controllers/reset/reset_password.php',
     '/admin' => 'controllers/admin/admin.controller.php',
 
     '/reviews' => 'controllers/reviews/review.controller.php',

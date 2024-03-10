@@ -1,17 +1,16 @@
 <?php
+session_start();
 require '../../database/database.php';
 require '../../models/admin.model.php';
 
-// session_start();
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
   $email = htmlspecialchars($_POST['email']);
   $password = htmlspecialchars($_POST['password']);
   $confirm_password = htmlspecialchars($_POST['confirmPassword']);
 
   if ($password === $confirm_password) {
-
     // Call the account_exist function to check if the email exists
-    $user = account_infor($email);
+    $user = account_exist($email);
 
     if (!empty($user)) {
       // Email exists, hash the password

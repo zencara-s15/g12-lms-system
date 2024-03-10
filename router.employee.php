@@ -1,10 +1,14 @@
 <?php
 session_start();
+session_start();
 $uri_employees = parse_url($_SERVER['REQUEST_URI'])['path'];
 $page_employees = "";
 
+
+// for employee dasboard
 $routes_employees = [
     '/' =>  'controllers/signin/signin.controller.php',
+    '/reset' => 'controllers/reset/reset_password.php',
     '/reset' => 'controllers/reset/reset_password.php',
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
 
@@ -17,6 +21,8 @@ $routes_employees = [
     '/em_leave_request_form' => 'controllers/employee_leave_request/emp_leave_request_form.controller.php',
 ];
 
+
+// condition
 if (array_key_exists($uri_employees, $routes_employees)) {
     $page_employees = $routes_employees[$uri_employees];
 } else {

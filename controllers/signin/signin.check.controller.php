@@ -1,7 +1,7 @@
 <?php
+
 // Start session
-session_start();
-// ob_start();
+// session_start();
 
 require '../../database/database.php';
 require '../../models/admin.model.php';
@@ -10,45 +10,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get data from input
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
-    $role = htmlspecialchars($_POST['role']);
 
-    // Check if the user exists in the database
-    $user = account_exists($email);
-
-    if (count($user) > 0) {
-        // Compare the password in the database and the input password
+    // Check if the user exists
+    $user = account_exist($email);
+    if (!empty($user)) {
+        // Compare password in the database and password input
         if (password_verify($password, $user['password'])) {
+            // Set the role based on the user's role_id
+            $role = $user['role_id'];
 
-            // Check if role is valid before setting session variables
-            if ($user['role_id'] == $role) {
-                // Get additional user information
-                $profile = profile_personals($email);
-                $_SESSION['logged_in'] = true;
-                // Store user information in session
-                $_SESSION['user'] = [
-                    'id' => $user['id'],
-                    'email' => $user['email'],
-                    'role_id' => $user['role_id'],
-                ];
-                // Redirect based on role
-                if ($role === '1') {
-                    header('Location: /admin');
-                } else if ($role === '2') {
-                    header('Location: /employees_dasboad');
-                } else {
-                    $_SESSION['error'] = "Invalid role for this user";
-                    header('Location: /');
-                }
-            } else {
-                $_SESSION['error'] = "Invalid role for this user";
-                header('Location: /');
+            // Set session variables
+            $_SESSION['user'] = [
+                'email' => $user['email'],
+                'role_id' => $role
+            ];
+
+            // Determine the appropriate redirect URL based on the role
+            if ($role === 1) {
+                header('Location: /admin');
+            } else if ($role === 2) {
+                header('Location: /employees_dasboad');
             }
         } else {
+            // Incorrect password
             $_SESSION['error'] = "Wrong password";
             header('Location: /');
         }
     } else {
-        $_SESSION['error'] = "Please enter information";
+        // User does not exist
+        $_SESSION['error'] = "User does not exist";
         header('Location: /');
     }
 }
