@@ -97,6 +97,10 @@
                                      <div class="col-6 align-items-center text-center">
                                          <a href="/employees_dasboad" class=" <?= checkActive("/employees_dasboad") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
                                      </div>
+                                     
+                                     <div class="col-6 align-items-center text-center">
+                                         <a href="/em_leave_request" class=" <?= checkActive("/em_leave_request") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Leave Request </span></a>
+                                     </div>
 
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/leave_history" class=" <?= checkActive("/leave_history") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-briefcase pr-0 pb-lg-2 font-23"></span><span class="">Leave History</span></a>
