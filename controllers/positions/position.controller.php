@@ -1,6 +1,6 @@
 <?php
 require 'database/database.php';
-require 'models/admin.model.php';
+require_once 'models/admin.model.php';
 
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
