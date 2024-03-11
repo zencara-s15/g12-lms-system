@@ -6,8 +6,8 @@
 				<div class="card-header">
 					<h4 class="card-title mb-0">Departments</h4>
 				</div>
-				<div class="card-body">
-					<p class="card-text">They can see and do everything – best not to have many with this role.</p>
+				<div class="card-body" style="height: 200px;">
+					<p class="card-text" style="height: 100px;">They can see and do everything – best not to have many with this role.</p>
 					<div class="mt-2">
 						<span class="avatar" data-toggle="tooltip" data-placement="top" title="Richard Wilson"><img src="assets/img/profiles/img-10.jpg" alt="Richard Wilson" class="img-fluid"></span>
 						<a href="/departments" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">View Departments</a>
@@ -21,8 +21,8 @@
 				<div class="card-header">
 					<h4 class="card-title mb-0">Leave Types</h4>
 				</div>
-				<div class="card-body">
-					<p class="card-text">Admin to help sort stuff, but have less access to confidential information like salaries.</p>
+				<div class="card-body" style="height: 200px;">
+					<p class="card-text" style="height: 100px;">Admin to help sort stuff, but have less access to confidential information like salaries.</p>
 					<div class="mt-2">
 						<span class="avatar" data-toggle="tooltip" data-placement="top" title="Richard Wilson"><img src="assets/img/profiles/img-10.jpg" alt="Richard Wilson" class="img-fluid"></span>
 						<a href="/leave_types" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">View Leave Types</a>
@@ -36,8 +36,8 @@
 				<div class="card-header">
 					<h4 class="card-title mb-0">Team Leader</h4>
 				</div>
-				<div class="card-body">
-					<p class="card-text">Team Members have the most limited access – most people should have this role.</p>
+				<div class="card-body" style="height: 200px;">
+					<p class="card-text" style="height: 100px;">Team Members have the most limited access – most people should have this role.</p>
 					<div class="mt-2">
 						<span class="avatar" data-toggle="tooltip" data-placement="top" title="Maria Cotton"><img src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" class="img-fluid"></span>
 						<a href="team-member.html" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">View Permissions</a>
@@ -51,8 +51,8 @@
 				<div class="card-header">
 					<h4 class="card-title mb-0">Rejected Leave</h4>
 				</div>
-				<div class="card-body">
-					<p class="card-text">Team Members have the most limited access – most people should have this role.</p>
+				<div class="card-body" style="height: 200px;">
+					<p class="card-text" style="height: 100px;">Team Members have the most limited access – most people should have this role.</p>
 					<div class="mt-2">
 						<span class="avatar" data-toggle="tooltip" data-placement="top" title="Maria Cotton"><img src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" class="img-fluid"></span>
 						<a href="/rejected_leaves" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">View Rejected Leave</a>

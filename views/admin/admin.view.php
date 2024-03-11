@@ -8,7 +8,7 @@
  							<i class="fa fa-users" aria-hidden="true"></i>
  						</div>
  						<div class="card-right">
- 							<h4 class="card-title">Employees</h4>
+ 							<h4 class="card-title"><?= "Employee" ?></h4>
  							<p class="card-text"><?=count_users() ?></p>
  						</div>
  					</div>
@@ -52,7 +52,7 @@
  										<h6 class="mb-0">You are working from home today</h6>
  									</div>
  									<div class="dash-card-avatars">
- 										<div class="e-avatar"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" alt="Maria Cotton"></div>
+ 										<div class="e-avatar"><img class="img-fluid" src="assets/images/profiles/img-2.jpg" "></div>
  									</div>
  								</div>
  							</a>

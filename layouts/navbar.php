@@ -5,7 +5,7 @@
      <div class="user-info align-center bg-theme text-center">
          <a href="javascript:void(0)" class="d-block menu-style text-white">
              <div class="user-avatar d-inline-block mr-3">
-                 <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" width="55" />
+                 <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" style="width: 100px; height: 100px;" />
              </div>
          </a>
      </div>
@@ -56,7 +56,7 @@
          </a>
          <a class="p-2" href="/reviews">
              <span class="media align-items-center">
-                 <span class="lnr lnr-star mr-3"></span>
+                 <span class="lnr lnr-hourglass mr-3"></span>
                  <span class="media-body text-truncate text-left">
                      <span class="text-truncate text-left">Reviews</span>
                  </span>
@@ -118,13 +118,13 @@
                  <aside class="sidebar sidebar-user">
                      <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow">
                          <div class="user-info card-body">
-                             <div class="user-avatar mb-4">
-                                 <img src="assets/images/profiles/img-2.jpg" alt="User Avatar" class="img-fluid rounded-circle" width="100">
-                             </div>
-                             <div class="user-details">
-                                 <h4><b>Welcome Admin</b></h4>
-                                 <p>Sun, 29 Nov 2019</p>
-                             </div>
+                         <div class="user-avatar mb-4">
+                         <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                            </div>
+                            <div class="user-details">
+                                <h4><b>Welcome <?= $first_name ?></b></h4>
+                                <p>Sun, 29 Nov 2019</p>
+                            </div>
                          </div>
                      </div>
                      <!-- Sidebar -->
@@ -147,20 +147,15 @@
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/employees" class=" <?= checkActive("/employees") ?> text-dark  p-4 second-slider-btn ctm-border-right ctm-border-top"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                      </div>
+                                     
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/departments" class=" <?= checkActive("/departments") ?> text-dark p-4 ctm-border-right"><span class="lnr lnr-calendar-full pr-0 pb-lg-2 font-23"></span><span class="">Departments</span></a>
-                                     </div>
-                                     <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/leave_types" class=" <?= checkActive("/leave_types") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-briefcase pr-0 pb-lg-2 font-23"></span><span class="">LeaveType</span></a>
-                                     </div>
-                                     <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/leave_requests" class=" <?= checkActive("/leave_requests") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-star pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
+                                         <a href="/leave_requests" class=" <?= checkActive("/leave_requests") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-hourglass pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/reports" class="<?= checkActive("/reports") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-rocket pr-0 pb-lg-2 font-23"></span><span class="">Reports</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
-                                         <a href="/manages" class="<?= checkActive("/manages") ?> text-dark p-4 ctm-border-right"><span class="lnr lnr-sync pr-0 pb-lg-2 font-23"></span><span class="">Manage</span></a>
+                                         <a href="/manages" class="<?= checkActive("/manages") ?> text-dark p-4 third-slider-btn ctm-border-left ctm-border-right"><span class="lnr lnr-sync pr-0 pb-lg-2 font-23"></span><span class="">Manage</span></a>
                                      </div>
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/profiles" class="<?= checkActive("/profiles") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
