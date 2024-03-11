@@ -59,6 +59,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <div id="notFoundRow" class="text-center text-secondary d-none" style="height:40vh; display: flex; align-items: center; justify-content: center;">No employees found!</div>
         </div>
     </div>
 </div>
@@ -106,6 +107,7 @@
     let positionSelect = document.getElementById('position');
     let tbody = document.querySelector('tbody');
     let tr = tbody.querySelectorAll('tr');
+    let found = true;
 
     searchEmployee.addEventListener('input', function() {
         const searchText = searchEmployee.value.toLowerCase();
@@ -113,8 +115,10 @@
             const tdContent = row.querySelector('td').textContent.toLowerCase(); // Get the text content of the first td in the row
             if (tdContent.includes(searchText)) {
                 row.style.display = ''; // Show the row
+                found =false
             } else {
                 row.style.display = 'none'; // Hide the row
+                document.getElementById('notFoundRow').classList.toggle('d-none', found);
             }
         });
     });
