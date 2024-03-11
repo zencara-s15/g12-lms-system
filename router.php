@@ -31,6 +31,13 @@ $routes = [
 
     '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', // for leave_request
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
+
+   
+    '/create_positions'=> 'controllers/positions/create_position.controller.php',
+    '/positions'=> 'controllers/positions/position.controller.php',
+    
+
+    '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
     '/update_profile' => 'controllers/profiles/update.profile.controller.php'
 
 

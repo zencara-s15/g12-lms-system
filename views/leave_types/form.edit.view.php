@@ -7,7 +7,7 @@
 				</div>
 				<div class="card-body">
 					<form action="../../controllers/leave_types/form_update.controller.php" method="post" name="add_form">
-						<input type="hidden" value="<?= $data['id'] ?>" name="id">
+						<input type="hidden" value="<?= $data['id']?>" name="id">
 						<div class="form-group">
 							<label for="exampleInputPassword1">Leave Type</label>
 							<input type="text" class="form-control" id="input" placeholder="Enter Leave" value="<?= $data['leave_type'] ?>" name="leave_type" require>

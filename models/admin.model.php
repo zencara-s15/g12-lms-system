@@ -263,6 +263,44 @@ function get_positions(): array
     return $statement->fetchAll();
 }
 
+// get positions from department
+function get_postion_from_department($id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT
+    positions.id,
+    positions.position,
+    departments.department
+    FROM positions 
+    INNER JOIN departments ON departments.id = positions.department_id
+    WHERE departments.id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->fetchAll();
+    }
+
+
+// create position
+function create_position(string $position, int $department_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("INSERT INTO positions (position, department_id) VALUES (:position, :department_id)");
+    $statement->execute([
+        ':position' => $position,
+        ':department_id' => $department_id,
+
+    ]);
+    return  $statement->rowCount() > 0;
+}
+
+// get position where id
+function get_position(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM positions where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->fetch();
+}
+
 // get all roles
 function get_roles(): array
 {
@@ -481,7 +519,7 @@ function update_department_name(string $department_name, int $id): bool
 }
 
 // edit department
-function edit_departments(int $id): array
+function get_department(int $id): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT * FROM departments WHERE id= :id");
