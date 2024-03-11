@@ -125,17 +125,24 @@
             document.getElementById('notFoundRow').classList.toggle('d-none', found);
         });
     });
-    //filter the employee by position---------------------------------------------------------------------------------
+    // Filter the employee by position
     positionSelect.addEventListener('change', function() {
         const selectedPosition = positionSelect.value;
 
+        let found = false; // Assume no employee is found initially
+
         tr.forEach(row => {
             const positionCell = row.querySelectorAll('td')[2]; // Assuming the position data is in the third column
+
             if (selectedPosition === "All" || positionCell.textContent.trim() === selectedPosition) {
                 row.style.display = ''; // Show the row
+                found = true; // Set found to true if at least one employee is found
             } else {
                 row.style.display = 'none'; // Hide the row
             }
         });
+
+        // Show or hide the 'notFoundRow' based on the 'found' variable
+        document.getElementById('notFoundRow').classList.toggle('d-none', found);
     });
-</script>
+</script> 
