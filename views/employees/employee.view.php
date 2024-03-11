@@ -103,23 +103,25 @@
     });
 
     //search employee by name---------------------------------------------------------------------------------------------------
-    let searchEmployee = document.getElementById('search_employee');
+   //search employee by name---------------------------------------------------------------------------------------------------
+   let searchEmployee = document.getElementById('search_employee');
     let positionSelect = document.getElementById('position');
     let tbody = document.querySelector('tbody');
     let tr = tbody.querySelectorAll('tr');
-    let found = true;
 
     searchEmployee.addEventListener('input', function() {
         const searchText = searchEmployee.value.toLowerCase();
+        let found =false;
         tr.forEach(row => {
             const tdContent = row.querySelector('td').textContent.toLowerCase(); // Get the text content of the first td in the row
             if (tdContent.includes(searchText)) {
                 row.style.display = ''; // Show the row
-                found =false
+                found = true;
             } else {
                 row.style.display = 'none'; // Hide the row
-                document.getElementById('notFoundRow').classList.toggle('d-none', found);
             }
+            // Toggle visibility of "Not found" message
+            document.getElementById('notFoundRow').classList.toggle('d-none', found);
         });
     });
     //filter the employee by position---------------------------------------------------------------------------------
