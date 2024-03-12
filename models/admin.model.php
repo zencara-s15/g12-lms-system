@@ -301,6 +301,42 @@ function get_position(int $id): array
     return $statement->fetch();
 }
 
+// delete position
+
+function delete_position(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("DELETE from positions where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+// update positions
+function update_position(string $position_name, int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE positions set position = :position WHERE id = :id"); 
+
+    $statement->execute([
+        ':position' => $position_name,
+        ':id' => $id,
+    ]);
+    return $statement->fetch();
+}
+
+// edit position
+function edit_position(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM positions WHERE id= :id");
+    $statement->execute(
+        [
+            ':id' => $id,
+        ]
+    );
+    return $statement->fetch();
+}
+
 // get all roles
 function get_roles(): array
 {

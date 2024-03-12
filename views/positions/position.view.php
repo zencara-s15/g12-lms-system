@@ -37,8 +37,8 @@ if (!isset($id)) {
                                     <td><?= $position['position'] ?></td>
                                     <td>
                                         <div class="float-right">
-                                            <a href="" class="btn btn-success text-white" style="font-size: 13px" type="button">Update</a>
-                                            <a href="" class="btn btn-danger border border-0 text-white" style="font-size: 13px" type="button">Delete</a>
+                                            <a href="/edit_positions?id=<?= $position['id'] ?>" class="btn  btn-success text-white" style="font-size:13px" type="button">Update</a>
+                                            <a href="../../controllers/positions/delet_position.controller.php?id=<?= $position['id'] ?>" onclick="return confirm('Are you sure you want to delete Position <?= $position['position'] ?> ?')" class="btn btn-danger border border-0 text-white" style="font-size:13px" type="button">delete</a>
                                         </div>
                                     </td>
                                 </tr>
