@@ -32,6 +32,12 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="d-inline-block card-title mb-0">Department Name</h4>
                 </div>
+                <!-- Search box -->
+                <div class="container">
+                    <div class=" mb-2">
+                        <input type="text" name="search_department" id="search_department" placeholder="Search department..." class="form-control border border-dark  " />
+                    </div>
+                </div>
                 <table class="table table-hover ">
                     <thead>
                         <tr class="aline">
@@ -56,19 +62,40 @@
                                             <a href="../../controllers/departments/delete.department.controller.php?id=<?= $data['id'] ?>" onclick="return confirm('Are you sure you want to delete Department <?= $data['department'] ?> ?')" class="btn btn-theme ctm-border-radius text-white" style="height:40px" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></a>
                                         </span>
                                         <span data-toggle="modal" data-target="#delete">
-											<a href="/positions?id=<?=$data['id']?>" data-placement="bottom" class="btn btn-theme ctm-border-radius text-white" style="height:40px" title="Delete"><i class="fa fa-eye"></i></a>
-										</span>
+                                            <a href="/positions?id=<?= $data['id'] ?>" data-placement="bottom" class="btn btn-theme ctm-border-radius text-white" style="height:40px" title="Delete"><i class="fa fa-eye"></i></a>
+                                        </span>
                                     </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <div id="notFoundRow" class="text-center text-secondary d-none" style="height:50vh; display: flex; align-items: center; justify-content: center;">No department found!</div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+    //search department-----------------------------------------------------------------------------
+    let search_department = document.getElementById('search_department');
+    let tbody = document.querySelector('tbody');
+    let tr = tbody.querySelectorAll('tr');
+    search_department.addEventListener('input', function() {
+        const searchText = search_department.value.toLowerCase();
+        let found = false;
 
+        tr.forEach(row => {
+            const tdContent = row.querySelector('td').textContent.toLowerCase();
+            if (tdContent.includes(searchText)) {
+                row.style.display = ''; // Show the row if found
+                found = true;
+            } else {
+                row.style.display = 'none'; // Hide the row if not found
+            }
+        });
+
+        // Toggle visibility of "Not found" message based on whether any row is found
+        document.getElementById('notFoundRow').classList.toggle('d-none', found);
+    });
 </script>

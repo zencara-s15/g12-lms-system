@@ -1,10 +1,9 @@
 <?php
 // Check if the department is selected
 if (!isset($id)) {
-   
 } else {
 
-    ?>
+?>
     <div class="col-xl-9 col-lg-8 col-md-12 position-relative">
         <div class="card shadow mb-4">
             <div class="card-header py-3  flex-row align-items-center justify-content-between">
@@ -33,13 +32,13 @@ if (!isset($id)) {
                             // echo "<tr><td colspan='2'>No positions found for this department.</td></tr>";
                         } else {
                             foreach ($positions as $position) :
-                                ?>
+                        ?>
                                 <tr>
                                     <td><?= $position['position'] ?></td>
                                     <td>
                                         <div class="float-right">
-                                            <a href="" class="btn btn-success text-white" style="font-size: 13px" type="button">Update</a>
-                                            <a href="" class="btn btn-danger border border-0 text-white" style="font-size: 13px" type="button">Delete</a>
+                                            <a href="/edit_positions?id=<?= $position['id'] ?>" class="btn  btn-success text-white" style="font-size:13px" type="button">Update</a>
+                                            <a href="../../controllers/positions/delet_position.controller.php?id=<?= $position['id'] ?>" onclick="return confirm('Are you sure you want to delete Position <?= $position['position'] ?> ?')" class="btn btn-danger border border-0 text-white" style="font-size:13px" type="button">delete</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -49,9 +48,33 @@ if (!isset($id)) {
                         ?>
                     </tbody>
                 </table>
+                <div id="notFoundRow" class="text-center text-secondary d-none" style="height:40vh; display: flex; align-items: center; justify-content: center;">No positions found!</div>
             </div>
         </div>
     </div>
 <?php
 }
 ?>
+<script>
+    //search position---------------------------------------------------------------------------------------------------
+    let search_position = document.getElementById('search_position');
+    let positionSelect = document.getElementById('position');
+    let tbody = document.querySelector('tbody');
+    let tr = tbody.querySelectorAll('tr');
+
+    search_position.addEventListener('input', function() {
+        const searchText = search_position.value.toLowerCase();
+        let found = false;
+        tr.forEach(row => {
+            const tdContent = row.querySelector('td').textContent.toLowerCase(); // Get the text content of the first td in the row
+            if (tdContent.includes(searchText)) {
+                row.style.display = ''; // Show the row
+                found = true;
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
+        // Toggle visibility of "Not found" message
+        document.getElementById('notFoundRow').classList.toggle('d-none', found);
+    });
+</script>

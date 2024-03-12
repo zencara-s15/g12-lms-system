@@ -35,6 +35,7 @@ $routes = [
    
     '/create_positions'=> 'controllers/positions/create_position.controller.php',
     '/positions'=> 'controllers/positions/position.controller.php',
+    '/edit_positions'=> 'controllers/positions/edit_position.controller.php',
     
 
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
