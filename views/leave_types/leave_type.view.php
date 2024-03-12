@@ -35,6 +35,12 @@
 				<div class="card-header d-flex justify-content-between align-items-center">
 					<h4 class="d-inline-block card-title mb-0">Leave Types Lists</h4>
 				</div>
+				<!-- search box -->
+				<div class="container">
+					<div class=" mb-2">
+						<input type="text" name="search_leave" id="search_leave" placeholder="Search leave types..." class="form-control border border-dark  " />
+					</div>
+				</div>
 				<table class="table table-hover">
 					<thead>
 						<tr class="aline">
@@ -62,6 +68,7 @@
 						<?php endforeach; ?>
 					</tbody>
 				</table>
+				<div id="notFoundRow" class="text-center text-secondary d-none" style="height:50vh; display: flex; align-items: center; justify-content: center;">No leave type found!</div>
 			</div>
 		</div>
 	</div>
@@ -120,5 +127,26 @@
 		let leave_type_id = this.dataset.leave_type_id;
 		// Redirect to the delete URL
 		window.location.href = "/controllers/leave_types/form_delete.controller.php?id=" + leave_type_id;
+	});
+//search leave type---------------------------------------------------------------------------------------------------
+	let search_leave = document.getElementById('search_leave');
+	let tbody = document.querySelector('tbody');
+	let tr = tbody.querySelectorAll('tr');
+	search_leave.addEventListener('input', function() {
+		const searchText = search_leave.value.toLowerCase();
+		let found = false;
+
+		tr.forEach(row => {
+			const tdContent = row.querySelector('td').textContent.toLowerCase();
+			if (tdContent.includes(searchText)) {
+				row.style.display = ''; // Show the row if found
+				found = true;
+			} else {
+				row.style.display = 'none'; // Hide the row if not found
+			}
+		});
+
+		// Toggle visibility of "Not found" message based on whether any row is found
+		document.getElementById('notFoundRow').classList.toggle('d-none', found);
 	});
 </script>
