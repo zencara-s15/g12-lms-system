@@ -95,7 +95,7 @@
                  </span>
              </span>
          </a>
-         <a class="p-2" href="login.html">
+         <a class="p-2" href="controllers/logout/logout_controller.php">
              <span class="media align-items-center">
                  <span class="lnr lnr-power-switch mr-3"></span>
                  <span class="media-body text-truncate text-left">
