@@ -2,16 +2,10 @@
 
 <?php
 
-session_start();
-
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $page = "";
 $routes = [
-    '/' =>  'controllers/signin/signin.controller.php',
-    '/reset' => 'controllers/reset/reset_password.php',
-    '/reset' => 'controllers/reset/reset_password.php',
     '/admin' => 'controllers/admin/admin.controller.php',
-
     '/reviews' => 'controllers/reviews/review.controller.php',
     '/reports' => 'controllers/reports/report.controller.php',
     '/manages' => 'controllers/manages/manage.controller.php',
@@ -26,17 +20,17 @@ $routes = [
 
     '/leave_types' => 'controllers/leave_types/leave_type.controller.php',
     '/edit_leave_type' => 'controllers/leave_types/from_edits.controller.php',
-    
+
     '/rejected_leaves' => 'controllers/leave_requests/rejected_leaves.controller.php', // for leave_request that have rejected leaves
 
     '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', // for leave_request
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
 
-   
-    '/create_positions'=> 'controllers/positions/create_position.controller.php',
-    '/positions'=> 'controllers/positions/position.controller.php',
-    '/edit_positions'=> 'controllers/positions/edit_position.controller.php',
-    
+
+    '/create_positions' => 'controllers/positions/create_position.controller.php',
+    '/positions' => 'controllers/positions/position.controller.php',
+    '/edit_positions' => 'controllers/positions/edit_position.controller.php',
+
 
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
     '/update_profile' => 'controllers/profiles/update.profile.controller.php'
@@ -51,15 +45,14 @@ if (array_key_exists($uri, $routes)) {
     $page = 'views/errors/404.php';
 }
 
-if ($page === 'controllers/signin/signin.controller.php') {
-    require $page;
-} else if ($page === 'controllers/profiles/profile.controller.php') {
-    require $page;
-} else if ($page === 'controllers/reset/reset_password.php') {
+if ($page === 'controllers/profiles/profile.controller.php') {
     require $page;
 } else if ($page === 'controllers/profiles/update.profile.controller.php') {
     require $page;
-} else {
+}  else if($page === 'views/errors/404.php'){
+    // http_response_code(404);
+    require ('views/errors/404.php');
+}else {
     require "layouts/header.php";
     require "layouts/navbar.php";
     require $page;

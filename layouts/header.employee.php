@@ -32,7 +32,7 @@
 
 <body>
     <!-- Loader -->
-    <div id="loader-wrapper">
+    <!-- <div id="loader-wrapper">
         <div class="loader">
             <div class="dot"></div>
             <div class="dot"></div>
@@ -40,7 +40,7 @@
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Inner wrapper -->
     <div class="inner-wrapper">
@@ -134,7 +134,7 @@
                                                         </span>
                                                     </span>
                                                 </a>
-                                                <a class="dropdown-item p-2" href="/">
+                                                <a class="dropdown-item p-2" href="controllers/logout/logout_controller.php">
                                                     <span class="media align-items-center">
                                                         <span class="lnr lnr-power-switch mr-3"></span>
                                                         <span class="media-body text-truncate">
