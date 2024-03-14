@@ -14,10 +14,7 @@ $routes_employees = [
     '/reports_employee' => 'controllers/reports/report.controller.php',
     '/profiles_employee' => 'controllers/profiles/profile.controller.php',
 
-    '/em_leave_request' => 'controllers/employee_leave_request/emp_leave_request.controller.php',
-    '/em_leave_request_view' => 'views/employee_leave_request/employee_leave_request.view.php',
-
-    '/em_leave_request_form' => 'controllers/employee_leave_request/emp_leave_request_form.controller.php',
+    '/em_leave_request' => 'controllers/employee_leave_request/em_leave_request_form.controller.php',
 ];
 
 

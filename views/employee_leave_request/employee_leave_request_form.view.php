@@ -50,6 +50,23 @@
                         </div>
 
                         <div class="row">
+
+                            <!-- start date  -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>From</label>
+                                    <input id="start_date" type="date" class="form-control" name="start_date" min="<?php date_default_timezone_set('Asia/Bangkok'); // start leave can't select to the past
+                                                                                                                    $month = date('m');
+                                                                                                                    $day = date('d');
+                                                                                                                    $year = date('Y');
+
+                                                                                                                    $today = $year . '-' . $month . '-' . $day;
+                                                                                                                    echo $today
+                                                                                                                    ?>" onchange="compare_date()" required>
+                                    <div class="invalid-feedback">Please enter a start date.</div>
+                                </div>
+                            </div>
+
                             <!--leave type -->
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -59,17 +76,42 @@
                                         <?php
                                         $leave_types = get_leave_types();
                                         foreach ($leave_types as $key => $leave_type) : ?>
-                                            <option value="<?=$leave_type['id']?>"><?=$leave_type['leave_type']?></option>
+                                            <option value="<?= $leave_type['id'] ?>"><?= $leave_type['leave_type'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">Please select a leave type.</div>
                                 </div>
                             </div>
-                            <!-- leave amount left  -->
+                        </div>
+
+                        <div class="row">
+                            <!-- end date  -->
                             <div class="col-sm-6 leave-col">
                                 <div class="form-group">
+                                    <label>Until</label>
+                                    <input id="end_date" type="date" class="form-control" name="end_date" min="<?php date_default_timezone_set('Asia/Bangkok'); // start leave can't select to the past
+                                                                                                                $month = date('m');
+                                                                                                                $day = date('d');
+                                                                                                                $year = date('Y');
+
+                                                                                                                $today = $year . '-' . $month . '-' . $day;
+                                                                                                                echo $today
+                                                                                                                ?>" onchange="compare_date()" required>
+                                    <div class="invalid-feedback">Please enter an end date.</div>
+                                </div>
+                            </div>
+
+                            <!-- duration -->
+                            <div class="col-sm-3 leave-col">
+                                <label>Duration</label>
+                                <input id="duration" type="number" class="form-control" name="duration" disabled " onchange="calculate_date()">
+                            </div>
+
+                            <!-- leave amount left  -->
+                            <div class="col-sm-3 leave-col">
+                                <div class="form-group">
                                     <label>Remaining Leaves</label>
-                                    <input type="text" class="form-control <?php echo ($user_info['amount_leave'] <= 0) ? 'border-danger' . ' ' .'bg-light' . ' ' . 'text-danger' : ''; ?>" disabled value="<?php echo $user_info['amount_leave']; ?>">
+                                    <input type="text" class="form-control <?php echo ($user_info['amount_leave'] <= 0) ? 'border-danger' . ' ' . 'bg-light' . ' ' . 'text-danger' : ''; ?>" disabled value="<?php echo $user_info['amount_leave']; ?>">
                                     <div class="text-danger"><?php echo ($user_info['amount_leave'] < 0) ? 'You are out of amount' : ''; ?></div>
                                     <div class="text-danger"><?php echo ($user_info['amount_leave'] == 0) ? 'No Amount Left' : ''; ?></div>
                                 </div>
@@ -77,41 +119,7 @@
                         </div>
 
                         <div class="row">
-                            <!-- start date  -->
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>From</label>
-                                    <input id="date" type="date" class="form-control" name="start_date" min="<?php date_default_timezone_set('Asia/Bangkok'); // start leave can't select to the past
-                                                                                                                $month = date('m');
-                                                                                                                $day = date('d');
-                                                                                                                $year = date('Y');
-
-                                                                                                                $today = $year . '-' . $month . '-' . $day;
-                                                                                                                echo $today
-                                                                                                                ?>" required>
-                                    <div class="invalid-feedback">Please enter a start date.</div>
-                                </div>
-                            </div>
-                            
-                            <!-- end date  -->
-                            <div class="col-sm-6 leave-col">
-                                <div class="form-group">
-                                    <label>Until</label>
-                                    <input type="date" class="form-control" name="end_date" min="<?php date_default_timezone_set('Asia/Bangkok'); // start leave can't select to the past
-                                                                                                    $month = date('m');
-                                                                                                    $day = date('d');
-                                                                                                    $year = date('Y');
-
-                                                                                                    $today = $year . '-' . $month . '-' . $day;
-                                                                                                    echo $today
-                                                                                                    ?>" required>
-                                    <div class="invalid-feedback">Please enter an end date.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- description  -->
+                            <!-- description -->
                             <div class="col-sm-12">
                                 <div class="form-group mb-0">
                                     <label>Reason</label>
@@ -137,4 +145,30 @@
         let form = document.querySelector('#leaveForm');
         form.classList.add('was-validated');
     }
+
+    function compare_date() {
+        let start_date = document.getElementById('start_date').value;
+        let end_date = document.getElementById('end_date').value;
+
+        if (start_date > end_date) {
+            alert('End date should be greater than start date');
+
+            document.getElementById('end_date').value = '';
+        }
+    }
+
+    function calculate_date() {
+        let start_date = new Date(document.getElementById('start_date').value);
+        let end_date = new Date(document.getElementById('end_date').value);
+        
+        // Calculate the difference in milliseconds between the two dates
+        let differenceInTime = end_date.getTime() - start_date.getTime();
+        let duration = Math.floor(differenceInTime / (1000 * 60 * 60 * 24)) + 1;
+
+        // Update the duration input field with the calculated value
+        document.getElementById('duration').value = duration;
+    }
+    document.getElementById('start_date').addEventListener('change', calculate_date);
+    document.getElementById('end_date').addEventListener('change', calculate_date);
 </script>
+
