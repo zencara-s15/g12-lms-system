@@ -162,8 +162,7 @@
         let end_date = new Date(document.getElementById('end_date').value);
         
         // Calculate the difference in milliseconds between the two dates
-        let differenceInTime = end_date.getTime() - start_date.getTime();
-        let duration = Math.floor(differenceInTime / (1000 * 60 * 60 * 24)) + 1;
+        let duration = Math.floor((end_date - start_date) / (1000 * 60 * 60 * 24));
 
         // Update the duration input field with the calculated value
         document.getElementById('duration').value = duration;
