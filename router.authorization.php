@@ -16,7 +16,6 @@ if (array_key_exists($uri_authorization, $routes_authorization)) {
     require('views/errors/404.php');
 }
 
-
 if ($page_authorization === "controllers/signin/signin.controller.php") {
     require $page_authorization;
 } else if ($page_authorization === "controllers/reset/reset_password.php") {

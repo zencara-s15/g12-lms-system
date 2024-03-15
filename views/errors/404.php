@@ -6,7 +6,12 @@
       <p class="lead">
         The page you're looking for doesn't exist.
       </p>
-      <a href="controllers/logout/logout_controller.php">&larr; Back to Dashboard</a>
     </div>
   </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "controllers/logout/logout_controller.php";
+    }, 2000); 
+  </script>
 </body>

@@ -142,6 +142,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     setTimeout(() => {
-        window.location.href = '/em_leave_request_view';
+        window.location.href = '/em_leave_request';
     }, 2000);
 </script>
