@@ -51,11 +51,7 @@
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-lg-3 col-md-3 col-sm-3 col-6">
-              <div class="logo my-3 my-sm-0">
-                <a href="/admin">
-                  <h3 class="text-white">LOGO</h3>
-                </a>
-              </div>
+              <img src="../layouts/img/it for LMS.png">
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
               <div class="user-block d-none d-lg-block">
