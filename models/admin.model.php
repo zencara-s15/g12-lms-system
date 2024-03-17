@@ -22,6 +22,7 @@ function account_exist(string $email): array
 
 
 
+
 //  reset password
 function reset_password(string $email, string $password): bool
 {
@@ -565,4 +566,31 @@ function get_department(int $id): array
         ]
     );
     return $statement->fetch();
+}
+
+
+// ------------------------Token Hash------------------------
+
+function update_reset_token($gmail,$code){
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET verify_codes = :code WHERE email = :gmail");
+    $statement->execute([
+        ':gmail' => $gmail,
+        ':code' => $code,
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+function check_verify_code ($code): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE verify_codes = :code");
+    $statement->execute([
+        ':code' => $code
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } else {
+        return [];
+    }
 }
