@@ -36,7 +36,7 @@
 							<td style="vertical-align: middle;"><?= $data['end_date'] ?></td>
 							<td style="vertical-align: middle;"><?= date_diff(new DateTime($data['start_date']), new DateTime($data['end_date']))->format('%a') ?></td>
 							<td style="vertical-align: middle;">
-								<a href="?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-success"><span class=""></span>Details</a>
+								<a href="/report_detail?id=<?= $data['id'] ?>" class="btn btn-sm btn-outline-success"><span class=""></span>Details</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>
