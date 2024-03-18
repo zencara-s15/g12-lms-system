@@ -2,11 +2,11 @@
  <div class="offcanvas-menu" id="offcanvas_menu">
      <span class="lnr lnr-cross float-left display-6 position-absolute t-1 l-1 text-white" id="close_navSidebar"></span>
      <div class="user-info align-center bg-theme text-center">
-        <a href="javascript:void(0)" class="d-block menu-style text-white">
-            <div class="user-avatar d-inline-block mr-3">
+         <a href="javascript:void(0)" class="d-block menu-style text-white">
+             <div class="user-avatar d-inline-block mr-3">
                  <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" width="55" />
-            </div>
-        </a>
+             </div>
+         </a>
      </div>
      <div class="user-notification-block align-center">
          <div class="top-nav-search">
@@ -76,7 +76,7 @@
                              </div>
                              <div class="user-details">
                                  <h4><b>Welcome <?= $first_name ?></b></h4>
-                                 <p>Sun, 29 Nov 2019</p>
+                                 <p>Employee Dashboard</p>
                              </div>
                          </div>
                      </div>
@@ -97,7 +97,7 @@
                                      <div class="col-6 align-items-center text-center">
                                          <a href="/employees_dasboad" class=" <?= checkActive("/employees_dasboad") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
                                      </div>
-                                     
+
                                      <div class="col-6 align-items-center text-center">
                                          <a href="/em_leave_request" class=" <?= checkActive("/em_leave_request") ?> text-dark p-4 second-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-file-add pr-0 pb-lg-2 font-23"></span><span class="">Apply</span></a>
                                      </div>

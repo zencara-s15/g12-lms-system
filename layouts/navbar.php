@@ -118,13 +118,13 @@
                  <aside class="sidebar sidebar-user">
                      <div class="user-card card shadow-sm bg-white text-center ctm-border-radius grow">
                          <div class="user-info card-body">
-                         <div class="user-avatar mb-4">
-                         <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
-                            </div>
-                            <div class="user-details">
-                                <h4><b>Welcome <?= $first_name ?></b></h4>
-                                <p>Sun, 29 Nov 2019</p>
-                            </div>
+                             <div class="user-avatar mb-4">
+                                 <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                             </div>
+                             <div class="user-details">
+                                 <h4><b>Welcome <?= $first_name ?></b></h4>
+                                 <p>Admin Dashboard</p>
+                             </div>
                          </div>
                      </div>
                      <!-- Sidebar -->
@@ -147,7 +147,7 @@
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/employees" class=" <?= checkActive("/employees") ?> text-dark  p-4 second-slider-btn ctm-border-right ctm-border-top"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                      </div>
-                                     
+
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/leave_requests" class=" <?= checkActive("/leave_requests") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-hourglass pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
                                      </div>
@@ -160,7 +160,7 @@
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/profiles" class="<?= checkActive("/profiles") ?> text-dark p-4 last-slider-btn ctm-border-right"><span class="lnr lnr-user pr-0 pb-lg-2 font-23"></span><span class="">Profile</span></a>
                                      </div>
-                                    
+
                                  </div>
                              </div>
                          </div>
