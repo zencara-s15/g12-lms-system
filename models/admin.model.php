@@ -277,7 +277,7 @@ function get_postion_from_department($id): array
     WHERE departments.id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetchAll();
-    }
+}
 
 
 // create position
@@ -316,7 +316,7 @@ function delete_position(int $id): bool
 function update_position(string $position_name, int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare("UPDATE positions set position = :position WHERE id = :id"); 
+    $statement = $connection->prepare("UPDATE positions set position = :position WHERE id = :id");
 
     $statement->execute([
         ':position' => $position_name,
@@ -363,7 +363,8 @@ function get_leave_requests(): array
     leave_requests.status,
     leave_requests.description,
     leave_requests.start_date,
-    leave_requests.end_date
+    leave_requests.end_date,
+    users.email
     FROM leave_requests
     INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
     INNER JOIN users ON users.id = leave_requests.user_id
@@ -373,6 +374,7 @@ function get_leave_requests(): array
     $statement->execute();
     return $statement->fetchAll();
 }
+
 
 //count request leave
 function count_pending_requests(): int

@@ -104,7 +104,7 @@
                             <!-- duration -->
                             <div class="col-sm-3 leave-col">
                                 <label>Duration</label>
-                                <input id="duration" type="number" class="form-control" name="duration" disabled " onchange="calculate_date()">
+                                <input id="duration" type="number" class="form-control" name="duration" disabled onchange="calculate_date()">
                             </div>
 
                             <!-- leave amount left  -->
@@ -160,7 +160,7 @@
     function calculate_date() {
         let start_date = new Date(document.getElementById('start_date').value);
         let end_date = new Date(document.getElementById('end_date').value);
-        
+
         // Calculate the difference in milliseconds between the two dates
         let duration = Math.floor((end_date - start_date) / (1000 * 60 * 60 * 24));
 
@@ -170,4 +170,3 @@
     document.getElementById('start_date').addEventListener('change', calculate_date);
     document.getElementById('end_date').addEventListener('change', calculate_date);
 </script>
-
