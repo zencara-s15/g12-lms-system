@@ -1,11 +1,17 @@
 <div class="col-xl-9 col-lg-8  col-md-12">
 	<div class="card shadow mb-4">
+		<div class="container" style="display: flex; justify-content: flex-end;">
+
+		</div>
 		<div class="card-header py-3  flex-row align-items-center justify-content-between">
 			<h3 class="m-0 font-weight-bold text-primary">Approved Leaves</h3>
 			<p class="mt-1">Total Aprroved : <strong class="text-danger "><?= count_approved_leave() ?></strong></p>
+			<div class="container" style="display: flex; justify-content: flex-end;">
+				<a href="/print_report" class="btn btn-danger border border-0 text-white" style="font-size:13px" type="button">Print</a>
+			</div>
 		</div>
-
-		<div class="table-responsive">
+		
+		<div class="container">
 			<table class="table table-hover">
 				<thead class="table-dark">
 					<tr>

@@ -8,6 +8,8 @@ $routes = [
     '/admin' => 'controllers/admin/admin.controller.php',
     '/reviews' => 'controllers/reviews/review.controller.php',
     '/reports' => 'controllers/reports/report.controller.php',
+    '/print_report' => 'controllers/reports/print_report.controller.php',
+
     '/manages' => 'controllers/manages/manage.controller.php',
     '/profiles' => 'controllers/profiles/profile.controller.php',
 
@@ -34,6 +36,7 @@ $routes = [
 
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
     '/update_profile' => 'controllers/profiles/update.profile.controller.php'
+
 
 
 ];
