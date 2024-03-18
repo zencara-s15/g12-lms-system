@@ -1,8 +1,105 @@
 <?php
+
+//  -------------------form login and reset password---------------------------------------------
+
+
+//  ______________________________for login and reset password_________________________________________________________
+
+// to check accound by email
+function account_exist(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT users.email, users.password, users.role_id FROM users INNER JOIN roles ON users.role_id = roles.id WHERE users.email = :email");
+    $statement->execute([
+        ':email' => $email
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+
+
+//  reset password
+function reset_password(string $email, string $password): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET password = :password WHERE email = :email;");
+    $statement->execute([
+        ':password' => $password,
+        ':email' => $email
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+
+// ______________________end login and reset______________________________________________
+
+//  for profile information
+function account_infor(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.gender, 
+    users.last_name, users.email, roles.role AS role_id,
+    positions.position AS position_id  FROM users 
+    INNER JOIN roles ON users.role_id = roles.id 
+    INNER JOIN positions ON users.position_id = positions.id
+    WHERE users.email = :email;");
+    $statement->execute([
+        ':email' => $email
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}
+
+
+//  for profile 
+function profile_personals(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.image_name, users.gender, users.user_name,
+    users.last_name, users.email, roles.role AS role_id, positions.position AS position_id
+    FROM users INNER JOIN roles ON users.role_id = roles.id INNER JOIN positions ON users.position_id = positions.id WHERE users.email = :email");
+    $statement->execute([
+        ":email" => $email
+    ]);
+
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+function update_profile(string $email, string $firstName, string $lastName, string $gender): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users 
+        INNER JOIN departments ON users.department_id = departments.id
+        SET users.first_name = :firstName, users.last_name = :lastName, users.gender = :gender
+        WHERE users.email = :email");
+
+    $statement->execute([
+        ':email' => $email,
+        ':firstName' => $firstName,
+        ':lastName' => $lastName,
+        ':gender' => $gender
+    ]);
+
+    return $statement->rowCount() > 0;
+}
+
+
+
 // -----------------function attesting to employee----------------------------------------
 
 // create employee
-function create_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data,$amount_leave): bool
+function create_employee(string $first_name, string $last_name, string $password, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data, $amount_leave): bool
 {
     global $connection;
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -59,7 +156,7 @@ function get_employee(int $id): array
 function count_users(): int
 {
     global $connection;
-    $statement = $connection->prepare("select count(*) as total from users");
+    $statement = $connection->prepare("select count(*) as total from users where role_id = 2");
     $statement->execute();
     $result = $statement->fetch();
     return $result['total'];
@@ -148,6 +245,7 @@ function get_employees_with_positions(): array
     SELECT u.id, u.image_data, u.first_name, u.last_name, u.email, p.position
     FROM users u
     JOIN positions p ON u.position_id = p.id
+    WHERE u.role_id = 2
     ORDER BY u.id DESC    
         ");
     $statement->execute();
@@ -163,6 +261,80 @@ function get_positions(): array
     $statement = $connection->prepare("select * from positions");
     $statement->execute();
     return $statement->fetchAll();
+}
+
+// get positions from department
+function get_postion_from_department($id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT
+    positions.id,
+    positions.position,
+    departments.department
+    FROM positions 
+    INNER JOIN departments ON departments.id = positions.department_id
+    WHERE departments.id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->fetchAll();
+}
+
+
+// create position
+function create_position(string $position, int $department_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("INSERT INTO positions (position, department_id) VALUES (:position, :department_id)");
+    $statement->execute([
+        ':position' => $position,
+        ':department_id' => $department_id,
+
+    ]);
+    return  $statement->rowCount() > 0;
+}
+
+// get position where id
+function get_position(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM positions where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->fetch();
+}
+
+// delete position
+
+function delete_position(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("DELETE from positions where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+// update positions
+function update_position(string $position_name, int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE positions set position = :position WHERE id = :id");
+
+    $statement->execute([
+        ':position' => $position_name,
+        ':id' => $id,
+    ]);
+    return $statement->fetch();
+}
+
+// edit position
+function edit_position(int $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM positions WHERE id= :id");
+    $statement->execute(
+        [
+            ':id' => $id,
+        ]
+    );
+    return $statement->fetch();
 }
 
 // get all roles
@@ -184,26 +356,38 @@ function get_leave_requests(): array
 	leave_requests.id,
     users.first_name,
     users.last_name,
+    users.image_data,
     positions.position,
     leave_types.leave_type,
     leave_requests.status,
     leave_requests.description,
     leave_requests.start_date,
-    leave_requests.end_date
+    leave_requests.end_date,
+    users.email
     FROM leave_requests
     INNER JOIN leave_types ON leave_types.id = leave_requests.leave_type_id
     INNER JOIN users ON users.id = leave_requests.user_id
     INNER JOIN positions ON positions.id = users.position_id
-    WHERE leave_requests.status ='Pending'");
+    -- WHERE leave_requests.status ='Pending'
+    ORDER BY leave_requests.id DESC");
     $statement->execute();
     return $statement->fetchAll();
 }
 
+
 //count request leave
-function count_leave_requests(): int
+function count_pending_requests(): int
 {
     global $connection;
     $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE leave_requests.status='Pending'");
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'];
+}
+function count_rejected_requests(): int
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE leave_requests.status='Rejected'");
     $statement->execute();
     $result = $statement->fetch();
     return $result['total'];
@@ -252,11 +436,12 @@ function get_leave_request_detail(int $id): array
 function get_aprroved_leave(): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT leave_requests.id, users.first_name, users.last_name, positions.position, leave_requests.start_date, leave_requests.end_date, leave_requests.status
+    $statement = $connection->prepare("SELECT leave_requests.id, users.first_name, users.last_name,users.image_data, positions.position, leave_requests.start_date, leave_requests.end_date, leave_requests.status
     FROM leave_requests
     INNER JOIN users ON users.id = leave_requests.user_id
     INNER JOIN positions ON positions.id = users.position_id
-    WHERE leave_requests.status = 'Approved'");
+    WHERE leave_requests.status = 'Approved'
+    ORDER BY leave_requests.id Desc ");
     $statement->execute();
     return $statement->fetchAll();
 }
@@ -372,7 +557,7 @@ function update_department_name(string $department_name, int $id): bool
 }
 
 // edit department
-function edit_departments(int $id): array
+function get_department(int $id): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT * FROM departments WHERE id= :id");

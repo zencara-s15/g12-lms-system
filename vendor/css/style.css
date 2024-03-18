@@ -37,6 +37,7 @@ body {
     font-size: 15px;
     line-height: 1.8;
 	background: #F7F7F7;
+	
   }
 ul,
 h1, h2, h3, h4, h5, p {
@@ -513,7 +514,7 @@ nav ul li.hover a {
 .sidebar-wrapper .last-slider-btn {
 	border-bottom-right-radius: 10px;
 }
-.sidebar-wrapper .last-slider-btn1 {
+.sidebar-wrapper .third-slider-btn {
 	border-bottom-left-radius: 10px;
 }
 .ctm-border-right {

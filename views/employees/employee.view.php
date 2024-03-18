@@ -46,7 +46,7 @@
                     <?php foreach ($get_employees_with_positions as $employee) : ?>
                         <tr class="border-bottom" style="font-size:14px">
                             <td class="d-flex" style="text-align: center; vertical-align: middle;">
-                                <img style="width: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="<?= 'data:image/jpeg;base64,' . base64_encode($employee['image_data']) ?>" />
+                                <img style="width: 60px;height: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="<?= 'data:image/jpeg;base64,' . base64_encode($employee['image_data']) ?>" />
                                 <span class="mt-3 m-lg-3"><?= $employee['first_name'] . " " . $employee['last_name'] ?></span>
                             </td>
                             <td style="vertical-align: middle;"><?= $employee['email'] ?></td>
@@ -59,6 +59,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <div id="notFoundRow" class="text-center text-secondary d-none" style="height:40vh; display: flex; align-items: center; justify-content: center;">No employees found!</div>
         </div>
     </div>
 </div>
@@ -82,6 +83,7 @@
         </div>
     </div>
 </div>
+
 <script>
     // JavaScript function to open the delete confirmation modal
     function openDeleteModal(employeeId) {
@@ -101,34 +103,45 @@
         window.location.href = "/controllers/employees/delete.employee.controller.php?id=" + employeeId;
     });
 
-    //search employee by name---------------------------------------------------------------------------------------------------
-    let searchEmployee = document.getElementById('search_employee');
+   //search employee by name---------------------------------------------------------------------------------------------------
+   let searchEmployee = document.getElementById('search_employee');
     let positionSelect = document.getElementById('position');
     let tbody = document.querySelector('tbody');
     let tr = tbody.querySelectorAll('tr');
 
     searchEmployee.addEventListener('input', function() {
         const searchText = searchEmployee.value.toLowerCase();
+        let found =false;
         tr.forEach(row => {
             const tdContent = row.querySelector('td').textContent.toLowerCase(); // Get the text content of the first td in the row
             if (tdContent.includes(searchText)) {
                 row.style.display = ''; // Show the row
+                found = true;
             } else {
                 row.style.display = 'none'; // Hide the row
             }
+            // Toggle visibility of "Not found" message
+            document.getElementById('notFoundRow').classList.toggle('d-none', found);
         });
     });
-    //filter the employee by position---------------------------------------------------------------------------------
+    // Filter the employee by position
     positionSelect.addEventListener('change', function() {
         const selectedPosition = positionSelect.value;
 
+        let found = false; // Assume no employee is found initially
+
         tr.forEach(row => {
             const positionCell = row.querySelectorAll('td')[2]; // Assuming the position data is in the third column
+
             if (selectedPosition === "All" || positionCell.textContent.trim() === selectedPosition) {
                 row.style.display = ''; // Show the row
+                found = true; // Set found to true if at least one employee is found
             } else {
                 row.style.display = 'none'; // Hide the row
             }
         });
+
+        // Show or hide the 'notFoundRow' based on the 'found' variable
+        document.getElementById('notFoundRow').classList.toggle('d-none', found);
     });
-</script>
+</script> 

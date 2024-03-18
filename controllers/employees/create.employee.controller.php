@@ -1,6 +1,6 @@
 <?php
 require_once("../../database/database.php");
-require_once("../../models/admin.model.php");
+require_once "../../models/admin.model.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = htmlspecialchars($_POST["first_name"]);

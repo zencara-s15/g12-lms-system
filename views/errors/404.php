@@ -1,12 +1,17 @@
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-  <!-- 404 Error Text -->
-  <div class="text-center">
-    <div class="error mx-auto" data-text="404">404</div>
-    <p class="lead text-gray-800 mb-5">Page Not Found</p>
-    <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-    <a href="/">&larr; Back to Dashboard</a>
+<body>
+  <div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+      <h1 class="display-1 fw-bold">404</h1>
+      <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+      <p class="lead">
+        The page you're looking for doesn't exist.
+      </p>
+    </div>
   </div>
 
-</div>
+  <script>
+    setTimeout(function() {
+      window.location.href = "controllers/logout/logout_controller.php";
+    }, 2000); 
+  </script>
+</body>

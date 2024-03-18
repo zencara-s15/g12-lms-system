@@ -100,18 +100,31 @@
 
                                         <!-- /User notification-->
 
-                                        <!-- user info-->
+
+                                        <?php
+                                        require_once('models/admin.model.php');
+
+                                        if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
+                                            $email = $_SESSION['user']['email'];
+                                            $profile = account_infor($email);
+                                            if ($profile) {
+                                                $first_name = $profile['first_name'];
+                                                // $image_name = $profile['image_name'];
+                                                $image_data = $profile['image_data'];
+                                                $imageSrc = 'data:image/jpeg;base64,' . base64_encode($image_data);
+                                            }
+                                        }
+                                        ?>
+
                                         <div class="user-info align-right dropdown d-inline-block header-dropdown">
                                             <a href="javascript:void(0)" data-toggle="dropdown" class="menu-style dropdown-toggle">
                                                 <div class="user-avatar d-inline-block">
-                                                    <img src="assets/images/profiles/img-2.jpg" alt="user avatar" class="rounded-circle img-fluid" width="55" />
+                                                    <img src="<?= $imageSrc ?>" alt="user avatar" class="rounded-circle img-fluid" style="width: 50px; height: 50px;"/>
                                                 </div>
                                             </a>
 
                                             <!-- Notifications -->
                                             <div class="dropdown-menu notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right">
-
-
                                                 <!-- profiles -->
                                                 <a class="dropdown-item p-2" href="/profiles">
                                                     <span class="media align-items-center">
@@ -121,7 +134,7 @@
                                                         </span>
                                                     </span>
                                                 </a>
-                                                <a class="dropdown-item p-2" href="/">
+                                                <a class="dropdown-item p-2" href="controllers/logout/logout_controller.php">
                                                     <span class="media align-items-center">
                                                         <span class="lnr lnr-power-switch mr-3"></span>
                                                         <span class="media-body text-truncate">

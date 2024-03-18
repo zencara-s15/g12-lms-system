@@ -26,7 +26,11 @@
 					foreach ($approved_leave as $num => $data) : ?>
 						<tr>
 							<td style="vertical-align: middle;"><?= $num + 1 ?></td>
-							<td style="vertical-align: middle;"><?= $data['first_name'] . " " . $data['last_name'] ?></td>
+							<td style="vertical-align: middle;">
+								<img style="width: 60px; height: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="data:image/jpeg;base64, <?php echo base64_encode($data['image_data']); ?>" />
+
+								<span class="mt-3 m-lg-3"><?= $data['first_name'] . " " . $data['last_name'] ?></span>
+							</td>
 							<td style="vertical-align: middle;"><?= $data['position'] ?></td>
 							<td style="vertical-align: middle;"><?= $data['start_date'] ?></td>
 							<td style="vertical-align: middle;"><?= $data['end_date'] ?></td>
