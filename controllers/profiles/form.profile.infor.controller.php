@@ -19,7 +19,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
         $gender = $profile['gender'];
         $role_id = $profile['role_id'];
         $position = $profile['position_id'];
-        // $image_name = $profile['image_name'];
+        $image_name = $profile['image_name'];
         $image_data = $profile['image_data'];
         $imageSrc = 'data:image/jpeg;base64,' . base64_encode($image_data);
     } else {
