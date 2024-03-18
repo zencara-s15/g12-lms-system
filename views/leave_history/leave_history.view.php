@@ -29,7 +29,7 @@
                     <td><?php echo $histories['description'] ?></td>
                     <td><?php echo $histories['status'] ?></td>
                     <td style="vertical-align: middle;">
-                        <a href="controllers/leave_history/leave_history_detail.controller.php?id=<?= $histories['id'] ?>" class="btn btn-sm btn-outline-success"><span class=""></span>Details</a>
+                        <a href="/leave_history_detail?id=<?= $histories['id'] ?>" class="btn btn-sm btn-outline-success"><span class=""></span>Details</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
