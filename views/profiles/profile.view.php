@@ -1,6 +1,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 <?php
 // Load user profile data
@@ -19,7 +20,10 @@ require("controllers/profiles/form.profile.infor.controller.php");
 								<img src="<?= $imageSrc ?>" alt="<?= $image_name ?>" id="preview-image" class="rounded-circle profile-image" style="width: 150px; height: 150px;">
 								<div class="edit-icon-container">
 									<label for="profile-image" class="update-profile-icon">
-										<i class="fas fa-pencil" style="margin-left: 100px;"></i>
+										<span class="material-symbols-outlined " style="margin-left: 100px; margin-top:-25px;">
+											person_edit
+										</span>
+										<!-- <i class="fas fa-pencil" style="margin-left: 100px;"></i> -->
 									</label>
 									<input type="file" id="profile-image" name="profile" onchange="previewImage(event)" accept="image/*" style="display: none;">
 								</div>
