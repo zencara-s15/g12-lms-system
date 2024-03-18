@@ -2,12 +2,11 @@
 	<div class="container" style="display: flex; justify-content: flex-end;">
 		<a href="#" onclick="window.print()" class="btn btn-danger border border-0 text-white" style="font-size:13px" type="button">Print</a>
 	</div>
-
 	<div class="card-body">
 		<h5 class="card-title" style="display: flex; justify-content: center; font-size: 20px"><b>Leave Management System Report</b></h5>
 		<p class="card-text" style="display: flex; justify-content: center; font-size: 15px">The report of the employee that approve to get leave 2024</p>
 	</div>
-	<div></div>
+	
 	<div class="container">
 		<table class="table table-hover">
 			<thead class="table-dark">
