@@ -1,4 +1,4 @@
 <?php
 
 require_once "models/admin.model.php";
-require "views/reports/report.view.php";
+require_once "views/reports/report.view.php";

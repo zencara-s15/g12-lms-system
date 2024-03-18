@@ -33,7 +33,10 @@ $routes = [
 
 
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
-    '/update_profile' => 'controllers/profiles/update.profile.controller.php'
+    '/update_profile' => 'controllers/profiles/update.profile.controller.php',
+
+    '/report_detail' => 'controllers/reports/detail_report.controlller.php'
+
 
 
 ];
@@ -49,10 +52,10 @@ if ($page === 'controllers/profiles/profile.controller.php') {
     require $page;
 } else if ($page === 'controllers/profiles/update.profile.controller.php') {
     require $page;
-}  else if($page === 'views/errors/404.php'){
+} else if ($page === 'views/errors/404.php') {
     // http_response_code(404);
-    require ('views/errors/404.php');
-}else {
+    require('views/errors/404.php');
+} else {
     require "layouts/header.php";
     require "layouts/navbar.php";
     require $page;
