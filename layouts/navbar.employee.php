@@ -97,7 +97,11 @@
                                      <div class="col-6 align-items-center text-center">
                                          <a href="/employees_dasboad" class=" <?= checkActive("/employees_dasboad") ?> text-dark p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span><span class="">Dashboard</span></a>
                                      </div>
-
+                                     
+                                     <div class="col-6 align-items-center shadow-none text-center">
+                                         <a href="/calendar" class=" <?= checkActive("/calendar") ?> text-dark p-4 ctm-border-right"><span class="lnr lnr-calendar-full pr-0 pb-lg-2 font-23"></span><span class="">Calendar</span></a>
+                                     </div>
+                                     
                                      <div class="col-6 align-items-center text-center">
                                          <a href="/em_leave_request" class=" <?= checkActive("/em_leave_request") ?> text-dark p-4 second-slider-btn ctm-border-right ctm-border-left ctm-border-top"><span class="lnr lnr-file-add pr-0 pb-lg-2 font-23"></span><span class="">Apply</span></a>
                                      </div>
