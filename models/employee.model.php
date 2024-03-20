@@ -67,3 +67,72 @@ function detailHistory($id): array
 
     return $statement->fetch();
 }
+
+// functions' calendar-----------------------------------------------------------
+
+// display events
+function display_events() {
+    global $connection;
+    $stmt = $connection->prepare("SELECT lr.id, lt.leave_type, lr.description, lr.start_date, lr.end_date FROM leave_requests lr JOIN leave_types lt ON lr.leave_type_id = lt.id");
+    $stmt->execute();
+
+    $events = array();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $events[] = array(
+            'id' => $row['id'],
+            'title' => $row['leave_type'],
+            'start' => $row['start_date'],
+            'end' => $row['end_date'],
+            'description' => $row['description']
+        );
+    }
+
+    return $events;
+}
+
+// insert leave request
+function insert_leave_request($leave_type_id, $description, $start_date, $end_date, $user_id, $status,$duration) {
+    global $connection;
+    $stmt = $connection->prepare("INSERT INTO leave_requests (leave_type_id, description, start_date, end_date, user_id, status,duration_leave) VALUES (:leave_type_id, :description, :start_date, :end_date, :user_id, :status,:duration)");
+    $stmt->execute(array(
+        ':leave_type_id' => $leave_type_id,
+        ':description' => $description,
+        ':start_date' => $start_date,
+        ':end_date' => $end_date,
+        ':user_id' => $user_id,
+        ':status' => $status,
+        ':duration' => $duration
+    ));
+
+    return "New record created successfully";
+}
+
+
+// update the leave request
+function update_leave_request($id, $leave_type_update, $start_update, $end_update, $description_update, $duration_update) {
+    global $connection;
+    $stmt = $connection->prepare("UPDATE leave_requests SET leave_type_id = :leave_type_update, start_date = :start_update, end_date = :end_update, description = :description_update, duration_leave = :duration_update WHERE id = :id");
+
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':leave_type_update', $leave_type_update);
+    $stmt->bindParam(':start_update', $start_update);
+    $stmt->bindParam(':end_update', $end_update);
+    $stmt->bindParam(':description_update', $description_update);
+    $stmt->bindParam(':duration_update', $duration_update);
+
+    $stmt->execute();
+
+    return "Event updated successfully";
+}
+
+// delete the leave request
+function delete_leave_request($id) {
+    global $connection;
+    $stmt = $connection->prepare("DELETE FROM leave_requests WHERE id = :id");
+
+    $stmt->bindParam(':id', $id);
+
+    $stmt->execute();
+
+    return "Event deleted successfully";
+}

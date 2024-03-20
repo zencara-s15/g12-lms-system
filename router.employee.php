@@ -8,7 +8,7 @@ $page_employees = "";
 // for employee dasboard
 $routes_employees = [
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
-
+    '/calendar' => 'controllers/calendar/calendar.controller.php',
     '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
     '/leave_history_detail' => 'controllers/leave_history/leave_history_detail.controller.php',
     '/reports_employee' => 'controllers/reports/report.controller.php',

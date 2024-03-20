@@ -147,7 +147,6 @@
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/employees" class=" <?= checkActive("/employees") ?> text-dark  p-4 second-slider-btn ctm-border-right ctm-border-top"><span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span><span class="">Employees</span></a>
                                      </div>
-                                     
                                      <div class="col-6 align-items-center shadow-none text-center">
                                          <a href="/leave_requests" class=" <?= checkActive("/leave_requests") ?> text-dark p-4 ctm-border-right ctm-border-left"><span class="lnr lnr-hourglass pr-0 pb-lg-2 font-23"></span><span class="">Reviews</span></a>
                                      </div>
