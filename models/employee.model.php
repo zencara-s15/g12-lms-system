@@ -91,9 +91,9 @@ function display_events() {
 }
 
 // insert leave request
-function insert_leave_request($leave_type_id, $description, $start_date, $end_date, $user_id, $status,$duration) {
+function insert_leave_request($leave_type_id, $description, $start_date, $end_date, $user_id, $status) {
     global $connection;
-    $stmt = $connection->prepare("INSERT INTO leave_requests (leave_type_id, description, start_date, end_date, user_id, status,duration_leave) VALUES (:leave_type_id, :description, :start_date, :end_date, :user_id, :status,:duration)");
+    $stmt = $connection->prepare("INSERT INTO leave_requests (leave_type_id, description, start_date, end_date, user_id, status) VALUES (:leave_type_id, :description, :start_date, :end_date, :user_id, :status)");
     $stmt->execute(array(
         ':leave_type_id' => $leave_type_id,
         ':description' => $description,
@@ -101,7 +101,6 @@ function insert_leave_request($leave_type_id, $description, $start_date, $end_da
         ':end_date' => $end_date,
         ':user_id' => $user_id,
         ':status' => $status,
-        ':duration' => $duration
     ));
 
     return "New record created successfully";
@@ -109,16 +108,15 @@ function insert_leave_request($leave_type_id, $description, $start_date, $end_da
 
 
 // update the leave request
-function update_leave_request($id, $leave_type_update, $start_update, $end_update, $description_update, $duration_update) {
+function update_leave_request($id, $leave_type_update, $start_update, $end_update, $description_update) {
     global $connection;
-    $stmt = $connection->prepare("UPDATE leave_requests SET leave_type_id = :leave_type_update, start_date = :start_update, end_date = :end_update, description = :description_update, duration_leave = :duration_update WHERE id = :id");
+    $stmt = $connection->prepare("UPDATE leave_requests SET leave_type_id = :leave_type_update, start_date = :start_update, end_date = :end_update, description = :description_update WHERE id = :id");
 
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':leave_type_update', $leave_type_update);
     $stmt->bindParam(':start_update', $start_update);
     $stmt->bindParam(':end_update', $end_update);
     $stmt->bindParam(':description_update', $description_update);
-    $stmt->bindParam(':duration_update', $duration_update);
 
     $stmt->execute();
 

@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end_date_update = $_POST['end_date_update'];
     $user_id = $_POST['user_id']; // Assuming you have a user_id in your POST data
     $status_update = $_POST['status']; // Assuming you have a status in your POST data
-    $duration_leave_update = $_POST['duration_update'];
     $full_name = $_POST['full_name'];
     $email = "czencara@gmail.com"; // change to admin email 
     $leave_amount = $_POST['amount_leave'];
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $duration = date_diff($start, $end)->format('%a'); //calculate duration
 
     // Correctly set variables before using them in the function call
-    $updated = update_leave_request($id, $leave_type_update, $start_date_update, $end_date_update, $description_update,$duration_leave_update);
+    $updated = update_leave_request($id, $leave_type_update, $start_date_update, $end_date_update, $description_update);
     if ($updated) {
         $notification = 'Applied Successfully!';
         $notification_class = 'success';

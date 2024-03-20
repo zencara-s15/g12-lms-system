@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end_date = $_POST['end_date'];
     $user_id = $_POST['user_id']; // Assuming you have a user_id in your POST data
     $status = $_POST['status']; // Assuming you have a status in your POST data
-    $duration = $_POST['duration']; // Assuming you have a duration in your POST data
     $full_name = $_POST['full_name'];
     $email = "czencara@gmail.com"; // change to admin email 
     $leave_amount = $_POST['amount_leave'];
@@ -28,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end = new DateTime($end_date);
     $duration = date_diff($start,$end)->format('%a'); //calculate duration
 
-    $created =  insert_leave_request($leave_type_id, $description, $start_date, $end_date, $user_id, $status,$duration);
+    $created =  insert_leave_request($leave_type_id, $description, $start_date, $end_date, $user_id, $status);
     calculate_leave_amount($leave_amount - 1, $user_id);
     $created = true;
     if ($created) {

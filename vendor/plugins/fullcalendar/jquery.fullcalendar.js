@@ -1,21 +1,21 @@
 // Function to calculate and display duration for insert
-function calculateDurationInsert(start, end) {
-  var duration = moment.duration(moment(end).diff(moment(start)));
-  var days = duration.asDays();
+function calculate_duration_insert(start, end) {
+  const duration = moment.duration(moment(end).diff(moment(start)));
+  const days = duration.asDays();
   $("#start_date").val(moment(start).format("YYYY-MM-DD"));
   $("#end_date").val(moment(end).format("YYYY-MM-DD"));
   $("#duration").val(days);
 }
 
 // Function to calculate and display duration for update
-function calculateDurationUpdate(newStart, newEnd) {
-  var duration = moment.duration(moment(newEnd).diff(moment(newStart)));
-  var days = duration.asDays();
+function calculate_duration_update(newStart, newEnd) {
+  const duration = moment.duration(moment(newEnd).diff(moment(newStart)));
+  const days = duration.asDays();
   $("#duration_update").val(days);
 }
 
 $(document).ready(function () {
-  var calendar = $("#calendar").fullCalendar({
+  const calendar = $("#calendar").fullCalendar({
     defaultView: "month", // Default view
     header: {
       left: "title",
@@ -106,7 +106,7 @@ $(document).ready(function () {
 
   // Handle change event of the view selector dropdown
   $("#view_selector").change(function () {
-    var selectedView = $(this).val();
+    const selectedView = $(this).val();
     calendar.fullCalendar("changeView", selectedView);
   });
 
@@ -115,10 +115,10 @@ $(document).ready(function () {
     e.preventDefault();
 
     // Manually validate form inputs
-    var startDate = $("#start_date").val();
-    var endDate = $("#end_date").val();
-    var leaveType = $("#leave_type").val();
-    var description = $("#description").val();
+    const startDate = $("#start_date").val();
+    const endDate = $("#end_date").val();
+    const leaveType = $("#leave_type").val();
+    const description = $("#description").val();
 
     // Reset validation state
     $(this).find(".is-invalid").removeClass("is-invalid");
@@ -133,9 +133,9 @@ $(document).ready(function () {
     }
 
     // Calculate duration
-    var start = moment(startDate, "YYYY-MM-DD");
-    var end = moment(endDate, "YYYY-MM-DD");
-    var duration = moment.duration(end.diff(start)).asDays();
+    const start = moment(startDate, "YYYY-MM-DD");
+    const end = moment(endDate, "YYYY-MM-DD");
+    const duration = moment.duration(end.diff(start)).asDays();
 
     // Check if duration is less than 1 day
     if (duration < 1) {
@@ -143,7 +143,7 @@ $(document).ready(function () {
       return; // Prevent form submission
     }
 
-    var formData = $(this).serialize();
+    const formData = $(this).serialize();
     $.ajax({
       type: "POST",
       url: "../../controllers/calendar/insert_leave_request.controller.php",
@@ -166,10 +166,10 @@ $(document).ready(function () {
     e.preventDefault();
 
     // Manually validate form inputs
-    var startDate = $("#update_event_start_date").val();
-    var endDate = $("#update_event_end_date").val();
-    var leaveType = $("#update_event_title").val();
-    var description = $("#update_event_description").val();
+    const startDate = $("#update_event_start_date").val();
+    const endDate = $("#update_event_end_date").val();
+    const leaveType = $("#update_event_title").val();
+    const description = $("#update_event_description").val();
 
     // Reset validation state
     $(this).find(".is-invalid").removeClass("is-invalid");
@@ -196,9 +196,9 @@ $(document).ready(function () {
       return; // Prevent form submission
     }
     // Calculate duration
-    var oldStart = moment($("#update_event_start_date").val(), "YYYY-MM-DD");
-    var oldEnd = moment($("#update_event_end_date").val(), "YYYY-MM-DD");
-    var duration = moment.duration(oldEnd.diff(oldStart)).asDays();
+    const oldStart = moment($("#update_event_start_date").val(), "YYYY-MM-DD");
+    const oldEnd = moment($("#update_event_end_date").val(), "YYYY-MM-DD");
+    const duration = moment.duration(oldEnd.diff(oldStart)).asDays();
 
     // Check if duration is less than 1 day
     if (duration < 1) {
@@ -206,8 +206,8 @@ $(document).ready(function () {
       return; // Prevent form submission
     }
 
-    var formData = $(this).serialize();
-    var eventId = $("#update_event_id").val();
+    const formData = $(this).serialize();
+    const eventId = $("#update_event_id").val();
     $.ajax({
       type: "POST",
       url: "../../controllers/calendar/update_leave_request.controller.php",
@@ -227,16 +227,16 @@ $(document).ready(function () {
 
   // Show insert modal event
   $("#insert_modal").on("show.bs.modal", function (event) {
-    var modal = $(this);
-    var start = modal.data("start");
-    var end = modal.data("end");
-    calculateDurationInsert(start, end);
+    const modal = $(this);
+    const start = modal.data("start");
+    const end = modal.data("end");
+    calculate_duration_insert(start, end);
   });
 
   // Show update event modal event
   $("#update_event_modal").on("show.bs.modal", function (event) {
-    var modal = $(this);
-    var eventId = modal.data("eventId");
+    const modal = $(this);
+    const eventId = modal.data("eventId");
     $.ajax({
       url: "get_event_details.php",
       method: "POST",
@@ -246,7 +246,7 @@ $(document).ready(function () {
         // Populate start and end date inputs with event data
         modal.find("#update_event_start_date").val(response.start);
         modal.find("#update_event_end_date").val(response.end);
-        calculateDurationUpdate(
+        calculate_duration_update(
           response.start,
           response.end,
           response.start,
@@ -262,16 +262,16 @@ $(document).ready(function () {
   // Add event listeners to the date input fields
   $("#start_date, #end_date").change(function () {
     // Get the new start and end dates
-    var start = moment($("#start_date").val(), "YYYY-MM-DD");
-    var end = moment($("#end_date").val(), "YYYY-MM-DD");
-    calculateDurationInsert(start, end);
+    const start = moment($("#start_date").val(), "YYYY-MM-DD");
+    const end = moment($("#end_date").val(), "YYYY-MM-DD");
+    calculate_duration_insert(start, end);
   });
 
   // Add event listeners to the date input fields in the update event modal
   $("#update_event_start_date, #update_event_end_date").change(function () {
-    var oldStart = moment($("#update_event_start_date").val(), "YYYY-MM-DD");
-    var oldEnd = moment($("#update_event_end_date").val(), "YYYY-MM-DD");
-    calculateDurationUpdate(oldStart, oldEnd, oldStart, oldEnd);
+    const oldStart = moment($("#update_event_start_date").val(), "YYYY-MM-DD");
+    const oldEnd = moment($("#update_event_end_date").val(), "YYYY-MM-DD");
+    calculate_duration_update(oldStart, oldEnd, oldStart, oldEnd);
   });
 
   // Reset insert modal form fields
