@@ -1,3 +1,11 @@
+<?php
+$get_positions = get_postion_to_chartPie(); // return positions as string arrray
+$count_users_by_position = count_users_by_position(); // return array number
+?>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div class="col-xl-9 col-lg-8  col-md-12">
 	<div class="row">
 		<div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 col-13">
@@ -31,7 +39,6 @@
 			</a>
 		</div>
 	</div>
-
 
 	<div class="col">
 		<div class="row">
@@ -118,3 +125,77 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		$(function() {
+			// Pie Chart
+			var ctx = document.getElementById('pieChart').getContext('2d');
+			var pieChart = new Chart(ctx, {
+				type: 'pie',
+				data: {
+					labels: <?= json_encode(array_values(($get_positions))) ?>,
+					datasets: [{
+						label: '# of Votes',
+						data: <?= json_encode(array_values($count_users_by_position)) ?>,
+						backgroundColor: [
+							'rgba(255, 99, 132, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							// 'rgba(153, 102, 255, 1)',
+							// 'rgba(153, 102, 255, 1)',
+							// 'rgba(153, 102, 255, 1)',
+							'#3E007C',
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					responsive: true,
+					legend: {
+						display: false
+					}
+				}
+			});
+
+			// Line Chart
+
+			var ctx = document.getElementById("lineChart").getContext('2d');
+			var lineChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+					datasets: [{
+							label: 'Developer',
+							data: [20, 10, 5, 5, 20],
+							fill: false,
+							borderColor: '#373651',
+							backgroundColor: '#373651',
+							borderWidth: 1
+						},
+						{
+							label: 'Marketing',
+							data: [2, 2, 3, 4, 1],
+							fill: false,
+							borderColor: '#E65A26',
+							backgroundColor: '#E65A26',
+							borderWidth: 1
+						},
+						{
+							label: 'Marketing',
+							data: [1, 3, 6, 8, 10],
+							fill: false,
+							borderColor: '#a1a1a1',
+							backgroundColor: '#a1a1a1',
+							borderWidth: 1
+						}
+					]
+				},
+				options: {
+					responsive: true,
+					legend: {
+						display: false
+					}
+				}
+			});
+		});
+	</script>
