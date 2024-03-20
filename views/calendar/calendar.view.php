@@ -129,13 +129,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="start_date">Event start</label>
-                                            <input type="date" name="start_date" id="start_date" class="form-control " placeholder="Event start date " required>
+                                            <input type="date" name="start_date" id="start_date" class="form-control " placeholder="Event start date " min="2024-03-20" max="2070-12-31" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="end_date">Event end</label>
-                                            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="Event end date" required>
+                                            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="Event end date"  min="2024-03-20" max="2070-12-31" required>
                                         </div>
                                     </div>
                                     <!-- <p id="totalDay">Total day: <span class="text-danger"></span></p> -->
@@ -271,13 +271,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="update_event_start_date">Start Date</label>
-                                            <input type="date" class="form-control" id="update_event_start_date" name="start_date_update" required>
+                                            <input type="date" class="form-control" id="update_event_start_date" name="start_date_update" min="2024-03-20" max="2070-12-31" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="update_event_end_date">End Date</label>
-                                            <input type="date" class="form-control" id="update_event_end_date" name="end_date_update" required>
+                                            <input type="date" class="form-control" id="update_event_end_date" name="end_date_update" min="2024-03-20" max="2070-12-31" required>
                                         </div>
 
                                     </div>
