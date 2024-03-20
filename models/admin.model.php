@@ -255,6 +255,34 @@ function get_employees_with_positions(): array
 
 //------------------------------Fuction related to Position --------------------------------------------------------------
 
+function count_users_by_position()
+{
+    global $connection;
+    $query = "SELECT position_id, COUNT(*) AS user_count
+              FROM users
+              GROUP BY position_id";
+    
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    
+    $countByPosition = array();
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $positionId = $row['position_id'];
+        $userCount = $row['user_count'];
+        $countByPosition[$positionId] = intval($userCount);
+    }
+    
+    return $countByPosition;
+}
+function get_postion_to_chartPie(): array {
+    global $connection;
+    $statement = $connection->prepare("SELECT positions.position FROM users
+    INNER JOIN positions ON users.position_id = positions.id
+    GROUP BY users.position_id");
+    $statement->execute();
+    $positions = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+    return array_map('strval', $positions);
+}
 // get all positions
 function get_positions(): array
 {
