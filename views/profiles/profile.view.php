@@ -72,9 +72,11 @@ require("controllers/profiles/form.profile.infor.controller.php");
 						</div>
 						<div class="d-flex justify-content-end">
 							<button class="btn btn-primary mt-3" type="submit">Update</button>
+							<a href="/admin" class="btn btn-primary mt-3" style="margin-left: 2%;"> cancel</a>
 						</div>
 					</form>
 				</div>
+
 			</div>
 		</div>
 	</div>
