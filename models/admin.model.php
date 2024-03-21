@@ -1,8 +1,5 @@
 <?php
 
-//  -------------------form login and reset password---------------------------------------------
-
-
 //  ______________________________for login and reset password_________________________________________________________
 
 // to check accound by email
@@ -36,13 +33,13 @@ function reset_password(string $email, string $password): bool
 }
 
 
-// ______________________end login and reset______________________________________________
 
+// ____________________________________Function of profile__________________________________________________________
 //  for profile information
 function account_infor(string $email): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.gender, 
+    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.gender,  users.image_name,
     users.last_name, users.email, roles.role AS role_id,
     positions.position AS position_id  FROM users 
     INNER JOIN roles ON users.role_id = roles.id 
@@ -77,26 +74,22 @@ function profile_personals(string $email): array
     }
 }
 
-function update_profile(string $email, string $firstName, string $lastName, string $gender): bool
+
+function update_profile(string $email, string $imageData, string $image_name): bool
 {
     global $connection;
     $statement = $connection->prepare("UPDATE users 
-        INNER JOIN departments ON users.department_id = departments.id
-        SET users.first_name = :firstName, users.last_name = :lastName, users.gender = :gender
-        WHERE users.email = :email");
+        SET image_data = :imageData, image_name = :image_name
+        WHERE email = :email");
 
-    $statement->execute([
+    $result = $statement->execute([
         ':email' => $email,
-        ':firstName' => $firstName,
-        ':lastName' => $lastName,
-        ':gender' => $gender
+        ':imageData' => $imageData,
+        ':image_name' => $image_name
     ]);
 
-    return $statement->rowCount() > 0;
+    return $result;
 }
-
-
-
 // -----------------function attesting to employee----------------------------------------
 
 // create employee
