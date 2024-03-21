@@ -32,7 +32,7 @@
 
 <body>
     <!-- Loader -->
-    <!-- <div id="loader-wrapper">
+    <div id="loader-wrapper">
         <div class="loader">
             <div class="dot"></div>
             <div class="dot"></div>
@@ -40,7 +40,7 @@
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Inner wrapper -->
     <div class="inner-wrapper">
@@ -119,7 +119,7 @@
                                         <div class="user-info align-right dropdown d-inline-block header-dropdown">
                                             <a href="javascript:void(0)" data-toggle="dropdown" class="menu-style dropdown-toggle">
                                                 <div class="user-avatar d-inline-block">
-                                                    <img src="<?= $imageSrc ?>" alt="user avatar" class="rounded-circle img-fluid" style="width: 50px; height: 50px;"/>
+                                                    <img src="<?= $imageSrc ?>" alt="user avatar" class="rounded-circle img-fluid" style="width: 50px; height: 50px;" />
                                                 </div>
                                             </a>
 

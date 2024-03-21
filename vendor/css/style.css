@@ -448,6 +448,10 @@ nav ul li.focus a,
 nav ul li.hover a {
 	color: #f1bd06;
 }
+.user-menu-items a .active{
+	color: #ffffff;
+	background-color:  #f1bd06;
+}
 .nav-link:focus, .nav-link:hover {
 	background: #e2e2e2;
     border-radius: 10px;

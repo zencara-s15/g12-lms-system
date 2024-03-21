@@ -32,7 +32,7 @@
 
 <body>
   <!-- Loader -->
-  <!-- <div id="loader-wrapper">
+  <div id="loader-wrapper">
     <div class="loader">
       <div class="dot"></div>
       <div class="dot"></div>
@@ -40,7 +40,7 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-  </div> -->
+  </div>
 
   <!-- Inner wrapper -->
   <div class="inner-wrapper">
