@@ -1,3 +1,17 @@
+<?php
+require_once('models/admin.model.php');
+
+if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
+  $email = $_SESSION['user']['email'];
+  $profile = account_infor($email);
+  if ($profile) {
+    $first_name = $profile['first_name'];
+    // $image_name = $profile['image_name'];
+    $image_data = $profile['image_data'];
+    $imageSrc = 'data:image/jpeg;base64,' . base64_encode($image_data);
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +28,7 @@
 
   <!-- Fontawesome CSS -->
   <link rel="stylesheet" href="vendor/css/font-awesome.min.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
   <!-- Select2 CSS -->
   <link rel="stylesheet" href="vendor/plugins/select2/select2.min.css">
@@ -63,59 +78,26 @@
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="user-notification-block align-right d-inline-block">
                       <div class="top-nav-search">
-                        <form>
-                          <input type="text" class="form-control" placeholder="Search here" />
-                          <button class="btn" type="submit">
-                            <i class="fa fa-search"></i>
-                          </button>
-                        </form>
+                        
                       </div>
                     </div>
 
-                    <!-- User notification-->
+                    <div class="user-notification-block align-right d-inline-block">
+                      <ul class="list-inline m-0">
+                        <li class="list-inline-item dropdown" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
+                          <a href="/em_leave_request" class="nav-link dropdown-toggle font-23 menu-style text-white align-middle" id="leaveDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell-o" style="font-size: 22px; position: relative;">
+                              <span class="notification-dot" style="position: absolute; display: block; top: -5px; right: -10px; border-radius: 50%; font-size: smaller; color: white;"><p style="border-radius: 50%; background: red; width: 15px; height: 15px; padding: 2px; font-size: 12px;padding-right: 5px;">0</p></span>
+                            </i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="leaveDropdown" style="width: 300px;">
+                            <a class="dropdown-item" href="/leave_requests">Static</a>
+                          </div>
+                        </li>
 
-                    <!-- <div
-                        class="user-notification-block align-right d-inline-block"
-                      >
-                        <ul class="list-inline m-0">
-                          <li
-                            class="list-inline-item"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title=""
-                            data-original-title="Apply Leave"
-                          >
-                            <a
-                              href="leave.html"
-                              class="font-23 menu-style text-white align-middle"
-                            >
-                              <span
-                                class="lnr lnr-briefcase position-relative"
-                              ></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div> -->
-
-
-                    <!-- /User notification-->
-
-
+                      </ul>
+                    </div>
                     <!--  for image of profile -->
-                    <?php
-                    require_once('models/admin.model.php');
-
-                    if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
-                      $email = $_SESSION['user']['email'];
-                      $profile = account_infor($email);
-                      if ($profile) {
-                        $first_name = $profile['first_name'];
-                        // $image_name = $profile['image_name'];
-                        $image_data = $profile['image_data'];
-                        $imageSrc = 'data:image/jpeg;base64,' . base64_encode($image_data);
-                      }
-                    }
-                    ?>
 
                     <div class="user-info align-right dropdown d-inline-block header-dropdown">
                       <a href="javascript:void(0)" data-toggle="dropdown" class="menu-style dropdown-toggle">
@@ -126,6 +108,7 @@
 
                       <!-- Notifications -->
                       <div class="dropdown-menu notification-dropdown-menu shadow-lg border-0 p-3 m-0 dropdown-menu-right">
+
                         <!-- profiles -->
                         <a class="dropdown-item p-2" href="/profiles">
                           <span class="media align-items-center">
