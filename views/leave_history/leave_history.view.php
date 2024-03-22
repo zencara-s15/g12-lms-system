@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <?php
-            $history = getHistory(26);
+            $history = getHistory($id);
             foreach ($history as $num => $histories) :
             ?>
                 <tr>

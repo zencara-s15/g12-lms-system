@@ -32,7 +32,7 @@
 
 <body>
     <!-- Loader -->
-    <div id="loader-wrapper">
+    <!-- <div id="loader-wrapper">
         <div class="loader">
             <div class="dot"></div>
             <div class="dot"></div>
@@ -40,7 +40,7 @@
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Inner wrapper -->
     <div class="inner-wrapper">
@@ -108,6 +108,7 @@
                                             $email = $_SESSION['user']['email'];
                                             $profile = account_infor($email);
                                             if ($profile) {
+                                                $id = $profile['id'];
                                                 $first_name = $profile['first_name'];
                                                 // $image_name = $profile['image_name'];
                                                 $image_data = $profile['image_data'];
