@@ -73,33 +73,23 @@
                     </div>
 
                     <!-- User notification-->
-
-                    <!-- <div
-                        class="user-notification-block align-right d-inline-block"
-                      >
-                        <ul class="list-inline m-0">
-                          <li
-                            class="list-inline-item"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title=""
-                            data-original-title="Apply Leave"
-                          >
-                            <a
-                              href="leave.html"
-                              class="font-23 menu-style text-white align-middle"
-                            >
-                              <span
-                                class="lnr lnr-briefcase position-relative"
-                              ></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div> -->
-
-
-                    <!-- /User notification-->
-
+                    <?php
+                    require_once "models/admin.model.php";
+                    $pendingRequestsCount = count_pending_requests();
+                    ?>
+                    <div class="user-notification-block align-right d-inline-block">
+                      <ul class="list-inline m-0">
+                        <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
+                          <a href="/leave_requests" class="font-23 menu-style text-white align-middle">
+                            <span class="lnr lnr-briefcase position-relative">
+                              <?php if ($pendingRequestsCount > 0) { ?>
+                                <span class="notification-badge"><?php echo $pendingRequestsCount; ?></span>
+                              <?php } ?>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
 
                     <!--  for image of profile -->
                     <?php
@@ -154,3 +144,18 @@
                 <a href="javascript:void(0)">
                   <span class="lnr lnr-user d-block display-5 text-white" id="open_navSidebar"></span>
                 </a>
+
+                <style>
+                  .notification-badge {
+                    position: absolute;
+                    top: -8px;
+                    right: -8px;
+                    background-color: red;
+                    color: white;
+                    font-size: 12px;
+                    font-weight: bold;
+                    padding: 2px 6px;
+                    border-radius: 50%;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                  }
+                </style>

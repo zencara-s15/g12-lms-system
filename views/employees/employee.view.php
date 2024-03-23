@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
 <div class="col-xl-9 col-lg-8 col-md-12 position-relative grow">
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
@@ -23,7 +25,10 @@
                     </div>
                     <!-- add employee button -->
                     <div class="col-md-2 mb-2">
-                        <a href="/create_employee" class="btn btn-primary ">Add</a>
+                        <a href="/create_employee" class="btn btn-theme button-1 ctm-border-radius float-right" style="font-size:20px;">
+                            <span class="material-symbols-outlined" style="margin-right: 14px; ">add</span>
+                            Add
+                        </a>
                     </div>
                 </div>
             </div>
@@ -52,8 +57,8 @@
                             <td style="vertical-align: middle;"><?= $employee['email'] ?></td>
                             <td style="vertical-align: middle;"><?= $employee['position'] ?></td>
                             <td style="vertical-align: middle;">
-                                <a href="/update_employee?id=<?= $employee['id']; ?>" class="btn  btn-success" style="font-size:13px">Update</a>
-                                <a href="#" onclick="openDeleteModal(<?php echo $employee['id']; ?>)" class="btn btn-danger border border-0" style="font-size:13px">Delete</a>
+                                <a href="/update_employee?id=<?= $employee['id']; ?>" class="btn btn-sm btn-outline-success" style="font-size:13px">Update</a>
+                                <a href="#" onclick="openDeleteModal(<?php echo $employee['id']; ?>)" class="btn btn-sm btn-outline-danger" style="font-size:13px">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -77,8 +82,8 @@
                 Are you sure you want to delete this employee?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger border border-0 " id="confirmDeleteBtn">Delete</button>
+                <button type="button" class=" btn btn-danger text-white ctm-border-radius" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-theme button-1 ctm-border-radius float-right" id="confirmDeleteBtn">Delete</button>
             </div>
         </div>
     </div>
@@ -103,15 +108,15 @@
         window.location.href = "/controllers/employees/delete.employee.controller.php?id=" + employeeId;
     });
 
-   //search employee by name---------------------------------------------------------------------------------------------------
-   let searchEmployee = document.getElementById('search_employee');
+    //search employee by name---------------------------------------------------------------------------------------------------
+    let searchEmployee = document.getElementById('search_employee');
     let positionSelect = document.getElementById('position');
     let tbody = document.querySelector('tbody');
     let tr = tbody.querySelectorAll('tr');
 
     searchEmployee.addEventListener('input', function() {
         const searchText = searchEmployee.value.toLowerCase();
-        let found =false;
+        let found = false;
         tr.forEach(row => {
             const tdContent = row.querySelector('td').textContent.toLowerCase(); // Get the text content of the first td in the row
             if (tdContent.includes(searchText)) {
@@ -144,4 +149,4 @@
         // Show or hide the 'notFoundRow' based on the 'found' variable
         document.getElementById('notFoundRow').classList.toggle('d-none', found);
     });
-</script> 
+</script>

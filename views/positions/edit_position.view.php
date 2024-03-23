@@ -23,8 +23,8 @@
 							</select>
 						</div>
 						<div class="form-group" style="margin-left: 350px; margin-top: 150px">
-							<button type="submit" class="btn btn-theme button-1 ctm-border-radius text-white float-center">Update</button>
-							<a href="/departments" class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="button">Cancel</a>
+							<button type="submit" class="btn btn-theme button-1 ctm-border-radius float-right">Update</button>
+							<a href="/departments" class=" btn btn-danger text-white ctm-border-radius" style="margin-left:75%;" type="button">Cancel</a>
 						</div>
 					</form>
 				</div>

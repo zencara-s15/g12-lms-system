@@ -12,7 +12,7 @@
                         <input type="text" class="form-control" id="input" placeholder="Add" name='department_name'>
                     </div>
                     <button type="submit" class="btn btn-theme button-1 ctm-border-radius text-white float-center">Add</button>
-                    <button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick="clearAllInputs()" type="button" data-toggle="modal" id="btn_cancel" data-target="#addNewTeam">Cancel</button>
+                    <button class=" btn btn-danger text-white ctm-border-radius" onclick="clearAllInputs()" type="button" data-toggle="modal" id="btn_cancel" data-target="#addNewTeam">Cancel</button>
                 </form>
             </div>
             <script>

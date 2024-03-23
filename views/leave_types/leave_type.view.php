@@ -14,7 +14,7 @@
 						</div>
 						<div class="form-group">
 							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="submit" data-target="#addNewTeam">Add</button>
-							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick=" clearAllInputs()" id="btn_cancel" type="button" data-target="#addNewTeam">Cancel</button>
+							<button class=" btn btn-danger text-white ctm-border-radius" onclick=" clearAllInputs()" id="btn_cancel" type="button" data-target="#addNewTeam">Cancel</button>
 						</div>
 					</form>
 				</div>
@@ -87,7 +87,7 @@
 				Are you sure you want to delete this Leave Type ?
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-theme ctm-border-radius text-white" data-dismiss="modal">Cancel</button>
+				<button type="button" class=" btn btn-danger text-white ctm-border-radius" data-dismiss="modal">Cancel</button>
 				<button type="button" class="btn btn-theme ctm-border-radius text-white" id="confirmDeleteBtn">Delete</button>
 			</div>
 		</div>
@@ -109,7 +109,7 @@
 				Are you sure you want to delete this employee?
 			</div>
 			<div>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class=" btn btn-danger text-white ctm-border-radius" data-dismiss="modal">Cancel</button>
 				<button type="button" class="btn btn-danger border border-0 " id="confirmDeleteBtn">Delete</button>
 
 			</div>

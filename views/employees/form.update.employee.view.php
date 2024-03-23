@@ -78,8 +78,9 @@
                     <div class="invalid-feedback">Please enter the correct amount of leave.</div>
                 </div>
                 <div class="form-group">
-                    <a href="/employees" class="btn btn-danger border border-0" id="cancelForm">Cancel</a>
-                    <button type="submit" class="btn btn-success" onclick="validateForm()">Update</button>
+                    <button type="submit" class="btn btn-theme button-1 ctm-border-radius float-right " style="margin-right: 80%;" onclick="validateForm()">Update</button>
+                    <a href="/employees" class=" btn btn-danger text-white ctm-border-radius" id="cancelForm">Cancel</a>
+
                 </div>
             </form>
             <hr>

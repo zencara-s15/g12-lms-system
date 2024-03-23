@@ -14,7 +14,7 @@
 						</div>
 						<div class="form-group">
 							<button class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="submit" data-target="#addNewTeam">Update</button>
-							<a href="/leave_types" class="btn btn-theme button-1 ctm-border-radius text-white float-center" type="button">Cancel</a>
+							<a href="/leave_types" class=" btn btn-danger text-white ctm-border-radius" type="button">Cancel</a>
 						</div>
 					</form>
 				</div>

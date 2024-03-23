@@ -4,7 +4,7 @@
 			<h3 class="m-0 font-weight-bold text-primary">Approved Leaves</h3>
 			<p class="mt-1">Total Aprroved : <strong class="text-danger "><?= count_approved_leave() ?></strong></p>
 			<div class="container" style="display: flex; justify-content: flex-end;">
-				<a href="/print_report" class="btn btn-danger border border-0 text-white" style="font-size:13px" type="button">Print</a>
+				<a href="/print_report" class="btn btn-theme button-1 ctm-border-radius float-right" style="font-size:13px" type="button">Print</a>
 			</div>
 		</div>
 		
