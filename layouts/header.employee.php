@@ -11,6 +11,8 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
         $image_data = $profile['image_data'];
         $imageSrc = 'data:image/jpeg;base64,' . base64_encode($image_data);
     }
+
+    
 }
 ?>
 <!DOCTYPE html>
@@ -52,6 +54,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
 
 <body>
     <!-- Loader -->
+    
     <!-- <div id="loader-wrapper">
         <div class="loader">
             <div class="dot"></div>
@@ -93,14 +96,13 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
                                             <ul class="list-inline m-0">
 
                                                 <li class="list-inline-item dropdown" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
-                                                    <a href="/em_leave_request" class="nav-link dropdown-toggle font-23 menu-style text-white align-middle" id="leaveDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <a href="/em_applied_leave" class="nav-link dropdown-toggle font-23 menu-style text-white align-middle" role="button" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fa fa-bell-o" style="font-size: 22px; position: relative;">
-                                                            <span class="notification-dot" style="position: absolute; display: block;top: -5px; right: -5px; background-color: red; width: 10px; height: 10px; border-radius: 50%;"></span>
+                                                            <span class="notification-dot" style="position: absolute; display: block; top: -10px; right: -13px; border-radius: 50%; font-size: smaller; color: white;">
+                                                                <p id="notificationCount" style="border-radius: 50%; background: red; width: 17px; height: 17px; padding: 2px; font-size: 12px;padding-right: 7px;"><?= count_pending_leave_of_user($id) ?></p>
+                                                            </span>
                                                         </i>
                                                     </a>
-                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="leaveDropdown" style="width: 300px;">
-                                                        <a class="dropdown-item" href="/em_leave_request">Static</a>
-                                                    </div>
                                                 </li>
 
                                                 <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
@@ -110,8 +112,6 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <!-- /User notification-->
-
 
                                         <div class="user-info align-right dropdown d-inline-block header-dropdown">
                                             <a href="javascript:void(0)" data-toggle="dropdown" class="menu-style dropdown-toggle">

@@ -42,12 +42,12 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
   <!-- Custom CSS -->
   <link rel="stylesheet" href="vendor/css/style.css" />
 
-  <title>LMS SYSTEM</title>
+  <title>Leave Management</title>
 </head>
 
 <body>
   <!-- Loader -->
-  <div id="loader-wrapper">
+  <!-- <div id="loader-wrapper">
     <div class="loader">
       <div class="dot"></div>
       <div class="dot"></div>
@@ -55,7 +55,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Inner wrapper -->
   <div class="inner-wrapper">
@@ -78,23 +78,22 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="user-notification-block align-right d-inline-block">
                       <div class="top-nav-search">
-                        
+
                       </div>
                     </div>
+
 
                     <div class="user-notification-block align-right d-inline-block">
                       <ul class="list-inline m-0">
                         <li class="list-inline-item dropdown" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
-                          <a href="/em_leave_request" class="nav-link dropdown-toggle font-23 menu-style text-white align-middle" id="leaveDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a href="/leave_requests" class="nav-link dropdown-toggle font-23 menu-style text-white align-middle" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell-o" style="font-size: 22px; position: relative;">
-                              <span class="notification-dot" style="position: absolute; display: block; top: -5px; right: -10px; border-radius: 50%; font-size: smaller; color: white;"><p style="border-radius: 50%; background: red; width: 15px; height: 15px; padding: 2px; font-size: 12px;padding-right: 5px;">0</p></span>
+                              <span class="notification-dot" style="position: absolute; display: block; top: -10px; right: -13px; border-radius: 50%; font-size: smaller; color: white;">
+                                <p id="notificationCount" style="border-radius: 50%; background: red; width: 17px; height: 17px; padding: 2px; font-size: 12px;padding-right: 7px;"><?= count_pending_requests()?></p>
+                              </span>
                             </i>
                           </a>
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="leaveDropdown" style="width: 300px;">
-                            <a class="dropdown-item" href="/leave_requests">Static</a>
-                          </div>
                         </li>
-
                       </ul>
                     </div>
                     <!--  for image of profile -->

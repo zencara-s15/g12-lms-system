@@ -254,20 +254,21 @@ function count_users_by_position()
     $query = "SELECT position_id, COUNT(*) AS user_count
               FROM users
               GROUP BY position_id";
-    
+
     $statement = $connection->prepare($query);
     $statement->execute();
-    
+
     $countByPosition = array();
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         $positionId = $row['position_id'];
         $userCount = $row['user_count'];
         $countByPosition[$positionId] = intval($userCount);
     }
-    
+
     return $countByPosition;
 }
-function get_postion_to_chartPie(): array {
+function get_postion_to_chartPie(): array
+{
     global $connection;
     $statement = $connection->prepare("SELECT positions.position FROM users
     INNER JOIN positions ON users.position_id = positions.id
@@ -406,6 +407,18 @@ function count_pending_requests(): int
     $result = $statement->fetch();
     return $result['total'];
 }
+
+function count_pending_leave_of_user($user_id): int
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE status ='Pending' && user_id = :user_id");
+    $statement->execute([
+        ':user_id' => $user_id
+    ]);
+    $result = $statement->fetch();
+    return $result['total'];
+}
+
 function count_rejected_requests(): int
 {
     global $connection;
@@ -475,6 +488,9 @@ function count_approved_leave(): int
     $result = $statement->fetch();
     return $result['total'];
 }
+
+
+
 //----------------------leave-type-----------------------------------------------------------
 
 //create leave type 
@@ -594,7 +610,8 @@ function get_department(int $id): array
 
 // ------------------------Token Hash------------------------
 
-function update_reset_token($gmail,$code){
+function update_reset_token($gmail, $code)
+{
     global $connection;
     $statement = $connection->prepare("UPDATE users SET verify_codes = :code WHERE email = :gmail");
     $statement->execute([
@@ -604,7 +621,7 @@ function update_reset_token($gmail,$code){
     return $statement->rowCount() > 0;
 }
 
-function check_verify_code ($code): array
+function check_verify_code($code): array
 {
     global $connection;
     $statement = $connection->prepare("SELECT * FROM users WHERE verify_codes = :code");
@@ -616,4 +633,27 @@ function check_verify_code ($code): array
     } else {
         return [];
     }
+}
+
+function apply_notification($user_id, $status)
+{
+    global $connection;
+    $statement = $connection->prepare("INSERT INTO notification (user_id, status, created_at) VALUES (:user_id, :status, :created_at)");
+    $currentDate = date('Y-m-d H:i:s');
+    $result = $statement->execute([
+        ":user_id" => $user_id,
+        ":status" => $status,
+        ":created_at" => $currentDate,
+    ]);
+    return $result;
+}
+
+function get_notifications(): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT notification.id, notification.created_at, users.first_name, users.last_name, notification.message, notification.status FROM notification
+    INNER JOIN users ON notification.user_id = users.id
+    WHERE status = 'Pending Leave'");
+    $statement->execute();
+    return $statement->fetchAll();
 }

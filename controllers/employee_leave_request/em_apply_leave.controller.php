@@ -9,6 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../../vendor/autoload.php';
 
+
 $notification = '';
 $notificationClass = '';
 
@@ -27,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $start = new DateTime($start_date);
     $end = new DateTime($end_date);
     $duration = date_diff($start, $end)->format('%a'); //calculate duration
+
+    apply_notification($user_id,"Pending Leave"); //insert into database
 
     if ($duration > 0) {
         $created = create_leave_request($user_id, $leave_type_id, $start_date, $end_date, $status, $description);

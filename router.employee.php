@@ -13,8 +13,9 @@ $routes_employees = [
     '/leave_history_detail' => 'controllers/leave_history/leave_history_detail.controller.php',
     '/reports_employee' => 'controllers/reports/report.controller.php',
     '/profiles_employee' => 'controllers/profile_employees/profile.employee.controller.php',
-
     '/em_leave_request' => 'controllers/employee_leave_request/em_leave_request_form.controller.php',
+    '/em_applied_leave' => 'controllers/employee_leave_request/em_applied_leave.controller.php',
+
 ];
 
 
