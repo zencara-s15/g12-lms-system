@@ -424,7 +424,7 @@ a.text-warning:focus, a.text-warning:hover {
 } 
 .user-notification-block ul li a.menu-style {   
     color: #7e8fa1;
-    padding: 32px 14px;
+    padding: 10px 14px;
 }
 .user-info a.menu-style {
 	color: #7e8fa1; 
@@ -450,12 +450,14 @@ nav ul li.hover a {
 }
 .user-menu-items a .active{
 	color: #ffffff;
+	border-radius: 10px;
 	background-color:  #f1bd06;
 }
 .nav-link:focus, .nav-link:hover {
-	background: #e2e2e2;
+	padding-top: 10px;
+	background: #f1bd06;
     border-radius: 10px;
-	border-bottom: 5px solid #ccc;
+	border-bottom: 5px solid #a68002;
 }
 .user-block .dropdown-toggle:after { 
 	display: none;
