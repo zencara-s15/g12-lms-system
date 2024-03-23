@@ -27,6 +27,15 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="vendor/css/style.css" />
 
+  <!-- Google icon -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Css department -->
+  <link rel="stylesheet" href="vendor/css/department.css">
+
   <title>LMS SYSTEM</title>
 </head>
 
