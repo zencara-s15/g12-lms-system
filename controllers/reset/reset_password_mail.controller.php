@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST["email"];
     $verify_codes = random_verify_codes();
     update_reset_token($email, $verify_codes);
-    $reset_link = "http://localhost:8000/reset_pw_form?email=" . $email . "&verify_codes=" . $verify_codes;
+    $currentURL = "http://$_SERVER[HTTP_HOST]";
+    $reset_link = $currentURL . "/reset_pw_form?email=" . $email . "&verify_codes=" . $verify_codes;
 
     $mail = new PHPMailer(true);
     try {

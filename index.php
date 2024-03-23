@@ -23,3 +23,10 @@ if (isset($_SESSION['user'])) {
 } else {
     require "router.authorization.php";
 }
+?>
+<script>
+    function get_server_url() {
+        return window.location.origin;
+    }
+    console.log(get_server_url());
+</script>
