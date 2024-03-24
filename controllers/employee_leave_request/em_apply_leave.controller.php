@@ -9,6 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../../vendor/autoload.php';
 
+
 $notification = '';
 $notificationClass = '';
 
@@ -26,35 +27,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $start = new DateTime($start_date);
     $end = new DateTime($end_date);
-    $duration = date_diff($start,$end)->format('%a'); //calculate duration
+    $duration = date_diff($start, $end)->format('%a'); //calculate duration
 
-    $created = create_leave_request($user_id, $leave_type_id, $start_date, $end_date, $status, $description);
-    calculate_leave_amount($leave_amount - 1, $user_id);
-    $created = true;
-    if ($created) {
-        $notification = 'Applied Successfully!';
-        $notificationClass = 'success';
+    apply_notification($user_id,"Pending Leave"); //insert into database
 
-        $mail = new PHPMailer(true);
+    if ($duration > 0) {
+        $created = create_leave_request($user_id, $leave_type_id, $start_date, $end_date, $status, $description);
+        calculate_leave_amount($leave_amount - 1, $user_id);
+        if ($created) {
+            $notification = 'Applied Successfully!';
+            $notificationClass = 'success';
 
-        try {
-            //Server settings
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = ' leave.management.vc1@gmail.com';                     //SMTP username
-            $mail->Password   = 'vnsfsbtkpgcdmiks';                               //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail = new PHPMailer(true);
 
-            //Recipients
-            $mail->setFrom(' leave.management.vc1@gmail.com', 'Leave Management System');
-            $mail->addAddress($email , $full_name);     //Add a recipient
+            try {
+                //Server settings
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = ' leave.management.vc1@gmail.com';                     //SMTP username
+                $mail->Password   = 'vnsfsbtkpgcdmiks';                               //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-            //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'User apply for leave';
-            $mail->Body =  "
+                //Recipients
+                $mail->setFrom(' leave.management.vc1@gmail.com', 'Leave Management System');
+                $mail->addAddress($email, $full_name);     //Add a recipient
+
+                //Content
+                $mail->isHTML(true);                                  //Set email format to HTML
+                $mail->Subject = 'User apply for leave';
+                $mail->Body =  "
                 <html>
                 <head>
                     <style>
@@ -116,11 +119,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </body>
                 </html>
                 ";
-
-            $mail->send();
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                $mail->send();
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
         }
+    }else{
+        $notification = 'Invalid Date Range!';
+        $notificationClass = 'danger';
     }
 }
 ?>

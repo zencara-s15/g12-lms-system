@@ -92,8 +92,8 @@
                 </div>
                 <!-- button cancel and create -->
                 <div class="form-group">
-                    <a href="/employees" class="btn btn-danger border border-0" id="cancelForm">Cancel</a>
-                    <button type="submit" class="btn btn-primary" onclick="validateForm()">Add Employee</button>
+                    <a href="/employees" class="btn btn-danger text-white ctm-border-radius" id="cancelForm">Cancel</a>
+                    <button type="submit" class="btn btn-theme button-1 ctm-border-radius float-right" style="margin-right: 78%;" onclick="validateForm()">Add Employee</button>
                 </div>
             </form>
             <hr>

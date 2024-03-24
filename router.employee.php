@@ -8,13 +8,14 @@ $page_employees = "";
 // for employee dasboard
 $routes_employees = [
     '/employees_dasboad' => 'controllers/employee_dasboard/employee_daboard.controller.php',
-
+    '/calendar' => 'controllers/calendar/calendar.controller.php',
     '/leave_history' => 'controllers/leave_history/leave.history.controller.php',
     '/leave_history_detail' => 'controllers/leave_history/leave_history_detail.controller.php',
     '/reports_employee' => 'controllers/reports/report.controller.php',
-    '/profiles_employee' => 'controllers/profiles/profile.controller.php',
-
+    '/profiles_employee' => 'controllers/profile_employees/profile.employee.controller.php',
     '/em_leave_request' => 'controllers/employee_leave_request/em_leave_request_form.controller.php',
+    '/em_applied_leave' => 'controllers/employee_leave_request/em_applied_leave.controller.php',
+
 ];
 
 
@@ -26,7 +27,7 @@ if (array_key_exists($uri_employees, $routes_employees)) {
     $page_employees = 'views/errors/404.php';
 }
 
-if ($page_employees === 'controllers/profiles/profile.controller.php') {
+if ($page_employees === 'controllers/profile_employees/profile.employee.controller.php') {
     require $page_employees;
 } else if ($page_employees === 'controllers/profiles/update.profile.controller.php') {
     require $page_employees;

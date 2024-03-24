@@ -1,40 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class=" ctm-border-radius shadow-sm col-lg bg-white">
+  <div class="container mt-5">
+      <div class="card-header py-3  flex-row align-items-center justify-content-between">
+        <h3 class="m-0 font-weight-bold text-primary">Deatials of leave: <?=$id?></h3>
+      </div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Details leave history</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
-</head>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="start_date">Start Date</label>
+            <input type="text" class="form-control" id="start_date" name="start_date" readonly value="<?= $detailHistory['start_date'] ?>">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="end_date">End Date</label>
+            <input type="text" class="form-control" id="end_date" name="end_date" readonly value="<?= $detailHistory['end_date'] ?>">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="leave_type">Leave Type</label>
+            <input type="text" class="form-control" id="leave_type" name="leave_type" readonly value="<?= $detailHistory['leave_type'] ?>">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="amount">Duration</label>
+            <input type="text" class="form-control" id="amount" name="amount" readonly value="<?= date_diff(new DateTime($detailHistory['start_date']), new DateTime($detailHistory['end_date']))->format('%a') ?>">
+          </div>
 
-<body>
-  <?php
-  
-  foreach ($detailHistory as $history){
-
-  }
-  ?>
-
-  <div class="card" style=" margin-left: 20%; margin-right: 20%; margin-top: 170px;">
-    <h2 class="card-header" style="color:blue">Details </h2>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Leave Type : <?= $detailHistory['leave_type'] ?></li>
-      <li class="list-group-item">Start Date : <?= $detailHistory['start_date'] ?></li>
-      <li class="list-group-item">End Date : <?= $detailHistory['end_date'] ?></li>
-      <li class="list-group-item">Duration : <?= date_diff(new DateTime($detailHistory['start_date']),new DateTime($detailHistory['end_date']))->format('%a') ?></li>
-      <li class="list-group-item">Reason : <?= $detailHistory['description'] ?></li>
-      <li class="list-group-item">Leave Status : <?= $detailHistory['status'] ?></li>
-     
-    </ul>
-     </?php endforeach;?>
-    <div class="btn" style="margin-right:1200px;">
-      <a href="/leave_history" class="btn  btn-success" style="font-size:13px">Back</a>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="5" readonly><?= $detailHistory['description'] ?></textarea>
+        </div>
+      </form>
     </div>
-
   </div>
-
-</body>
-
-</html>

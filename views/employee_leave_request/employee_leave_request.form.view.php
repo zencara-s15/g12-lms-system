@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card ctm-border-radius shadow-sm grow">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">Apply Leaves</h4>
+                <div class="card-header py-3  flex-row align-items-center justify-content-between">
+                    <h3 class="m-0 font-weight-bold text-primary">Apply Leave</h3>
                 </div>
                 <div class="card-body">
                     <form action="../../controllers/employee_leave_request/em_apply_leave.controller.php" method="post" id="leaveForm" enctype="multipart/form-data">
@@ -62,7 +62,7 @@
 
                                                                                                                     $today = $year . '-' . $month . '-' . $day;
                                                                                                                     echo $today
-                                                                                                                    ?>" onchange="compare_date()" required>
+                                                                                                                    ?>" onchange="compare_date()" required value="<?= $today ?>">
                                     <div class="invalid-feedback">Please enter a start date.</div>
                                 </div>
                             </div>

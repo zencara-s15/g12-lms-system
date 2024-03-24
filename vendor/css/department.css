@@ -1,0 +1,52 @@
+  
+      .modal-content {
+        border-radius: 10px;
+        /* padding: 0px 10px 0px 10px; */
+      }
+
+      .modal-header {
+        border-bottom: none;
+      }
+
+      .modal-title {
+        color: #40047c;
+        font-weight: bold;
+      }
+
+      .btn-primary {
+        background-color: #40047c;
+        border-color: #007bff;
+      }
+
+      .btn-primary:hover {
+        background-color: #40047c;
+        border-color: #0056b3;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        /* width: 500px; */
+        height: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      /* Position the Google icon */
+      .search-icon {
+        margin-right: 10px;
+        font-size: 24px;
+        color: #888;
+      }
+
+      /* Style the search input field */
+      .search-input {
+        flex-grow: 1;
+        border: none;
+        background: transparent;
+        font-size: 18px;
+        outline: none;
+      }
+

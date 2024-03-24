@@ -1,8 +1,5 @@
 <?php
 
-//  -------------------form login and reset password---------------------------------------------
-
-
 //  ______________________________for login and reset password_________________________________________________________
 
 // to check accound by email
@@ -22,6 +19,7 @@ function account_exist(string $email): array
 
 
 
+
 //  reset password
 function reset_password(string $email, string $password): bool
 {
@@ -35,13 +33,13 @@ function reset_password(string $email, string $password): bool
 }
 
 
-// ______________________end login and reset______________________________________________
 
+// ____________________________________Function of profile__________________________________________________________
 //  for profile information
 function account_infor(string $email): array
 {
     global $connection;
-    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.gender, 
+    $statement = $connection->prepare("SELECT users.id, users.first_name, users.image_data, users.gender,  users.image_name,
     users.last_name, users.email, roles.role AS role_id,
     positions.position AS position_id  FROM users 
     INNER JOIN roles ON users.role_id = roles.id 
@@ -76,26 +74,22 @@ function profile_personals(string $email): array
     }
 }
 
-function update_profile(string $email, string $firstName, string $lastName, string $gender): bool
+
+function update_profile(string $email, string $imageData, string $image_name): bool
 {
     global $connection;
     $statement = $connection->prepare("UPDATE users 
-        INNER JOIN departments ON users.department_id = departments.id
-        SET users.first_name = :firstName, users.last_name = :lastName, users.gender = :gender
-        WHERE users.email = :email");
+        SET image_data = :imageData, image_name = :image_name
+        WHERE email = :email");
 
-    $statement->execute([
+    $result = $statement->execute([
         ':email' => $email,
-        ':firstName' => $firstName,
-        ':lastName' => $lastName,
-        ':gender' => $gender
+        ':imageData' => $imageData,
+        ':image_name' => $image_name
     ]);
 
-    return $statement->rowCount() > 0;
+    return $result;
 }
-
-
-
 // -----------------function attesting to employee----------------------------------------
 
 // create employee
@@ -254,6 +248,35 @@ function get_employees_with_positions(): array
 
 //------------------------------Fuction related to Position --------------------------------------------------------------
 
+function count_users_by_position()
+{
+    global $connection;
+    $query = "SELECT position_id, COUNT(*) AS user_count
+              FROM users
+              GROUP BY position_id";
+
+    $statement = $connection->prepare($query);
+    $statement->execute();
+
+    $countByPosition = array();
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $positionId = $row['position_id'];
+        $userCount = $row['user_count'];
+        $countByPosition[$positionId] = intval($userCount);
+    }
+
+    return $countByPosition;
+}
+function get_postion_to_chartPie(): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT positions.position FROM users
+    INNER JOIN positions ON users.position_id = positions.id
+    GROUP BY users.position_id");
+    $statement->execute();
+    $positions = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+    return array_map('strval', $positions);
+}
 // get all positions
 function get_positions(): array
 {
@@ -384,6 +407,18 @@ function count_pending_requests(): int
     $result = $statement->fetch();
     return $result['total'];
 }
+
+function count_pending_leave_of_user($user_id): int
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT count(*) as total FROM leave_requests WHERE status ='Pending' && user_id = :user_id");
+    $statement->execute([
+        ':user_id' => $user_id
+    ]);
+    $result = $statement->fetch();
+    return $result['total'];
+}
+
 function count_rejected_requests(): int
 {
     global $connection;
@@ -453,6 +488,9 @@ function count_approved_leave(): int
     $result = $statement->fetch();
     return $result['total'];
 }
+
+
+
 //----------------------leave-type-----------------------------------------------------------
 
 //create leave type 
@@ -567,4 +605,55 @@ function get_department(int $id): array
         ]
     );
     return $statement->fetch();
+}
+
+
+// ------------------------Token Hash------------------------
+
+function update_reset_token($gmail, $code)
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE users SET verify_codes = :code WHERE email = :gmail");
+    $statement->execute([
+        ':gmail' => $gmail,
+        ':code' => $code,
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+function check_verify_code($code): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT * FROM users WHERE verify_codes = :code");
+    $statement->execute([
+        ':code' => $code
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } else {
+        return [];
+    }
+}
+
+function apply_notification($user_id, $status)
+{
+    global $connection;
+    $statement = $connection->prepare("INSERT INTO notification (user_id, status, created_at) VALUES (:user_id, :status, :created_at)");
+    $currentDate = date('Y-m-d H:i:s');
+    $result = $statement->execute([
+        ":user_id" => $user_id,
+        ":status" => $status,
+        ":created_at" => $currentDate,
+    ]);
+    return $result;
+}
+
+function get_notifications(): array
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT notification.id, notification.created_at, users.first_name, users.last_name, notification.message, notification.status FROM notification
+    INNER JOIN users ON notification.user_id = users.id
+    WHERE status = 'Pending Leave'");
+    $statement->execute();
+    return $statement->fetchAll();
 }

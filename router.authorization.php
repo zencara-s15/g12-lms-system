@@ -7,6 +7,8 @@ $page_authorization = "";
 $routes_authorization = [
     '/' =>  'controllers/signin/signin.controller.php',
     '/reset' => 'controllers/reset/reset_password.php',
+    '/reset_pw_form' => 'controllers/reset/reset_password_form.controller.php'
+
 ];
 
 // condition
@@ -18,7 +20,7 @@ if (array_key_exists($uri_authorization, $routes_authorization)) {
 
 if ($page_authorization === "controllers/signin/signin.controller.php") {
     require $page_authorization;
-} else if ($page_authorization === "controllers/reset/reset_password.php") {
+} else if ($page_authorization === "controllers/reset/reset_password.php" || $page_authorization === "controllers/reset/reset_password_form.controller.php") {
     require $page_authorization;
 } else if ($page_authorization === 'views/errors/404.php') {
     require('views/errors/404.php');
