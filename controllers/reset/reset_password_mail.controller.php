@@ -1,4 +1,5 @@
 <?php
+
 require '../../database/database.php';
 require '../../models/admin.model.php';
 
@@ -87,16 +88,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <img src='../../assets/images/logo.png' alt=''>
                     </div>
                     <div class='details'>
-                        <h2>Reset password link</h2>
-                        <p>Click on this linnk to reset new password: <p><a href='$reset_link'>Click Here</a></p></p>
+                        <h2>Reset Password</h2>
+                        <p>Click on this link to reset new password: <p><a href='$reset_link'>Click Here</a></p></p>
                     </div>
                     <div class='footer'>
                         This email was sent by the Leave Management System.
                     </div>
                 </div>
             </body>
-            </html>
-            ";
+            </html>";
 
         $mail->send();
         $notification = 'Email was sent by the Leave Management System';
@@ -113,7 +113,6 @@ function random_verify_codes()
     return $token;
 }
 ?>
-
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">

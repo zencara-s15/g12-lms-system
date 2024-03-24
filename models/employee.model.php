@@ -164,6 +164,5 @@ function get_applied_leave_detail($id): array
             'id' => $id
         ]
     );
-
     return $statement->fetch();
 }

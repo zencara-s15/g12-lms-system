@@ -1,9 +1,6 @@
 <?php
-
-// Require the necessary model
 require_once('models/admin.model.php');
 require('database/database.php');
-// Start sessions
 
 // Check if user is logged in
 if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {

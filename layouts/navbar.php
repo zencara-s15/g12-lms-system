@@ -1,4 +1,5 @@
  <?php
+
     function checkActive($path)
     {
         $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
@@ -18,7 +19,7 @@
      <div class="user-info align-center bg-theme text-center">
          <a href="javascript:void(0)" class="d-block menu-style text-white">
              <div class="user-avatar d-inline-block mr-3">
-             <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                 <img src="<?= $imageSrc ?>" alt="User Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
              </div>
          </a>
      </div>

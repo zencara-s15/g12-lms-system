@@ -1,4 +1,5 @@
 <?php
+
 require "database/database.php";
 require_once ("models/employee.model.php");
 

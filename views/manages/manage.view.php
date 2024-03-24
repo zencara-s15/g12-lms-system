@@ -1,6 +1,6 @@
 <div class="col-xl-9 col-lg-8 col-md-12">
-	<div class="row">
 
+	<div class="row">
 		<div class="col-xl-6 col-lg-6 col-md-6 d-flex">
 			<div class="card ctm-border-radius shadow-sm grow flex-fill">
 				<div class="card-header">
@@ -63,12 +63,6 @@
 
 	</div>
 </div>
-
-<!--/Content-->
-
-</div>
-<!-- Inner Wrapper -->
-
 <div class="sidebar-overlay" id="sidebar_overlay"></div>
 
 <!-- Add Working Weeks -->

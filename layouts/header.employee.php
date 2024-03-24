@@ -11,10 +11,9 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
         $image_data = $profile['image_data'];
         $imageSrc = 'data:image/jpeg;base64,' . base64_encode($image_data);
     }
-
-    
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +23,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="layouts/img/logo.png" />
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
@@ -54,7 +53,6 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
 
 <body>
     <!-- Loader -->
-    
     <div id="loader-wrapper">
         <div class="loader">
             <div class="dot"></div>
@@ -74,7 +72,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <a href="/employees_dasboad" class="col-lg-3 col-md-3 col-sm-3 col-6">
-                        <img src="../layouts/img/logo.png" width="65%">
+                            <img src="assets/images/logo.png" width="65%">
                         </a>
                         <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
                             <div class="user-block d-none d-lg-block">

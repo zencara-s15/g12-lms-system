@@ -12,6 +12,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
   }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="layouts/img/logo.png" />
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.png" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
@@ -76,7 +77,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
         <div class="container-fluid">
           <div class="row align-items-center">
             <a href="/admin" class="col-lg-3 col-md-3 col-sm-3 col-6">
-              <img src="../layouts/img/logo.png" width="65%">
+              <img src="assets/images/logo.png" width="65%">
             </a>
             <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
               <div class="user-block d-none d-lg-block">
@@ -84,17 +85,15 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="user-notification-block align-right d-inline-block">
                       <div class="top-nav-search">
-
                       </div>
                     </div>
-                    
                     <div class="user-notification-block align-right d-inline-block">
                       <ul class="list-inline m-0">
                         <li class="list-inline-item dropdown" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Leave">
                           <a href="/leave_requests" class="nav-link dropdown-toggle font-23 menu-style text-white align-middle" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell-o" style="font-size: 22px; position: relative;">
                               <span class="notification-dot" style="position: absolute; display: block; top: -10px; right: -13px; border-radius: 50%; font-size: smaller; color: white;">
-                                <p id="notificationCount" style="border-radius: 50%; background: red; width: 17px; height: 17px; padding: 2px; font-size: 12px;padding-right: 7px;"><?= count_pending_requests()?></p>
+                                <p id="notificationCount" style="border-radius: 50%; background: red; width: 17px; height: 17px; padding: 2px; font-size: 12px;padding-right: 7px;"><?= count_pending_requests() ?></p>
                               </span>
                             </i>
                           </a>

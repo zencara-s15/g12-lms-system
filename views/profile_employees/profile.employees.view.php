@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" href="vendor/css/style.css">
 
-
 <?php
 // Load user profile data
 require("controllers/profiles/form.profile.infor.controller.php");

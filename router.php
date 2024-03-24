@@ -23,25 +23,18 @@ $routes = [
     '/leave_types' => 'controllers/leave_types/leave_type.controller.php',
     '/edit_leave_type' => 'controllers/leave_types/from_edits.controller.php',
 
-    '/rejected_leaves' => 'controllers/leave_requests/rejected_leaves.controller.php', // for leave_request that have rejected leaves
-
-    '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', // for leave_request
+    '/rejected_leaves' => 'controllers/leave_requests/rejected_leaves.controller.php', 
+    '/leave_requests' => 'controllers/leave_requests/leave_requests.controller.php', 
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
-
 
     '/create_positions' => 'controllers/positions/create_position.controller.php',
     '/positions' => 'controllers/positions/position.controller.php',
     '/edit_positions' => 'controllers/positions/edit_position.controller.php',
 
-
     '/leave_requests_detial' => 'controllers/leave_requests/leave_request_detial.controller.php',
     '/update_profile' => 'controllers/profiles/update.profile.controller.php',
 
     '/report_detail' => 'controllers/reports/detail_report.controlller.php'
-
-
-
-
 ];
 
 if (array_key_exists($uri, $routes)) {
@@ -56,7 +49,6 @@ if ($page === 'controllers/profiles/profile.controller.php') {
 } else if ($page === 'controllers/profiles/update.profile.controller.php') {
     require $page;
 } else if ($page === 'views/errors/404.php') {
-    // http_response_code(404);
     require('views/errors/404.php');
 } else {
     require "layouts/header.php";

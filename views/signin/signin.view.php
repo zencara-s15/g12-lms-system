@@ -1,7 +1,7 @@
 <?php
-// alter when it error on form signin
-// session_start();
+
 if (isset($_SESSION['error'])) :
+    
 ?>
     <div class="alert alert-danger alert-dismissible fade show">
         <small type="text" class="close" data-dismiss="alert"></small>

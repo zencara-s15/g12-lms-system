@@ -1,5 +1,4 @@
 <?php
-// Check if the department is selected
 if (!isset($id)) {
 } else {
 

@@ -1,4 +1,3 @@
-<!-- Employee Management -->
 <div class="col-xl-9 col-lg-8 col-md-12  position-relative grow">
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
@@ -83,7 +82,7 @@
                     </select>
                     <div class="invalid-feedback">Please select a position.</div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="amount_leave">Amount of leave</label>
                     <input type="number" class="form-control border-dark" name="amount_leave" id="amount_leave" title="The first leave for the employee (3/month)." min="3" max="3" value="3" required>
@@ -118,6 +117,7 @@
         form.classList.add('was-validated');
 
     }
+
     //function use ot show and hide the password
     function togglePasswordVisibility() {
         var passwordInput = document.getElementById('passwordInput');
@@ -132,6 +132,5 @@
             passwordToggleIcon.classList.remove('fa-eye-slash');
             passwordToggleIcon.classList.add('fa-eye');
         }
-
     }
 </script>

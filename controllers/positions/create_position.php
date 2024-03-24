@@ -1,4 +1,5 @@
 <?php
+
 require '../../database/database.php';
 require_once '../../models/admin.model.php';
 
@@ -11,5 +12,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }else{
         echo "Your create is disabled";
     }
-   
 };

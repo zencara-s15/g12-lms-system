@@ -17,9 +17,6 @@ function account_exist(string $email): array
     }
 }
 
-
-
-
 //  reset password
 function reset_password(string $email, string $password): bool
 {
@@ -31,8 +28,6 @@ function reset_password(string $email, string $password): bool
     ]);
     return $statement->rowCount() > 0;
 }
-
-
 
 // ____________________________________Function of profile__________________________________________________________
 //  for profile information
@@ -55,7 +50,6 @@ function account_infor(string $email): array
     }
 }
 
-
 //  for profile 
 function profile_personals(string $email): array
 {
@@ -74,7 +68,7 @@ function profile_personals(string $email): array
     }
 }
 
-
+//  for profile
 function update_profile(string $email, string $imageData, string $image_name): bool
 {
     global $connection;
@@ -90,6 +84,7 @@ function update_profile(string $email, string $imageData, string $image_name): b
 
     return $result;
 }
+
 // -----------------function attesting to employee----------------------------------------
 
 // create employee
@@ -155,6 +150,7 @@ function count_users(): int
     $result = $statement->fetch();
     return $result['total'];
 }
+
 //update employee
 function update_employees(string $first_name, string $last_name, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, string $image_name, string $image_data, int $amount_leave, int $user_id): bool
 {
@@ -190,6 +186,7 @@ function update_employees(string $first_name, string $last_name, string $gender,
     return $success;
 }
 
+// to udpate employee
 function update_employee(string $first_name, string $last_name, string $gender, string $email, string $date_of_birth, int $role_id, int $position_id, int $amount_leave, int $user_id): bool
 {
     global $connection;
@@ -267,6 +264,7 @@ function count_users_by_position()
 
     return $countByPosition;
 }
+
 function get_postion_to_chartPie(): array
 {
     global $connection;
@@ -277,6 +275,7 @@ function get_postion_to_chartPie(): array
     $positions = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
     return array_map('strval', $positions);
 }
+
 // get all positions
 function get_positions(): array
 {
@@ -301,7 +300,6 @@ function get_postion_from_department($id): array
     return $statement->fetchAll();
 }
 
-
 // create position
 function create_position(string $position, int $department_id): bool
 {
@@ -325,7 +323,6 @@ function get_position(int $id): array
 }
 
 // delete position
-
 function delete_position(int $id): bool
 {
     global $connection;
@@ -396,7 +393,6 @@ function get_leave_requests(): array
     $statement->execute();
     return $statement->fetchAll();
 }
-
 
 //count request leave
 function count_pending_requests(): int
@@ -480,6 +476,7 @@ function get_aprroved_leave(): array
     $statement->execute();
     return $statement->fetchAll();
 }
+
 function count_approved_leave(): int
 {
     global $connection;
@@ -488,8 +485,6 @@ function count_approved_leave(): int
     $result = $statement->fetch();
     return $result['total'];
 }
-
-
 
 //----------------------leave-type-----------------------------------------------------------
 
@@ -513,7 +508,6 @@ function get_leave_types(): array
     $statement->execute();
     return $statement->fetchAll();
 }
-
 
 //display leave type by ID
 function get_leave_type(int $id): array
@@ -548,7 +542,6 @@ function delete_leave_type(int $id): bool
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
-
 
 //------------------------------Department-------------------------------------------------------
 
@@ -606,7 +599,6 @@ function get_department(int $id): array
     );
     return $statement->fetch();
 }
-
 
 // ------------------------Token Hash------------------------
 

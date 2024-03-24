@@ -12,6 +12,6 @@
   <script>
     setTimeout(function() {
       window.location.href = "controllers/logout/logout_controller.php";
-    }, 2000); 
+    }, 2000);
   </script>
 </body>

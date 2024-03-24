@@ -1,4 +1,3 @@
-<!-- Employee Management -->
 <div class="col-xl-9 col-lg-8 col-md-12 position-relative grow">
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
@@ -80,7 +79,6 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-theme button-1 ctm-border-radius float-right " style="margin-right: 80%;" onclick="validateForm()">Update</button>
                     <a href="/employees" class=" btn btn-danger text-white ctm-border-radius" id="cancelForm">Cancel</a>
-
                 </div>
             </form>
             <hr>
@@ -105,6 +103,7 @@
         form.classList.add('was-validated');
 
     }
+
     //function use ot show and hide the password
     function togglePasswordVisibility() {
         var passwordInput = document.getElementById('passwordInput');
@@ -119,6 +118,5 @@
             passwordToggleIcon.classList.remove('fa-eye-slash');
             passwordToggleIcon.classList.add('fa-eye');
         }
-
     }
 </script>

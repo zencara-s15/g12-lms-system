@@ -1,14 +1,12 @@
 <?php
+
 $uri_authorization = parse_url($_SERVER['REQUEST_URI'])['path'];
 $page_authorization = "";
-
-
 // for employee dasboard
 $routes_authorization = [
     '/' =>  'controllers/signin/signin.controller.php',
     '/reset' => 'controllers/reset/reset_password.php',
     '/reset_pw_form' => 'controllers/reset/reset_password_form.controller.php'
-
 ];
 
 // condition

@@ -2,9 +2,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="vendor/plugins/fullcalendar/fullcalendar.min.css">
 
-<style>
-
-</style>
 <div class="col-xl-9 col-lg-8 col-md-12 position-relative grow">
     <div class="card shadow mb-4">
         <div class="card-header py-3  flex-row align-items-center justify-content-between">
@@ -135,10 +132,9 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="end_date">Event end</label>
-                                            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="Event end date"  min="2024-03-20" max="2070-12-31" required>
+                                            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="Event end date" min="2024-03-20" max="2070-12-31" required>
                                         </div>
                                     </div>
-                                    <!-- <p id="totalDay">Total day: <span class="text-danger"></span></p> -->
                                     <br>
                                 </div>
                                 <div class="row">
@@ -250,7 +246,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- ----------------------------------------------- -->
+
                                 <div class="form-group">
                                     <label for="leave_type_id">Leave types</label>
                                     <select class="custom form-select " id="update_event_title" name="leave_type_id" title="Select type leave for request">
@@ -283,6 +279,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
+
                                     <!-- duration -->
                                     <div class="col-sm-6 leave-col">
                                         <div class="form-group">
@@ -309,14 +306,12 @@
                                     <input type="hidden" id="update_event_id" name="id">
                                     <button type="submit" class="btn btn-primary btn-submit">Update</button>
                                 </div>
-
                             </form>
                             <!-- End Update Event Form -->
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

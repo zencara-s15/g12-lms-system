@@ -1,5 +1,5 @@
 <?php
-// Require the necessary model
+
 require_once('../../models/admin.model.php');
 require('../../database/database.php');
 
@@ -28,5 +28,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
-//

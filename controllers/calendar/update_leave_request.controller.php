@@ -114,8 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                 </body>
-                </html>
-                ";
+                </html>";
 
             $mail->send();
         } catch (Exception $e) {

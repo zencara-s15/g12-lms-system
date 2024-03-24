@@ -1,18 +1,14 @@
 <!-- link boostrap -->
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" href="vendor/css/style.css">
-<!-- end -->
-
 
 <?php
 // Load user profile data
 require("controllers/profiles/form.profile.infor.controller.php");
 ?>
-
 
 <div class="container">
 	<div class="row justify-content-center mt-3 mb-3">

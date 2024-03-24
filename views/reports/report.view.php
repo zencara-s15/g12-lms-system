@@ -7,7 +7,7 @@
 				<a href="/print_report" class="btn btn-theme button-1 ctm-border-radius float-right" style="font-size:13px" type="button">Print</a>
 			</div>
 		</div>
-		
+
 		<div class="container table-responsive">
 			<table class="table table-hover text-nowrap">
 				<thead class="table-dark">
@@ -47,8 +47,8 @@
 			</table>
 		</div>
 	</div>
-		<!-- Scroll Down Button -->
-		<button id="scrollDownBtn" class="scroll-btn btn bg-secondary text-white float-right" style="font-size:20px; position: fixed;bottom: 20px; right: 20px; 
+	<!-- Scroll Down Button -->
+	<button id="scrollDownBtn" class="scroll-btn btn bg-secondary text-white float-right" style="font-size:20px; position: fixed;bottom: 20px; right: 20px; 
     z-index: 9999; /* Ensure it appears above other content */">
 		<span class="material-symbols-outlined" style="margin-right: 14px; ">expand_more</span>
 	</button>
@@ -61,14 +61,13 @@
 
 <div class="sidebar-overlay" id="sidebar_overlay"></div>
 <script>
-    // scroll
-    // Scroll Down Button Event Listener
-    document.getElementById('scrollDownBtn').addEventListener('click', function() {
-        window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
-    });
+	// Scroll Down Button Event Listener
+	document.getElementById('scrollDownBtn').addEventListener('click', function() {
+		window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
+	});
 
-    // Scroll Up Button Event Listener
-    document.getElementById('scrollUpBtn').addEventListener('click', function() {
-        window.scrollBy(0, -window.innerHeight); // Scroll up by the height of the viewport
-    });
+	// Scroll Up Button Event Listener
+	document.getElementById('scrollUpBtn').addEventListener('click', function() {
+		window.scrollBy(0, -window.innerHeight); // Scroll up by the height of the viewport
+	});
 </script>

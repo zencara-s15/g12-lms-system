@@ -1,5 +1,4 @@
 <div class="col-xl-9 col-lg-8 col-md-12 position-relative">
-
 	<div class="card shadow mb-4">
 		<div class="card-header py-3  flex-row align-items-center justify-content-between">
 			<h3 class="m-0 font-weight-bold text-primary">Leave Management</h3>
@@ -114,14 +113,14 @@
 <div class="sidebar-overlay" id="sidebar_overlay"></div>
 
 <script>
-    // scroll
-    // Scroll Down Button Event Listener
-    document.getElementById('scrollDownBtn').addEventListener('click', function() {
-        window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
-    });
+	// scroll
+	// Scroll Down Button Event Listener
+	document.getElementById('scrollDownBtn').addEventListener('click', function() {
+		window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
+	});
 
-    // Scroll Up Button Event Listener
-    document.getElementById('scrollUpBtn').addEventListener('click', function() {
-        window.scrollBy(0, -window.innerHeight); // Scroll up by the height of the viewport
-    });
+	// Scroll Up Button Event Listener
+	document.getElementById('scrollUpBtn').addEventListener('click', function() {
+		window.scrollBy(0, -window.innerHeight); // Scroll up by the height of the viewport
+	});
 </script>

@@ -1,4 +1,3 @@
-
 <div class=" ctm-border-radius shadow-sm col-lg bg-white">
     <div class="container mt-5">
         <!-- Image added to the middle top -->

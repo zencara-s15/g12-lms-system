@@ -21,7 +21,6 @@
                             <span class="ml-1">Department</span></button><br />
                     </div>
 
-
                     <!-- Modal create department -->
                     <div class="modal fade" id="add_department_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -38,8 +37,6 @@
                                             <label for="department_name">Department</label>
                                             <input type="text" class="form-control border-1 border-dark " id="department_name" placeholder="Add" name='department_name'>
                                         </div>
-                                        <!-- <button type="submit" class="btn btn-theme button-1 ctm-border-radius text-white float-center">Add</button>
-                                        <button class="btn btn-theme button-1 ctm-border-radius text-white float-center" onclick="clearAllInputs()" type="button" data-toggle="modal" id="btn_cancel" data-target="#addNewTeam">Cancel</button> -->
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -49,7 +46,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <!-- Modal update department -->
                     <div class="modal fade" id="update_department_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,13 +68,11 @@
                                             <button type="button" class="btn btn-danger ctm-border-radius text-white" data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn btn-theme ctm-border-radius text-white ml-2" id="update_department_btn">Update</button>
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <table class="table table-hover ">
@@ -89,7 +83,7 @@
                         </tr>
                     </thead>
                     <tbody id="department_data">
-
+                        <!-- code here -->
                     </tbody>
                 </table>
                 <div id="notFoundRow" class="text-center text-secondary d-none" style="height:50vh; display: flex; align-items: center; justify-content: center;">No department found!</div>
@@ -97,7 +91,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Alert Modal Success -->
 <div class="modal fade" id="alert_success_modal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">

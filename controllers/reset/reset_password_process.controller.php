@@ -3,7 +3,6 @@
 require '../../database/database.php';
 require_once '../../models/admin.model.php';
 
-
 $notification = '';
 $notification_icon = '';
 $notification_class = '';
@@ -35,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     $notification_icon = 'fa fa-ban';
   }
 }
-
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">

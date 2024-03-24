@@ -51,8 +51,6 @@
                         foreach ($get_leave_requests as $data) :
                             if ($data['status'] == 'Rejected') :
                         ?>
-
-
                                 <tr class="border-bottom" style="font-size:14px">
                                     <td style="vertical-align: middle;"><?= ++$num ?></td>
 
@@ -100,6 +98,7 @@
             </div>
         </div>
     </div>
+
     <!-- Scroll Down Button -->
     <button id="scrollDownBtn" class="scroll-btn btn bg-secondary text-white float-right" style="font-size:20px; position: fixed;bottom: 20px; right: 20px; 
     z-index: 9999; /* Ensure it appears above other content */">

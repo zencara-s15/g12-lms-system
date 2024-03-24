@@ -1,5 +1,5 @@
 <?php
-// Including necessary files for database connection and admin model
+
 require("../../database/database.php");
 require_once("../../models/admin.model.php");
 
