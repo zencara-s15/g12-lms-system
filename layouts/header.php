@@ -66,11 +66,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-lg-3 col-md-3 col-sm-3 col-6">
-              <div class="logo my-3 my-sm-0">
-                <a href="/admin">
-                  <h3 class="text-white ">LMS</h3>
-                </a>
-              </div>
+              <img src="../layouts/img/logo.png" width="65%">
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
               <div class="user-block d-none d-lg-block">
