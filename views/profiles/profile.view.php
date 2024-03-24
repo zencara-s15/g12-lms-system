@@ -25,7 +25,7 @@ require("controllers/profiles/form.profile.infor.controller.php");
 								<img src="<?= $imageSrc ?>" alt="<?= $image_name ?>" id="preview-image" class="rounded-circle profile-image" style="width: 150px; height: 150px;">
 								<div class="edit-icon-container">
 									<label for="profile-image" class="update-profile-icon bg-circle "> <span class="material-symbols-outlined " style="margin-top: 3px;"> person_edit </span> </label>
-									<input type="file" id="profile-image" name="profile" onchange="previewImage(event)" accept="image/*" style="display: none;">
+									<input type="file" id="profile-image" name="profile"  onchange="previewImage(event)" accept="image/*" style="display: none;" required>
 								</div>
 							</div>
 							<h4 class="username" style="color: #fff; font-size: 28px; margin-top: 20px;"><?= $first_name ?></h4>
