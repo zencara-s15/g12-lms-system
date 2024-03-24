@@ -70,9 +70,9 @@
 													 <?php
                                                         $btn_color = "btn-primary";
                                                         if ($data["status"] == "Approved") {
-                                                            $btn_color = "btn-success border border-0";
+                                                            $btn_color = "btn-outline-success border border-0";
                                                         } elseif ($data["status"] == "Rejected") {
-                                                            $btn_color = "btn-danger border border-0";
+                                                            $btn_color = "btn-outline-danger border border-danger";
                                                         } else {
                                                             $btn_color = "btn-primary";
                                                         }

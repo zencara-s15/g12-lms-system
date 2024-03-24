@@ -45,6 +45,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
   <title>Leave Management</title>
   <!-- Google icon -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <!-- ajax -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -75,9 +76,9 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
       <div class="top-header-section">
         <div class="container-fluid">
           <div class="row align-items-center">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-6">
+            <a href="/admin" class="col-lg-3 col-md-3 col-sm-3 col-6">
               <img src="../layouts/img/logo.png" width="65%">
-            </div>
+            </a>
             <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
               <div class="user-block d-none d-lg-block">
                 <div class="row align-items-center">

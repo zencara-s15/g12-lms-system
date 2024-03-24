@@ -55,7 +55,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
 <body>
     <!-- Loader -->
     
-    <!-- <div id="loader-wrapper">
+    <div id="loader-wrapper">
         <div class="loader">
             <div class="dot"></div>
             <div class="dot"></div>
@@ -63,7 +63,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Inner wrapper -->
     <div class="inner-wrapper">
@@ -73,9 +73,9 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
             <div class="top-header-section">
                 <div class="container-fluid">
                     <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-6">
+                        <a href="/employees_dasboad" class="col-lg-3 col-md-3 col-sm-3 col-6">
                         <img src="../layouts/img/logo.png" width="65%">
-                        </div>
+                        </a>
                         <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
                             <div class="user-block d-none d-lg-block">
                                 <div class="row align-items-center">

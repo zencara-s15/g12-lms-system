@@ -24,11 +24,11 @@
                         </select>
                     </div>
                     <!-- add employee button -->
-                    <div class="col-md-2 mb-2">
+                    <div class="col-md-2 mb-2 d-flex justify-content-between">
                         <a href="/create_employee" class="btn btn-theme button-1 ctm-border-radius float-right" style="font-size:20px;">
-                            <span class="material-symbols-outlined" style="margin-right: 14px; ">add</span>
-                            Add
-                        </a>
+                            <i class="material-icons">person</i>
+                            <span class="=mb-2">Add</span>
+                             </a>
                     </div>
                 </div>
             </div>
@@ -73,29 +73,17 @@
             </div>
         </div>
     </div>
-<!-- Scroll Down Button -->
-<button id="scrollDownBtn" class="scroll-btn btn bg-secondary text-white float-right" style="font-size:20px; position: fixed;bottom: 20px; right: 20px; 
+    <!-- Scroll Down Button -->
+    <button id="scrollDownBtn" class="scroll-btn btn bg-secondary text-white float-right" style="font-size:20px; position: fixed;bottom: 20px; right: 20px; 
     z-index: 9999; /* Ensure it appears above other content */">
-    <span class="material-symbols-outlined" style="margin-right: 14px; ">expand_more</span>
-</button>
+        <span class="material-symbols-outlined" style="margin-right: 14px; ">expand_more</span>
+    </button>
 
-<!-- Scroll Up Button -->
-<button id="scrollUpBtn" class="scroll-btn btn bg-secondary text-white float-right" style="font-size:20px; position: fixed;bottom: 20px; right: 80px; z-index: 9999; ">
-    <span class="material-symbols-outlined" style="margin-right: 14px;">expand_less</span>
-</button>
+    <!-- Scroll Up Button -->
+    <button id="scrollUpBtn" class="scroll-btn btn bg-secondary text-white float-right" style="font-size:20px; position: fixed;bottom: 20px; right: 80px; z-index: 9999; ">
+        <span class="material-symbols-outlined" style="margin-right: 14px;">expand_less</span>
+    </button>
 
-
-<script>
-    // Scroll Down Button Event Listener
-    document.getElementById('scrollDownBtn').addEventListener('click', function() {
-        window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
-    });
-
-    // Scroll Up Button Event Listener
-    document.getElementById('scrollUpBtn').addEventListener('click', function() {
-        window.scrollBy(0, -window.innerHeight); // Scroll up by the height of the viewport
-    });
-</script>
 
 </div>
 <!-- Delete Confirmation Modal -->
@@ -168,7 +156,7 @@
         tr.forEach(row => {
             const positionCell = row.querySelectorAll('td')[4]; // Assuming the position data is in the third column
 
-            if (selectedPosition === "All" || positionCell.textContent.trim() === selectedPosition) {
+            if (selectedPosition === "All" || positionCell.textContent === selectedPosition) {
                 row.style.display = ''; // Show the row
                 found = true; // Set found to true if at least one employee is found
             } else {
@@ -178,5 +166,15 @@
 
         // Show or hide the 'notFoundRow' based on the 'found' variable
         document.getElementById('notFoundRow').classList.toggle('d-none', found);
+    });
+    // scroll
+    // Scroll Down Button Event Listener
+    document.getElementById('scrollDownBtn').addEventListener('click', function() {
+        window.scrollBy(0, window.innerHeight); // Scroll down by the height of the viewport
+    });
+
+    // Scroll Up Button Event Listener
+    document.getElementById('scrollUpBtn').addEventListener('click', function() {
+        window.scrollBy(0, -window.innerHeight); // Scroll up by the height of the viewport
     });
 </script>
