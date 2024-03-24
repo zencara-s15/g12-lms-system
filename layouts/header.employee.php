@@ -72,7 +72,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <a href="/employees_dasboad" class="col-lg-3 col-md-3 col-sm-3 col-6">
-                            <img src="assets/images/logo.png" width="65%">
+                            <img id="lms_logo" src="assets/images/logo.png" width="65%">
                         </a>
                         <div class="col-lg-9 col-md-9 col-sm-9 col-6 text-right">
                             <div class="user-block d-none d-lg-block">

@@ -1813,3 +1813,7 @@ textarea.form-control {
 		margin-bottom: 0;
 	}
 }
+
+#lms_logo{
+	width: 100px;
+}
