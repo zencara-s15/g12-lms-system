@@ -52,7 +52,7 @@
 					<h4 class="card-title mb-0">Rejected Leave</h4>
 				</div>
 				<div class="card-body" style="height: 200px;">
-					<p class="card-text" style="height: 100px;">Team Members have the most limited access – most people should have this role.</p>
+					<p class="card-text" style="height: 100px;">You can see the leave that you are rejected here and you also can change to approv.</p>
 					<div class="mt-2">
 						<span class="avatar" data-toggle="tooltip" data-placement="top" title="Maria Cotton"><img src="assets/img/profiles/img-6.jpg" alt="Maria Cotton" class="img-fluid"></span>
 						<a href="/rejected_leaves" class="btn btn-theme button-1 ctm-border-radius text-white float-right text-white">View Rejected Leave</a>
