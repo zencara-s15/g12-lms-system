@@ -21,7 +21,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="vendor/img/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="layouts/img/logo.png" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
@@ -29,7 +29,6 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
   <!-- Fontawesome CSS -->
   <link rel="stylesheet" href="vendor/css/font-awesome.min.css">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
   <!-- Select2 CSS -->
   <link rel="stylesheet" href="vendor/plugins/select2/select2.min.css">
 

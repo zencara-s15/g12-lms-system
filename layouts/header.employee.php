@@ -24,7 +24,7 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="vendor/img/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="layouts/img/logo.png" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
