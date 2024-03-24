@@ -43,6 +43,16 @@ if (isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
   <link rel="stylesheet" href="vendor/css/style.css" />
 
   <title>Leave Management</title>
+  <!-- Google icon -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Css department -->
+  <link rel="stylesheet" href="vendor/css/department.css">
+
+  <title>LMS SYSTEM</title>
 </head>
 
 <body>
