@@ -41,7 +41,7 @@
 										</div>
 										<div class="button-group d-flex justify-content-end mt-5">
 											<button type="button" class="btn btn-danger ctm-border-radius text-white" data-dismiss="modal">Close</button>
-											<button type="submit" class="btn btn btn-theme ctm-border-radius text-white ml-2" id="update_department_btn">Update</button>
+											<button type="submit" class="btn btn btn-theme ctm-border-radius text-white ml-2" id="update_department_btn">Add</button>
 										</div>
 									</form>
 								</div>
@@ -133,7 +133,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				Are you sure you want to delete this department?
+				Are you sure you want to delete this leave type?
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger ctm-border-radius text-white" data-dismiss="modal">Cancel</button>
