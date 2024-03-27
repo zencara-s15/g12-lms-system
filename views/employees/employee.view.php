@@ -106,13 +106,13 @@
     </div>
 </div>
 
-<!-- Modal detail employee information -->
 <?php foreach ($get_employees_with_positions as $employee) { ?>
     <div class="modal fade" id="modal_detail_employee<?= $employee["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="modal_detail_employeeLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md modal-dialog-centered " style="max-width: 530px;" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <!-- Use Bootstrap's responsive modal classes -->
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h4 class="modal-title text-white " id="modal_detail_employeeLabel">Employee's Information</h4>
+                    <h4 class="modal-title text-white" id="modal_detail_employeeLabel">Employee's Information</h4>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -124,10 +124,10 @@
                         </div>
                         <div class="employee-details mt-3 ml-3">
                             <h3><?= $employee['first_name']." ". $employee['last_name'] ?></h3>
-                            <h4 class="text-danger "><?= $employee['position'] ?></h4>
+                            <h4 class="text-danger"><?= $employee['position'] ?></h4>
                             <p class="mt-2"><strong>Gender:</strong> <?= $employee['gender'] ?></p>
                             <p><strong>Date of Birth:</strong> <?= $employee['dob'] ?></p>
-                            <p><strong>Email:</strong> <a href="mailto:<?= $employee['email'] ?>" ><?= $employee['email'] ?></a></p>
+                            <p><strong>Email:</strong> <a href="mailto:<?= $employee['email'] ?>"><?= $employee['email'] ?></a></p>
                             <p><strong>Amount of Leave:</strong> <?= $employee['amount_leave'] ?></p>
                         </div>
                     </div>
@@ -136,6 +136,7 @@
         </div>
     </div>
 <?php } ?>
+
 
 
 <!-- Modal​ detail -->
