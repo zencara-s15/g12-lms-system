@@ -26,8 +26,8 @@
                     <td><?php echo $applied_leave['leave_type'] ?></td>
                     <td><?php echo $applied_leave['start_date'] ?></td>
                     <td><?php echo $applied_leave['end_date'] ?></td>
-                    <td><?php echo $applied_leave['description'] ?></td>
-                    <td><?php echo $applied_leave['status'] ?></td>
+                    <td ><?php echo $applied_leave['description'] ?></td>
+                    <td style="vertical-align: middle; font-size:15px;"><span class="border border-2 border-success p-1 rounded  "><?php echo $applied_leave['status'] ?></span></td>
                     <td style="vertical-align: middle;">
                         <a href="/leave_history_detail?id=<?= $applied_leave['id'] ?>" class="btn btn-sm btn-outline-success"><span class=""></span>Details</a>
                     </td>

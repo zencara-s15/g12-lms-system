@@ -28,7 +28,7 @@
                         <td><?php echo $histories['start_date'] ?></td>
                         <td><?php echo $histories['end_date'] ?></td>
                         <td><?php echo $histories['description'] ?></td>
-                        <td><?php echo $histories['status'] ?></td>
+                        <td style="vertical-align: middle; font-size:15px;"><span class="border border-5 border-success p-1 rounded  "><?php echo $histories['status'] ?> </span></td>
                         <td style="vertical-align: middle;">
                             <a href="/leave_history_detail?id=<?= $histories['id'] ?>" class="btn btn-sm btn-outline-success"><span class=""></span>Details</a>
                         </td>

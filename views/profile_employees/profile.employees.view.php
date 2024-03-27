@@ -32,7 +32,7 @@ require("controllers/profiles/form.profile.infor.controller.php");
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group mt-3">
+                                    <div class="form-group mt-3 d-none">
                                         <label for="id">ID</label>
                                         <input type="text" class="form-control" id="id" value="<?= $id ?>" readonly>
                                     </div>
