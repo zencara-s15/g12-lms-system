@@ -233,7 +233,7 @@ function get_employees_with_positions(): array
 {
     global $connection;
     $statement = $connection->prepare("
-    SELECT u.id, u.image_data, u.first_name, u.last_name, u.email, p.position
+    SELECT u.id, u.image_data, u.first_name, u.last_name, u.email,u.gender,u.dob,u.amount_leave, p.position
     FROM users u
     JOIN positions p ON u.position_id = p.id
     WHERE u.role_id = 2
