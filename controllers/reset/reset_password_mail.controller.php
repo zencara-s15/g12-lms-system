@@ -117,13 +117,13 @@ function random_verify_codes()
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<div class="container d-flex justify-content-center align-items-center vh-100" style="max-width: 700px;">
     <?php if ($notification) : ?>
-        <div class="alert alert-<?= $notification_class ?> d-flex align-items-center" role="alert">
-            <i class="<?= $notification_icon ?> me-2" style="font-size: 60px;"></i>
-            <div style="font-size: 40px;">
-                <?= $notification ?>
+        <div class="alert alert-<?= $notification_class ?>" role="alert">
+            <div class="d-flex justify-content-center align-items-center">
+                <i class="<?= $notification_icon ?> me-2" style="font-size: 90px;"></i>
             </div>
+            <p class="lead text-center fs-3"><?= $notification; ?></p>
         </div>
     <?php endif; ?>
 </div>
@@ -132,5 +132,5 @@ function random_verify_codes()
 <script>
     setTimeout(() => {
         window.location.href = '/';
-    }, 3000);
+    },3000);
 </script>

@@ -24,7 +24,7 @@
             <!-- comfirm delete -->
             <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content ">
                         <div class="modal-header">
                             <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -56,15 +56,15 @@
             </div>
             <!-- Insert Modal -->
             <div class="modal fade" id="insert_modal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title font-weight-bold text-primary" id="insertModalLabel">Request leave</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div class="modal-header bg-primary text-white">
+                            <h4 class="modal-title font-weight-bold" id="insertModalLabel">Request leave</h4>
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body pt-3 pr-5 pb-3 pl-5">
                             <!-- Form to Request leave -->
                             <form id="insert_form" method="post">
                                 <!-- hide data --------------------------------------->
@@ -173,14 +173,14 @@
             <!-- Update/Delete Event Modal -->
             <div class="modal fade" id="update_delete_modal" tabindex="-1" role="dialog" aria-labelledby="updateDeleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title font-weight-bold text-primary" id="updateDeleteModalLabel">Leave Details</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div class="modal-content ">
+                        <div class="modal-header bg-primary text-white">
+                            <h4 class="modal-title font-weight-bold text-white" id="updateDeleteModalLabel">Leave Details</h4>
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body p-4">
                             <p><strong>Title:</strong> <span id="event_title"></span></p>
                             <p><strong>Start Date:</strong> <span id="event_start_date"></span></p>
                             <p><strong>End Date:</strong> <span id="event_end_date"></span></p>
@@ -197,15 +197,15 @@
 
             <!-- Update Event Modal -->
             <div class="modal fade" id="update_event_modal" tabindex="-1" role="dialog" aria-labelledby="updateEventModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title font-weight-bold text-primary" id="updateEventModalLabel">Update Leave</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div class="modal-header bg-primary ">
+                            <h4 class="modal-title font-weight-bold text-white" id="updateEventModalLabel">Update Leave</h4>
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body pt-3 pr-5 pb-3 pl-5">
                             <!-- Update Event Form -->
                             <form id="update_event_form" method="post">
                                 <!-- hide data --------------------------------------->

@@ -28,7 +28,7 @@
                         <a href="/create_employee" class="btn btn-theme button-1 ctm-border-radius float-right" style="font-size:20px;">
                             <i class="material-icons">person</i>
                             <span class="=mb-2">Add</span>
-                             </a>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,8 @@
                         // call the function to retrieve all employees from the database
                         $get_employees_with_positions = get_employees_with_positions();
                         ?>
-                        <?php foreach ($get_employees_with_positions as $employee) : ?>
+                        <?php foreach ($get_employees_with_positions as $employee) :
+                        ?>
                             <tr class="border-bottom" style="font-size:14px">
                                 <td class="d-flex" style="text-align: center; vertical-align: middle;">
                                     <img style="width: 60px;height: 60px; object-fit: cover;" class="shadow-none rounded-circle" alt="avatar1" src="<?= 'data:image/jpeg;base64,' . base64_encode($employee['image_data']) ?>" />
@@ -59,9 +60,9 @@
                                 <td style="vertical-align: middle;"><?= $employee['last_name'] ?></td>
                                 <td style="vertical-align: middle;"><a href="mailto:<?= $employee['email'] ?>"><?= $employee['email'] ?></a></td>
 
-                                <!-- <td style="vertical-align: middle;"><?= $employee['email'] ?></td> -->
                                 <td style="vertical-align: middle;"><?= $employee['position'] ?></td>
                                 <td style="vertical-align: middle;">
+                                    <button class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal_detail_employee<?= $employee["id"] ?>">Detail</button>
                                     <a href="/update_employee?id=<?= $employee['id']; ?>" class="btn btn-sm btn-outline-success" style="font-size:13px">Update</a>
                                     <a href="#" onclick="openDeleteModal(<?php echo $employee['id']; ?>)" class="btn btn-sm btn-outline-danger" style="font-size:13px">Delete</a>
                                 </td>
@@ -104,6 +105,41 @@
         </div>
     </div>
 </div>
+
+<?php foreach ($get_employees_with_positions as $employee) { ?>
+    <div class="modal fade" id="modal_detail_employee<?= $employee["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="modal_detail_employeeLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <!-- Use Bootstrap's responsive modal classes -->
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h4 class="modal-title text-white" id="modal_detail_employeeLabel">Employee's Information</h4>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <div class="">
+                            <img src="<?= 'data:image/jpeg;base64,' . base64_encode($employee['image_data']) ?>" alt="Employee Image" class="img-fluid rounded-circle shadow-lg mb-4 shadow-none" style="width: 200px; height:200px;">
+                        </div>
+                        <div class="employee-details mt-3 ml-3">
+                            <h3><?= $employee['first_name']." ". $employee['last_name'] ?></h3>
+                            <h4 class="text-danger"><?= $employee['position'] ?></h4>
+                            <p class="mt-2"><strong>Gender:</strong> <?= $employee['gender'] ?></p>
+                            <p><strong>Date of Birth:</strong> <?= $employee['dob'] ?></p>
+                            <p><strong>Email:</strong> <a href="mailto:<?= $employee['email'] ?>"><?= $employee['email'] ?></a></p>
+                            <p><strong>Amount of Leave:</strong> <?= $employee['amount_leave'] ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+
+
+<!-- Modal​ detail -->
 
 <script>
     // JavaScript function to open the delete confirmation modal
