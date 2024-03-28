@@ -1,6 +1,7 @@
 <?php
 $get_positions = get_postion_to_chartPie(); // return positions as string arrray
 $count_users_by_position = count_users_by_position(); // return array number
+
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

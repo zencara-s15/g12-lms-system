@@ -16,7 +16,16 @@ function account_exist(string $email): array
         return [];
     }
 }
-
+function get_admin_email() {
+    global $connection;
+    $statement = $connection->prepare("SELECT email FROM users WHERE role_id = 1");
+    $statement->execute();
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch(PDO::FETCH_ASSOC)['email'];
+    } else {
+        return null; 
+    }
+}
 //  reset password
 function reset_password(string $email, string $password): bool
 {

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_POST['user_id']; // Assuming you have a user_id in your POST data
     $status = $_POST['status']; // Assuming you have a status in your POST data
     $full_name = $_POST['full_name'];
-    $email = "czencara@gmail.com"; // change to admin email 
+    $email_admin = account_infor(get_admin_email())['email']; // change to admin email 
     $leave_amount = $_POST['amount_leave'];
 
     $start = new DateTime($start_date);
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             //Recipients
             $mail->setFrom(' leave.management.vc1@gmail.com', 'Leave Management System');
-            $mail->addAddress($email , $full_name);     //Add a recipient
+            $mail->addAddress($email_admin , $full_name);     //Add a recipient
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
